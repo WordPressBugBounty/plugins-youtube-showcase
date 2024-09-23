@@ -1,0 +1,478 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-05-17T09:12:51-04:00\n"
+"POT-Creation-Date: 2024-05-17T09:12:51-04:00\n"
+
+#: youtube-showcase/includes/admin/getting-started.php:177
+msgid "Welcome to YouTube Showcase Community %s"
+msgstr ""
+
+#: youtube-showcase/includes/admin/getting-started.php:181
+msgid "YouTube Showcase is a powerful but simple-to-use YouTube video gallery plugin with responsive frontend."
+msgstr ""
+
+#: youtube-showcase/includes/admin/getting-started.php:183
+msgid "Upgrade Now"
+msgstr ""
+
+#: youtube-showcase/includes/admin/getting-started.php:184
+msgid "Visit Pro Demo Site"
+msgstr ""
+
+#: youtube-showcase/includes/admin/getting-started.php:186
+msgid "Getting Started"
+msgstr ""
+
+#: youtube-showcase/includes/admin/getting-started.php:187
+msgid "Release Notes"
+msgstr ""
+
+#: youtube-showcase/includes/admin/getting-started.php:188
+msgid "Resources"
+msgstr ""
+
+#: youtube-showcase/includes/admin/getting-started.php:189
+msgid "Features"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:224
+msgid "Videos"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:237
+msgid "Excerpt"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:238
+msgid "Content"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:242
+#: youtube-showcase/includes/class-install-deactivate.php:402
+msgid "Title"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:297
+msgid "Video Grid Gallery"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:303
+msgid "Video Gallery"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:309
+msgid "Video Key"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:316
+msgid "<p>The unique 11 digit alphanumeric video key found on the YouTube video. For example; in https://www.youtube.com/watch?v=uVgWZd7oGOk. uVgWZd7oGOk is the video id.</p>"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:323
+msgid "Featured"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:330
+msgid "Adds the video to featured video list."
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:337
+msgid "Video Image Resolution"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:344
+msgid "<p>Sets the resolution of video thumbnail image. The image size for each option;<br />\n<strong>Medium</strong> - 320 x 180, <strong>High</strong> - 480x360, <strong>Standard</strong> - 640 x 480, <strong>Max</strong> -1280 x 720</p>"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:348
+msgid "Please Select"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:349
+msgid "Standard"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:350
+msgid "Medium"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:351
+msgid "High"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:352
+msgid "Max"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:357
+msgid "Video Autoplay"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:364
+msgid "When set the player starts video automatically. It may not work in all devices due to vendor preferences."
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:375
+msgid "Show thumbs in mobile"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:424
+msgid "Categories"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:425
+msgid "Category"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:437
+msgid "Tags"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:438
+msgid "Tag"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:492
+msgid "New To Youtube Showcase? Check out live demo!"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:492
+#: youtube-showcase/includes/class-install-deactivate.php:504
+msgid "&#187;"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:492
+#: youtube-showcase/includes/class-install-deactivate.php:504
+msgid "Dismiss"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:504
+msgid "Want to Keep Your Visitors Longer on Your Site? Get Pro Now!"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:511
+msgid "Setup Youtube Showcase Pages"
+msgstr ""
+
+#: youtube-showcase/includes/class-install-deactivate.php:511
+msgid "Skip setup"
+msgstr ""
+
+#: youtube-showcase/includes/class-integration-widgets.php:28
+msgid "Search Videos"
+msgstr ""
+
+#: youtube-showcase/includes/class-integration-widgets.php:28
+msgid "Integration widget label"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video-widgets.php:39
+msgid "Recent Videos"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video-widgets.php:39
+#: youtube-showcase/includes/entities/class-emd-video-widgets.php:102
+msgid "The most recent videos"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video-widgets.php:102
+msgid "Featured Videos"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:85
+msgid "Featured Image"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:267
+#: youtube-showcase/includes/entities/class-emd-video.php:352
+msgid "Video"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:268
+msgid "Add New"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:269
+msgid "Add New Video"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:270
+msgid "Edit Video"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:271
+msgid "New Video"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:272
+msgid "All Videos"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:273
+msgid "View Video"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:275
+msgid "No Videos Found"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:276
+msgid "No Videos Found In Trash"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:321
+msgid "Videos are YouTube videos identified by Video ID."
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:357
+msgid "Video Info"
+msgstr ""
+
+#: youtube-showcase/includes/entities/class-emd-video.php:431
+msgid "CSV Import/Export"
+msgstr ""
+
+#: youtube-showcase/includes/integration-shortcodes.php:17
+msgid "You are not allowed to access to this area. Please contact the site administrator."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-app-functions.php:25
+msgid "Don't worry, all your records will be preserved after purchasing customization services."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:62
+msgid "Please help us improve YouTube Showcase"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:64
+msgid "Allow eMDPlugins to collect your usage of YouTube Showcase. This will help you to get a better, more compatible plugin in the future."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:65
+msgid "If you skip this, that's okay! YouTube Showcase will still work just fine."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:68
+msgid "Do not allow"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:69
+msgid "Allow"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:146
+msgid "Hi, I noticed you just crossed the %d %s milestone - that's awesome!"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:148
+msgid "Hi, I just noticed you have been using YouTube Showcase for about a week now - that's awesome!"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:150
+msgid "Give <b>YouTube Showcase</b> a <span style=\"color:red\" class=\"dashicons dashicons-heart\"></span> 5 star review <span style=\"color:red\" class=\"dashicons dashicons-heart\"></span> to help fellow WordPress users like YOU find it faster! <u>Your 5 star review</u> brings YOU a better FREE product and faster, motivated support when YOU need help."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:151
+msgid "Would you like to upgrade now to get more out of your %s?"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:157
+msgid "Yes, I want a better FREE product and faster support"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:159
+msgid "I already did - Thank you"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:160
+msgid "No, I don't want a better FREE product and faster support"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:161
+msgid "I want to upgrade"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:163
+msgid "Maybe later"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:182
+msgid "Docs"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:183
+msgid "Pro Version"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:203
+msgid "Settings"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:220
+msgid "If you have a moment, please let us know why you are deactivating"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:221
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:222
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:223
+msgid "Cancel"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:224
+msgid "Please share the reason so we can improve"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:225
+msgid "Would you like to open a support ticket?"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:226
+msgid "Please enter your email address."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:229
+msgid "I no longer need the plugin"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:230
+msgid "I only needed the plugin for a short period"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:231
+msgid "The plugin update did not work as expected"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:232
+msgid "The plugin suddenly stopped working"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:233
+#: youtube-showcase/includes/plugin-feedback-functions.php:240
+msgid "I found a better plugin"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:235
+msgid "I couldn't understand how to make it work"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:236
+msgid "The plugin is not working"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:237
+msgid "It's not what I was looking for"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:238
+msgid "The plugin didn't work as expected"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:239
+msgid "The plugin is great, but I need a specific feature that is not currently supported"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:249
+msgid "It's a temporary deactivation. I'm just debugging an issue"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:250
+msgid "Other"
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:251
+msgid "No private information is sent during your submission. Thank you very much for your help improving our plugin."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:271
+msgid "Please share the plugin name."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:275
+msgid "Please share the feature that you were looking for so that we can develop it in the future releases."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:279
+msgid "We are sorry to hear that. Please share your previous version number before update, new updated version number and detailed description of what happened."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:283
+msgid "We are sorry to hear that. Please share the detailed description of what happened."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:287
+msgid "Please share what didn't work so we can fix it in the future releases."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:291
+msgid "Please share what you were looking for."
+msgstr ""
+
+#: youtube-showcase/includes/plugin-feedback-functions.php:295
+msgid "Please share what you expected."
+msgstr ""
+
+#: youtube-showcase/includes/scripts.php:78
+msgid "Please enter a unique value."
+msgstr ""
+
+#: youtube-showcase/includes/scripts.php:79
+msgid "required"
+msgstr ""
+
+#: youtube-showcase/includes/scripts.php:96
+msgid "Taxonomy"
+msgstr ""
+
+#: youtube-showcase/includes/scripts.php:109
+#: youtube-showcase/includes/scripts.php:114
+msgid "Relationship"
+msgstr ""
+
+#: youtube-showcase/youtube-showcase.php:81
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: youtube-showcase/youtube-showcase.php:243
+msgid "Video Settings"
+msgstr ""
+
+#: youtube-showcase/youtube-showcase.php:248
+msgid "Glossary"
+msgstr ""
+
+#: youtube-showcase/youtube-showcase.php:256
+msgid "YouTube API"
+msgstr ""
+
+#: youtube-showcase/youtube-showcase.php:260
+msgid "Shortcodes"
+msgstr ""
+
+#: youtube-showcase/youtube-showcase.php:264
+msgid "Forms"
+msgstr ""
+
+#: youtube-showcase/youtube-showcase.php:268
+msgid "Plugins"
+msgstr ""
+
+#: youtube-showcase/youtube-showcase.php:272
+msgid "Support"
+msgstr ""
+
+#: youtube-showcase/youtube-showcase.php:291
+msgid "Licenses"
+msgstr ""
