@@ -93,7 +93,7 @@ if ( !class_exists( 'EMD_MB_Wysiwyg_Field' ) )
 		}
 
 		static function footer_scripts() {
-			echo '<script> var emd_mb_cloneable_editors = '.json_encode(self::$cloneable_editors).';</script>';
+			echo '<script> var emd_mb_cloneable_editors = '.wp_json_encode(self::$cloneable_editors).';</script>';
 		}
 	}
 }

@@ -356,7 +356,7 @@ if ( ! class_exists( 'EMD_MB_Helper' ) )
 				map = new google.maps.Map( document.getElementById( "emd-mb-map-canvas-%d" ), mapOptions );
 				',
 				$parts[0], $parts[1],
-				json_encode( $args['js_options'] ),
+				wp_json_encode( $args['js_options'] ),
 				$counter
 			);
 

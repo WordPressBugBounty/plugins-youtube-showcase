@@ -42,7 +42,7 @@ if ( !class_exists( 'EMD_MB_Select_Advanced_Field' ) )
 				$field['multiple'] ? ' multiple="multiple"' : '',
 				isset($field['data-cell']) ? "data-cell='{$field['data-cell']}'" : '',
 				isset($field['state']) ? "data-state='{$field['state']}'" : '',
-				esc_attr( json_encode( $field['js_options'] ) )
+				esc_attr( wp_json_encode( $field['js_options'] ) )
 			);
 
 			$html .= self::options_html( $field, $meta );

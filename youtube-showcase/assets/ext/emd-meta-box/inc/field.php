@@ -187,9 +187,17 @@ if ( !class_exists( 'EMD_MB_Field ' ) )
 				) ,
 				'ul' => array(
 					'class' => array() ,
+					'data-field_id' => array(),
+					'data-delete_nonce' => array(),
+					'data-reorder_nonce' => array(),
+					'data-force_delete' => array(),
+					'data-max_file_uploads' => array(),
+					'data-mime_type' => array(),
+					'data-max_size' => array(),
 					'style' => array()
 				) ,
 				'li' => array(
+					'id' => array() ,
 					'class' => array() ,
 					'style' => array()
 				) ,
@@ -210,7 +218,9 @@ if ( !class_exists( 'EMD_MB_Field ' ) )
                                         'rel' => array() ,
                                         'title' => array() ,
                                         'id' => array() ,
-                                        'class' => array() ,
+					'class' => array() ,
+					'data-attachment_id' => array() ,
+					'data-field_id' => array()
                                 ) ,
 				'img' => array(
 					'src' => array() ,

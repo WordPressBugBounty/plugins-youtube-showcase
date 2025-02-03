@@ -4,8 +4,8 @@ Plugin URI: https://emdplugins.com
 Author URI: https://emarketdesign.com
 Donate link: https://emarketdesign.com/donate-emarket-design/
 Requires at least: 4.5
-Tested up to: 6.5.3
-Stable tag: 3.4.0
+Tested up to: 6.7.1
+Stable tag: 3.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: youtube,video,video gallery,youtube gallery,youtube channel
@@ -96,25 +96,25 @@ Note: In examples, yoyoma is the slug not the label of tag or category
 
 **Best YouTube Video Gallery and Management Plugin for WordPress**
 
-* [Dedicated YouTube video pages to grab your visitors' attention](https://emdplugins.com/?p=10590&pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Beautiful YouTube video galleries to promote your YouTube videos instantly](https://emdplugins.com/?p=10591&pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Manage your YouTube videos in one central location - no more wasting hours for lost YouTube videos](https://emdplugins.com/?p=10588&pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Help visitors find similar YouTube videos easily by grouping and tagging](https://emdplugins.com/?p=10592&pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Promote YouTube videos on your sidebars](https://emdplugins.com/?p=10670&pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Let visitors see your YouTube videos from any device](https://emdplugins.com/?p=10589&pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Many ways to display YouTube videos to make visitors stay on your site longer ](https://emdplugins.com/?p=10674&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Easy import from any YouTube channel or playlist using YouTube API.](https://emdplugins.com/?p=11418&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Expand YouTube video manager role with a few clicks](https://emdplugins.com/?p=10991&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Display YouTube playlists, channels, search results like no others](https://emdplugins.com/?p=10675&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Empower your non technical staff through video manager user role](https://emdplugins.com/?p=10602&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Set the display order of your YouTube videos by drag and drop](https://emdplugins.com/?p=10671&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Encourage visitors to stay longer by displaying related YouTube videos](https://emdplugins.com/?p=10676&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Let visitors know how popular you YouTube videos are by optional video stats ](https://emdplugins.com/?p=10600&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Customize YouTube player just the way you wanted](https://emdplugins.com/?p=10673&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Dedicated, custom commenting system for YouTube videos only](https://emdplugins.com/?p=10672&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Create shortcodes visually to display your YouTube video galleries](https://emdplugins.com/?p=10677&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Find YouTube videos faster and track changes with dynamic filters](https://emdplugins.com/?p=10603&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Add-on (included in Pro)
-* [Bulk import, update or backup your YouTube videos from or to CSV instantly](https://emdplugins.com/?p=10604&pk_campaign=youtube-showcase-com&pk_kwd=readme) - Add-on (included in Pro)
+* [Create Stunning Video Experiences](https://emdplugins.com/youtube-showcase-beautiful-video-pages/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
+* [Create Stunning Video Galleries with YouTube Showcase](https://emdplugins.com/youtube-showcase-video-gallery/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
+* [Centralized Management, Secure Storage](https://emdplugins.com/youtube-showcase-all-your-videos-in-one-place/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
+* [Intuitive  Video Categorization And Tagging](https://emdplugins.com/youtube-showcase-categorize-and-tag-videos/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
+* [Easy To Use Widgets](https://emdplugins.com/youtube-showcase-easy-to-use-widgets/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
+* [Mobile-Ready Video Showcase](https://emdplugins.com/youtube-showcase-responsive-mobile-friendly/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
+* [Add captivating videos to your website in seconds](https://emdplugins.com/youtube-showcase-get-videos-instantly/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Non-Tech Friendly Video Management](https://emdplugins.com/youtube-showcase-let-video-managers-do-more/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Enhance Your Website with Dynamic Video Integration Using YouTube Showcase](https://emdplugins.com/youtube-showcase-display-playlists-and-more/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Elevate your team's capabilities through designated roles.](https://emdplugins.com/youtube-showcase-assign-roles-to-your-team/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Customize Your Video Display Order with Drag-and-Drop interface](https://emdplugins.com/youtube-showcase-drag-drop-ordering/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Establish Connections Between Your Videos](https://emdplugins.com/youtube-showcase-relate-your-videos-to-each-other/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Gain a deeper understanding of your audience](https://emdplugins.com/youtube-showcase-video-statistics/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Design Freedom: Customize Videos & Galleries to Match Your Website](https://emdplugins.com/youtube-showcase-customize-your-videos/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Foster a Community with Custom Video Comments](https://emdplugins.com/youtube-showcase-custom-video-comments/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Easily Build Engaging, custom Video Galleries](https://emdplugins.com/youtube-showcase-create-custom-video-galleries/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Choose from Multiple Views with YouTube Showcase.](https://emdplugins.com/youtube-showcase-tailor-video-layouts-to-match-your-vision/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
+* [Effortlessly find specific videos](https://emdplugins.com/youtube-showcase-smart-search-and-columns-addon/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Add-on (included in Pro)
+* [Optimize Video Management: YouTube Showcase Import/Export Addon](https://emdplugins.com/youtube-showcase-import-export-addon/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Add-on (included in Pro)
 
 **PLUGIN LINKS**
 * [YouTube Showcase Starter Demo Site](https://ytshowcasecom.emdplugins.com?pk_campaign=youtube-showcase-com&pk_kwd=readme)
@@ -158,6 +158,8 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'YouTub
 8. [eMD CSV Import Export Extension](https://emdplugins.com/plugin-features/youtube-showcase-importexport-addon/) for bulk import/export from/to CSV files
 
 == Changelog ==
+=3.5.0=
+* FIXED WordPress dashboard accordions issue on setting and glossary pages due to changes in core code on WP 6.7.1
 =3.4.0=
 * FIXED Vulnerability on form submit
 * FIXED Translation to one textdomain

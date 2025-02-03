@@ -219,4 +219,8 @@ if (!function_exists('emd_shc_button')) {
 			echo wp_kses_post($content);
 		}
 	}
+	add_filter('kses_allowed_protocols', function ($protocols) {
+		$protocols[] = 'data';
+		return $protocols;
+	});
 }

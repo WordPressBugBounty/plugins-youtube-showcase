@@ -161,13 +161,13 @@ class Emd_Video extends Emd_Entity {
 				$other_ptype = $rel_arr['from'];
 			}
 			$column_id = str_replace('rel_', '', $column_id);
-			if (function_exists('p2p_type') && p2p_type($column_id)) {
+			if (function_exists('emd_p2p_type') && emd_p2p_type($column_id)) {
 				$rel_args = apply_filters('emd_ext_p2p_add_query_vars', array(
 					'posts_per_page' => - 1
 				) , Array(
 					$other_ptype
 				));
-				$connected = p2p_type($column_id)->get_connected($post_id, $rel_args);
+				$connected = emd_p2p_type($column_id)->get_connected($post_id, $rel_args);
 				$ptype_obj = get_post_type_object($this->post_type);
 				$edit_cap = $ptype_obj->cap->edit_posts;
 				$ret = array();

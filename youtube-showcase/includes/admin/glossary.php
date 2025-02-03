@@ -23,7 +23,7 @@ function youtube_showcase_settings_glossary() {
 <div id="glossary" class="accordion-container">
 <ul class="outer-border">
 <li id="emd_video" class="control-section accordion-section open">
-<h3 class="accordion-section-title hndle" tabindex="1"><?php esc_html_e('Videos', 'youtube-showcase'); ?></h3>
+<h3 class="accordion-section-title hndle" tabindex="1"><button type="button" class="accordion-trigger" aria-expanded="true" aria-controls="target-1"><div class="accordion-title emd"><span class="accordion-title-text"><?php esc_html_e('Videos', 'youtube-showcase'); ?></span><span class="dashicons dashicons-arrow-down" aria-hidden="true"></span></div></button></h3>
 <div class="accordion-section-content">
 <div class="inside">
 <table class="form-table"><p class"lead"><?php esc_html_e('Videos are YouTube videos identified by Video ID.', 'youtube-showcase'); ?></p><tr><th style='font-size: 1.1em;color:cadetblue;border-bottom: 1px dashed;padding-bottom: 10px;' colspan=2><div><?php esc_html_e('Attributes', 'youtube-showcase'); ?></div></th></tr>

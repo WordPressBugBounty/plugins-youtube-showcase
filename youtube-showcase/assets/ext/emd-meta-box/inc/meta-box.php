@@ -183,11 +183,13 @@ if ( ! class_exists( 'EMD_Meta_Box' ) )
 		static function get_fields( $fields )
 		{
 			$all_fields = array();
-			foreach ( $fields as $field )
-			{
-				$all_fields[] = $field;
-				if ( isset( $field['fields'] ) )
-					$all_fields = array_merge( $all_fields, self::get_fields( $field['fields'] ) );
+			if(!empty($fields)){
+				foreach ( $fields as $field )
+				{
+					$all_fields[] = $field;
+					if ( isset( $field['fields'] ) )
+						$all_fields = array_merge( $all_fields, self::get_fields( $field['fields'] ) );
+				}
 			}
 
 			return $all_fields;
@@ -293,11 +295,11 @@ if ( ! class_exists( 'EMD_Meta_Box' ) )
 			}
 			if(isset( $this->validation ) && $this->validation){
 				echo '
-					validationOptions : jQuery.parseJSON( \'' . json_encode( $this->validation ) . '\' ),
+					validationOptions : jQuery.parseJSON( \'' . wp_json_encode( $this->validation ) . '\' ),
 					summaryMessage : "' . __( 'Please correct the errors highlighted below and try again.', 'youtube-showcase' ) . '",';
 			}
 			if(isset($this->conditional) && $this->conditional){
-				echo 'conditional: jQuery.parseJSON( \'' . json_encode($this->conditional) . '\' ),';
+				echo 'conditional: jQuery.parseJSON( \'' . wp_json_encode($this->conditional) . '\' ),';
 			}
 			if((isset( $this->validation ) && $this->validation)  || (isset($this->conditional) && $this->conditional))
 			{
@@ -309,12 +311,12 @@ if ( ! class_exists( 'EMD_Meta_Box' ) )
 			}
 			if(isset( $this->validation ) && $this->validation){
 				echo '	
-					var tempOptions = jQuery.parseJSON( \'' . json_encode( $this->validation ) . '\' );
+					var tempOptions = jQuery.parseJSON( \'' . wp_json_encode( $this->validation ) . '\' );
 					jQuery.extend( true, emd_mb.validationOptions, tempOptions ); ';
 			}
 			if(isset($this->conditional) && $this->conditional){
 				echo '
-					var tempConditionals = jQuery.parseJSON( \'' . json_encode( $this->conditional ) . '\' );					     jQuery.extend( true, emd_mb.conditional, tempConditionals ); ';	
+					var tempConditionals = jQuery.parseJSON( \'' . wp_json_encode( $this->conditional ) . '\' );					     jQuery.extend( true, emd_mb.conditional, tempConditionals ); ';	
 			}
 			if((isset( $this->validation ) && $this->validation)  || (isset($this->conditional) && $this->conditional))
 			{	
@@ -412,7 +414,9 @@ if ( ! class_exists( 'EMD_Meta_Box' ) )
 			) );
 
 			// Set default values for fields
-			$meta_box['fields'] = self::normalize_fields( $meta_box['fields'] );
+			if(!empty($meta_box['fields'])){
+				$meta_box['fields'] = self::normalize_fields( $meta_box['fields'] );
+			}
 
 			return $meta_box;
 		}

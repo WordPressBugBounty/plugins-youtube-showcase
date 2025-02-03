@@ -387,7 +387,7 @@ class Emd_Query {
 		if (!isset($this->args['post__in']) || (isset($this->args['post__in']) && !empty($this->args['post__in']))) {
 			$rel_query = "";
 			$this->rel_posts = Array();
-			if(p2p_type($field_list[1])){
+			if(emd_p2p_type($field_list[1])){
 				$this->rel_args['connected_type'] = $field_list[1];
 				if($field_list[3] == 'current_user'){
 					$cur_ent = '';

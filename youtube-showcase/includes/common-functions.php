@@ -232,28 +232,6 @@ if (!function_exists('emd_limit_author_search')) {
 	}
 }
 /**
- * Has_shortcode func if wp version is < 3.6
- *
- * @since WPAS 4.0
- * @param string $content
- * @param string $shc
- *
- * @return bool
- */
-if (version_compare($wp_version, "3.6", "<") && !function_exists('has_shortcode')) {
-	function has_shortcode($content, $shc) {
-		global $shortcode_tags;
-		if (array_key_exists($shc, $shortcode_tags)) {
-			preg_match_all('/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER);
-			if (empty($matches)) return false;
-			foreach ($matches as $shortcode) {
-				if ($shc === $shortcode[2]) return true;
-			}
-		}
-		return false;
-	}
-}
-/**
  * Parse and replace template tags with values in email subject and messages
  *
  * @since WPAS 4.3

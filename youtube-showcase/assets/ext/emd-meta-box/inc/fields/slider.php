@@ -38,7 +38,7 @@ if ( !class_exists( 'EMD_MB_Slider_Field' ) )
 					<span class="emd-mb-slider-value-label">%s<span>%s</span>%s</span>
 					<input type="hidden" name="%s" value="%s" class="emd-mb-slider-value">
 				</div>',
-				$field['id'], esc_attr( json_encode( $field['js_options'] ) ),
+				$field['id'], esc_attr( wp_json_encode( $field['js_options'] ) ),
 				$field['prefix'], $meta, $field['suffix'],
 				$field['field_name'], $meta
 			);

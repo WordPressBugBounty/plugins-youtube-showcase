@@ -574,15 +574,15 @@ class Emd_Entity {
 						foreach ($rel_list as $krel => $vrel) {
 							$rel_type = str_replace("rel_", "", $krel);
 							if ($vrel['from'] == $post->post_type || $vrel['to'] == $post->post_type) {
-								if(p2p_type($rel_type)){
-									$connected = p2p_type($rel_type)->get_connected($post->ID,Array('posts_per_page' => - 1));
+								if(emd_p2p_type($rel_type)){
+									$connected = emd_p2p_type($rel_type)->get_connected($post->ID,Array('posts_per_page' => - 1));
 									if(!empty($connected->posts)){
 										foreach($connected->posts as $mycon_post){
 											if($post->ID == $mycon_post->p2p_from){
-												$c = p2p_type($rel_type)->connect($id,$mycon_post->p2p_to);
+												$c = emd_p2p_type($rel_type)->connect($id,$mycon_post->p2p_to);
 											}					
 											elseif($post->ID == $mycon_post->p2p_to){
-												$b= p2p_type($rel_type)->connect($id,$mycon_post->p2p_from);
+												$b= emd_p2p_type($rel_type)->connect($id,$mycon_post->p2p_from);
 											}		
 										}
 									}			

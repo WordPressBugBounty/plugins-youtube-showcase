@@ -120,7 +120,7 @@ function youtube_showcase_show_rateme_action() {
 		$min_trigger = - 1;
 	}
 	update_option('youtube_showcase_show_rateme_plugin_min', $min_trigger);
-	echo json_encode($response);
+	echo wp_json_encode($response);
 	die;
 }
 function youtube_showcase_show_rateme_notice() {

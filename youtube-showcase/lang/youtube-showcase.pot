@@ -7,15 +7,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2024-05-17T09:12:51-04:00\n"
-"POT-Creation-Date: 2024-05-17T09:12:51-04:00\n"
+"PO-Revision-Date: 2025-02-03T01:37:46-05:00\n"
+"POT-Creation-Date: 2025-02-03T01:37:46-05:00\n"
 
 #: youtube-showcase/includes/admin/getting-started.php:177
 msgid "Welcome to YouTube Showcase Community %s"
 msgstr ""
 
 #: youtube-showcase/includes/admin/getting-started.php:181
-msgid "YouTube Showcase is a powerful but simple-to-use YouTube video gallery plugin with responsive frontend."
+msgid "Let's get started with YouTube Showcase Starter edition"
 msgstr ""
 
 #: youtube-showcase/includes/admin/getting-started.php:183
@@ -424,20 +424,20 @@ msgstr ""
 msgid "Please share what you expected."
 msgstr ""
 
-#: youtube-showcase/includes/scripts.php:78
+#: youtube-showcase/includes/scripts.php:81
 msgid "Please enter a unique value."
 msgstr ""
 
-#: youtube-showcase/includes/scripts.php:79
+#: youtube-showcase/includes/scripts.php:82
 msgid "required"
 msgstr ""
 
-#: youtube-showcase/includes/scripts.php:96
+#: youtube-showcase/includes/scripts.php:99
 msgid "Taxonomy"
 msgstr ""
 
-#: youtube-showcase/includes/scripts.php:109
-#: youtube-showcase/includes/scripts.php:114
+#: youtube-showcase/includes/scripts.php:112
+#: youtube-showcase/includes/scripts.php:117
 msgid "Relationship"
 msgstr ""
 

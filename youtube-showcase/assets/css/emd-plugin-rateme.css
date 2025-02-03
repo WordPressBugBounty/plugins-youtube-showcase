@@ -71,7 +71,7 @@
 }
 
 .emd-show-rateme {
-    background: #F6FFF7 url('https://www.gravatar.com/avatar/731548f83c83eea97a7a03a19664ca33?s=150&r=g&d=mm') no-repeat right 15px top 15px;
+    background: #F6FFF7 url('../img/avatar.jpeg') no-repeat right 15px top 15px;
     padding-right: 120px;
     background-size: 95px;
     max-width: 1200px;

@@ -185,7 +185,7 @@ if (!function_exists('emd_ent_map_tab')) {
 			echo '<li id="' . esc_attr($kent) . '" class="control-section accordion-section ';
 			echo (count($map_ents) == 1) ? 'open' : '';
 			echo '">';
-			echo '<h3 class="accordion-section-title hndle" tabindex="0">' . esc_html($myent['label']) . '</h3>';
+			echo '<h3 class="accordion-section-title hndle" tabindex="0"><button type="button" class="accordion-trigger" aria-expanded="true" aria-controls="target-1"><div class="accordion-title emd"><span class="accordion-title-text">' . esc_html($myent['label']) . '</span><span class="dashicons dashicons-arrow-down" aria-hidden="true"></span></div></button></h3>';
 			echo '<div class="accordion-section-content"><div class="inside">';
 			echo '<table class="form-table"><tbody>';
 			if($is_ent_public !== false){
@@ -1157,7 +1157,7 @@ if (!function_exists('emd_tax_tab')) {
 				echo '<li id="' . esc_attr($ktax) . '" class="control-section accordion-section ';
 				echo (count($tax_list_vals) == 1) ? 'open' : '';
 				echo '">';
-				echo '<h3 class="accordion-section-title hndle" tabindex="0">' . esc_html($mytax['label']) . ' (' . esc_html($rewrite) . ')' . '</h3>';
+				echo '<h3 class="accordion-section-title hndle" tabindex="0"><button type="button" class="accordion-trigger" aria-expanded="true" aria-controls="target-1"><div class="accordion-title emd"><span class="accordion-title-text">' . esc_html($mytax['label']) . ' (' . esc_html($rewrite) . ')' . '</span><span class="dashicons dashicons-arrow-down" aria-hidden="true"></span></div></button></h3>';
 				echo '<div class="accordion-section-content"><div class="inside">';
 				echo '<table class="form-table"><tbody>';
 				if($shc_list['remove_vis'] != 1){
@@ -1450,7 +1450,12 @@ if (!function_exists('emd_tools_sanitize')) {
 		$keys = Array('disable_emd_templates','remove_settings','remove_data','custom_css','custom_js');
 		foreach($keys as $mkey){
 			if(isset($input[$mkey])){
-				$tools[$mkey] = $input[$mkey];
+				if($mkey == 'custom_css'){
+					$tools[$mkey] = wp_strip_all_tags($input[$mkey]);
+				}
+				else{
+					$tools[$mkey] = $input[$mkey];
+				}
 			}
 			elseif(!empty($tools[$mkey])){
 				unset($tools[$mkey]);    

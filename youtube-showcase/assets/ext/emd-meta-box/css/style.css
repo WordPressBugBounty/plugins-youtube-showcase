@@ -113,7 +113,6 @@ select.error {
         list-style: inside none disc;
 }
 .control-section.accordion-section.open h3.accordion-section-title{
-background-color: #cccccc;
     color: #212121;
     font-weight:normal;
 }

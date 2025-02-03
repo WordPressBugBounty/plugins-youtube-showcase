@@ -217,7 +217,7 @@ function emd_form_builder_lite_process(){
 											$link = get_permalink($posts[0]);
 											//add hidden rel before redirecting
 											if(!empty($result['hidden_rel'])){
-												p2p_type($result['hidden_rel'])->connect($posts[0],$result['id']);	
+												emd_p2p_type($result['hidden_rel'])->connect($posts[0],$result['id']);	
 												do_action('emd_form_after_login',$result['hidden_rel'],$result['id']);
 											}	
 										}
@@ -239,7 +239,7 @@ function emd_form_builder_lite_process(){
 									$emd_hidden_rel = sanitize_text_field($_POST['emd_hidden_rel']);
 									$emd_hidden_rel_val = (int) $_POST['emd_hidden_rel_val'];
 									$rel = preg_replace('/rel_/','',$emd_hidden_rel);
-									p2p_type($rel)->connect($result['id'],$emd_hidden_rel_val);	
+									emd_p2p_type($rel)->connect($result['id'],$emd_hidden_rel_val);	
 								}
 								$ret = "<div class='well text-success'>";
 								$ret .= '<div class="text-success">' . $fcontent['settings']['success_msg'] . '</div>';
@@ -252,7 +252,7 @@ function emd_form_builder_lite_process(){
 									$emd_hidden_rel = sanitize_text_field($_POST['emd_hidden_rel']);
 									$emd_hidden_rel_val = (int) $_POST['emd_hidden_rel_val'];
 									$rel = preg_replace('/rel_/','',$emd_hidden_rel);
-									p2p_type($rel)->connect($result['id'], $emd_hidden_rel_val);	
+									emd_p2p_type($rel)->connect($result['id'], $emd_hidden_rel_val);	
 								}
 								wp_send_json_success(array('status' => 'success', 'rel_val' => $result['id']));
 								die();
@@ -386,7 +386,7 @@ function emd_form_builder_lite_process(){
 						}
 						else {
 							$url = add_query_arg('status','error');
-							$url = add_query_arg('resp',json_encode($form_validate['error']),$url);
+							$url = add_query_arg('resp',wp_json_encode($form_validate['error']),$url);
 							wp_safe_redirect(sanitize_url($url));
 							exit;
 						}
@@ -1981,7 +1981,7 @@ function emd_form_builder_lite_process_login(){
 				$emd_hidden_rel_val = (int) $_POST['emd_hidden_rel_val'];
 				$emd_hidden_rel = sanitize_text_field($_POST['emd_hidden_rel']);
 				$rel = preg_replace('/rel_/','',$emd_hidden_rel);
-				p2p_type($rel)->connect($posts[0],$emd_hidden_rel_val);	
+				emd_p2p_type($rel)->connect($posts[0],$emd_hidden_rel_val);	
 			}
 		}
 		else {

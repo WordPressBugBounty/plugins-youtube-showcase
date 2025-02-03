@@ -32,6 +32,7 @@ function youtube_showcase_load_admin_enq($hook) {
 		return;
 	}
 	if (isset($_GET['page']) && $_GET['page'] == 'youtube_showcase_settings') {
+		wp_enqueue_style('emd-accordion-css', $dir_url . 'assets/css/emd-accordion.css');
 		wp_enqueue_script('accordion');
 		wp_enqueue_style('codemirror-css', $dir_url . 'assets/ext/codemirror/codemirror.min.css');
 		wp_enqueue_script('codemirror-js', $dir_url . 'assets/ext/codemirror/codemirror.min.js', array() , '', true);
@@ -41,11 +42,13 @@ function youtube_showcase_load_admin_enq($hook) {
 	} else if (isset($_GET['page']) && in_array($_GET['page'], Array(
 		'youtube_showcase_notify'
 	))) {
+		wp_enqueue_style('emd-accordion-css', $dir_url . 'assets/css/emd-accordion.css');
 		wp_enqueue_script('accordion');
 		return;
 	} else if (isset($_GET['page']) && in_array($_GET['page'], Array(
 		'youtube_showcase_glossary'
 	))) {
+		wp_enqueue_style('emd-accordion-css', $dir_url . 'assets/css/emd-accordion.css');
 		wp_enqueue_script('accordion');
 		return;
 	} else if (isset($_GET['page']) && $_GET['page'] == 'youtube_showcase') {
