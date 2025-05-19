@@ -114,7 +114,7 @@ if ( ! class_exists( 'EMD_MB_Helper' ) )
 
 			else
 			{
-				$content = $meta;
+				$content = wp_strip_all_tags($meta);
 			}
 
 			return apply_filters( __FUNCTION__, $content );

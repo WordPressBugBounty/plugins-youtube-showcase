@@ -240,6 +240,25 @@ if ( !class_exists( 'EMD_MB_Field ' ) )
 					'selected' => array() ,
 					'disabled' => array()
 				) ,
+				'textarea' => array(
+					'id' => array() ,
+					'class' => array() ,
+					'name' => array() ,
+					'rows' => array(),
+					'cols' => array()
+				) ,
+				'button' => array(
+					'id' => array() ,
+					'class' => array() ,
+					'type' => array() ,
+					'data-editor' => array(),
+				) ,
+				'link' => array(
+					'id' => array() ,
+					'rel' => array() ,
+					'href' => array() ,
+					'media' => array() ,
+				) ,
 			);
 			printf('%s',wp_kses($html,$allowed));
 		}

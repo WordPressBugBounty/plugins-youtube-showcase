@@ -115,7 +115,7 @@ if ( ! class_exists( 'EMD_MB_File_Field' ) )
 					<h4>%s</h4>
 					<div class="small text-muted" style="margin:0.75rem 0 0.50rem;">%s</div>
 					<div class="file-input"><input type="file" name="%s[]" /></div>
-					<div id="emd-file-err-msg" style="display:none;padding:15px;background:#f2dede;border-color:#ebccd1;color:#a94442;font-size:0.9rem;"></div>
+					<div id="emd-file-err-msg" class="hidden" style="display:none;padding:15px;background:#f2dede;border-color:#ebccd1;color:#a94442;font-size:0.9rem;"></div>
 					<a class="emd-mb-add-file" href="#"><strong>%s</strong></a>
 				</div>',
 				implode( ' ', $new_file_classes ),

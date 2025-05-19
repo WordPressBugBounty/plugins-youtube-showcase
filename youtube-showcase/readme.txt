@@ -1,22 +1,31 @@
-=== YouTube Video Gallery by YouTube Showcase – Video Gallery Plugin for WordPress ===
+=== Responsive YouTube Video Gallery Plugin for WordPress – YouTube Showcase ===
 Contributors: emarket-design,safiye
 Plugin URI: https://emdplugins.com
 Author URI: https://emarketdesign.com
 Donate link: https://emarketdesign.com/donate-emarket-design/
 Requires at least: 4.5
-Tested up to: 6.7.1
-Stable tag: 3.5.0
+Tested up to: 6.8.1
+Stable tag: 3.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: youtube,video,video gallery,youtube gallery,youtube channel
+Tags: youtube, youtube gallery, video gallery, youtube channel, playlist, lightbox, responsive, wordpress video plugin  
 
-Responsive YouTube Video Gallery, Video Grid and Management Plugin for WordPress.
+Create a responsive YouTube video gallery, playlist, or channel grid in WordPress with thumbnails, lightbox, and shortcode support.
 
 == Description ==
 
 **WordPress YouTube Video Gallery Plugin**
 
-[YouTube Showcase](https://emdplugins.com/youtube-showcase/?pk_campaign=youtube-showcase-com&pk_kwd=readme) helps you display YouTube videos in a gallery or grid view on your site. It is designed for simplicity. Please watch the introduction video to get started.
+[YouTube Showcase](https://emdplugins.com/youtube-showcase/?pk_campaign=youtube-showcase-com&pk_kwd=readme) is the easiest way to create responsive YouTube video galleries in WordPress. Whether you're a content creator, blogger, marketer, or agency, this plugin helps you display YouTube videos, playlists, or entire channels in beautiful grid or gallery formats.
+
+Use it to:
+- Showcase your own YouTube content
+- Create curated video galleries
+- Display playlists or YouTube channels on any page or post
+- Engage visitors with responsive video layouts and lightbox popups
+
+
+Please watch the introduction video to get started.
 
 > <strong>LIVE DEMO SITE</strong>
 > [YouTube Showcase Starter Demo Site](https://ytshowcasecom.emdplugins.com?pk_campaign=youtube-showcase-com&pk_kwd=readme)
@@ -157,7 +166,30 @@ The simplest way to install is to click on 'Plugins' then 'Add' and type 'YouTub
 7. Ability to change videos slug
 8. [eMD CSV Import Export Extension](https://emdplugins.com/plugin-features/youtube-showcase-importexport-addon/) for bulk import/export from/to CSV files
 
+== Frequently Asked Questions ==
+
+= Can I display a full YouTube channel? =  
+Yes. You can enter a channel URL or ID and the plugin will fetch and display the latest videos.
+
+= Can I display a playlist instead of individual videos? =  
+Absolutely. Just paste the YouTube playlist URL and choose the layout you want.
+
+= Is this mobile-friendly? =  
+Yes! All layouts are fully responsive and look great on phones and tablets.
+
+= Does it support a lightbox video player? =  
+Yes, clicking a thumbnail opens the video in a lightbox so users never leave the page.
+
+= How do I add videos to the gallery? =  
+Use the admin panel under **YouTube Showcase > Add New Video**. Enter a YouTube URL, and the plugin fetches the details automatically.
+
+= Can I sort or categorize videos? =  
+Yes. You can assign categories and use shortcodes to filter videos by category.
+
 == Changelog ==
+=3.5.1=
+* TWEAK tested with WP 6.8
+* FIXED XSS vulnerability when using custom fields
 =3.5.0=
 * FIXED WordPress dashboard accordions issue on setting and glossary pages due to changes in core code on WP 6.7.1
 =3.4.0=
