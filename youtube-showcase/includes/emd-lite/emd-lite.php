@@ -298,7 +298,7 @@ function emd_lite_get_operations($type,$plural_label,$app){
 
 	}
 	elseif($type == 'cust_fields'){
-		echo '<h2>' . esc_html__('Gather, display and search information with ease') . '</h2>
+		echo '<h2>' . esc_html__('Gather, display and search information with ease', 'youtube-showcase') . '</h2>
 		<div style="max-width:470px;margin: auto;margin-bottom:15px;"><strong>' . esc_html__('EMD Custom Field Builder is an easy to use yet powerful tool to customize your plugin by adding custom fields and taxonomies. ', 'youtube-showcase') . '</strong>
 		<span><a href="https://emdplugins.com/questions/how-to-use-emd-custom-field-builder/?pk_campaign=' . esc_attr($app) . '-cust-fields&pk_kwd=learnmore" target="_blank">' . 
 		esc_html__('Learn more', 'youtube-showcase') . '</a>' . 

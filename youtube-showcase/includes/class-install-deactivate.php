@@ -216,6 +216,7 @@ if (!class_exists('Youtube_Showcase_Install_Deactivate')):
 		 */
 		private function set_options() {
 			$access_views = Array();
+			$widg_list = Array();
 			if (get_option($this->option_name . '_setup_pages', 0) == 0) {
 				update_option($this->option_name . '_setup_pages', 1);
 			}
@@ -304,6 +305,12 @@ if (!class_exists('Youtube_Showcase_Install_Deactivate')):
 			);
 			if (!empty($shc_list)) {
 				update_option($this->option_name . '_shc_list', $shc_list);
+			}
+			$widg_list = Array(
+				'youtube_showcase_recent_videos_widget,youtube_showcase_featured_videos_widget,youtube_showcase_search_videos_widget'
+			);
+			if (!empty($widg_list)) {
+				update_option($this->option_name . '_widg_list', $widg_list);
 			}
 			$attr_list['emd_video']['emd_video_key'] = Array(
 				'label' => __('Video Key', 'youtube-showcase') ,

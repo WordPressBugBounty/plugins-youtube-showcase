@@ -194,7 +194,7 @@ class Emd_Entity {
 	 * @param string $tax_name
 	 *
 	 */
-	protected static function set_taxonomy_init($set_tax_terms, $tax_name) {
+	public static function set_taxonomy_init($set_tax_terms, $tax_name) {
 		foreach ($set_tax_terms as $my_tax_term) {
 			$term_id_arr = term_exists($my_tax_term['slug'], $tax_name);
 			$args = Array();

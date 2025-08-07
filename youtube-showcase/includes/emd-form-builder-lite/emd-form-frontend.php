@@ -470,8 +470,8 @@ function emd_form_builder_lite_show_form($atts){
 			}
 			return emd_form_builder_lite_render_form($myform->ID,$app,$fcontent,$error,$status,$atts_set);	
 		} else {
-			$noaccess_msg = $fcontent['settings']['noaccess_msg'];
-			return "<div class='alert alert-info not-authorized'>" . $noaccess_msg . "</div>";
+			$noaccess_msg = sanitize_text_field($fcontent['settings']['noaccess_msg']);
+			return "<div class='alert alert-info not-authorized'>" . esc_html($noaccess_msg) . "</div>";
 		}
 	}
 }
