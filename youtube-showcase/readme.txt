@@ -1,14 +1,14 @@
-=== Responsive YouTube Video Gallery Plugin for WordPress – YouTube Showcase ===
+=== YouTube Showcase – Responsive YouTube Video Gallery Plugin for WordPress ===
 Contributors: emarket-design,safiye
 Plugin URI: https://emdplugins.com
 Author URI: https://emarketdesign.com
 Donate link: https://emarketdesign.com/donate-emarket-design/
 Requires at least: 4.5
 Tested up to: 6.8.2
-Stable tag: 3.5.2
+Stable tag: 3.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: youtube, youtube gallery, video gallery, youtube channel, playlist
+Tags: youtube, youtube gallery, video gallery, youtube channel, playlist, lightbox, responsive, wordpress video plugin  
 
 Create a responsive YouTube video gallery, playlist, or channel grid in WordPress with thumbnails, lightbox, and shortcode support.
 
@@ -187,6 +187,8 @@ Use the admin panel under **YouTube Showcase > Add New Video**. Enter a YouTube 
 Yes. You can assign categories and use shortcodes to filter videos by category.
 
 == Changelog ==
+=3.5.3=
+* FIXED Validate input for emd_form_builder_lite_pagenum function
 =3.5.2=
 * FIXED XSS vulnerability for noaccess_msg
 * FIXED Validate input for emd_form_builder_lite_pagenum function

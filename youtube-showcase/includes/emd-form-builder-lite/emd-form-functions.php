@@ -663,10 +663,7 @@ function emd_form_builder_lite_pagenum() {
 	$myview = isset($_GET['view']) ? sanitize_text_field($_GET['view']) : '';
 	$myapp = isset($_GET['app']) ? sanitize_text_field($_GET['app']) : '';
 	$myform = isset($_GET['form']) ? sanitize_text_field($_GET['form']) : '';
-	$sess_name = strtoupper($myapp);
-	$session_class = $sess_name();
-	$sess_form_args = $session_class->session->get($myform . '_args');
-	if (!empty($myentity) && !empty($myform) && !empty($sess_form_args)) {
+	if (!empty($myentity) && !empty($myform)) {
 		$fields['app'] = $myapp;
 		$fields['form_name'] = $myform;
 		$form_posts = get_posts(Array('post_type' => 'emd_form', 's' => $myform, 'posts_per_page' => '-1'));
@@ -674,23 +671,28 @@ function emd_form_builder_lite_pagenum() {
 			foreach($form_posts as $myform_post){
 				$fcontent = json_decode($myform_post->post_content,true);
 				if($fcontent['name'] == $myform && $myapp == $fcontent['app']){
-					$fields['form_res_fields'] = $fcontent['settings']['result_fields'];
-					$fields['res_templ'] = $fcontent['settings']['result_templ'];
-					$fields['posts_per_page'] = 10;
-					if($fields['res_templ'] == 'adv_table'){
-						$fields['has_pages'] = false;
-						$fields['posts_per_page'] = -1;
-					}
-					else {
-						$fields['has_pages'] = true;
-					}
-					$fields['view_name'] = $myview;
-					if($fcontent['settings']['result_templ'] == 'cust_table'){
-						$cust_func_name = $myapp . '_' . $fields['view_name'] . '_set_shc';
-						$response = $cust_func_name('',$sess_form_args,$fields['form_name'],$pageno);
-					}
-					else {
-						$response =  emd_form_builder_lite_set_shc('', $sess_form_args, $fields, $pageno);
+					$sess_name = strtoupper($myapp);
+					$session_class = $sess_name();
+					$sess_form_args = $session_class->session->get($myform . '_args');
+					if(!empty($sess_form_args)){
+						$fields['form_res_fields'] = $fcontent['settings']['result_fields'];
+						$fields['res_templ'] = $fcontent['settings']['result_templ'];
+						$fields['posts_per_page'] = 10;
+						if($fields['res_templ'] == 'adv_table'){
+							$fields['has_pages'] = false;
+							$fields['posts_per_page'] = -1;
+						}
+						else {
+							$fields['has_pages'] = true;
+						}
+						$fields['view_name'] = $myview;
+						if($fcontent['settings']['result_templ'] == 'cust_table'){
+							$cust_func_name = $myapp . '_' . $fields['view_name'] . '_set_shc';
+							$response = $cust_func_name('',$sess_form_args,$fields['form_name'],$pageno);
+						}
+						else {
+							$response =  emd_form_builder_lite_set_shc('', $sess_form_args, $fields, $pageno);
+						}
 					}
 				}
 			}

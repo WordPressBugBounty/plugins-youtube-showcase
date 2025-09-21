@@ -290,7 +290,7 @@ add_action('emd_show_forms_lite_page','emd_show_forms_lite_page',1);
  */
 function emd_show_forms_lite_page($app){
 	if(!empty($_POST['submit']) && !empty($_POST['submit_settings'])){
-		$nonce_verified = wp_verify_nonce(sanitize_text_field($_POST['emd_form_settings_nonce']), 'emd_form_settings_nonce');
+		$nonce_verified = wp_verify_nonce(sanitize_text_field($_POST['emd_form_settings_nonce']), 'emd_form_settings');
 		if(false === $nonce_verified){
 			//error
 			return;

@@ -3,7 +3,7 @@
  * Plugin Name: Responsive YouTube Video Gallery Plugin for WordPress – YouTube Showcase
  * Plugin URI: https://emarketdesign.com
  * Description: Create a responsive YouTube video gallery, playlist, or channel grid in WordPress with thumbnails, lightbox, and shortcode support.
- * Version: 3.5.2
+ * Version: 3.5.3
  * Author: eMarket Design
  * Author URI: https://emdplugins.com?pk_campaign=youtube-showcase-com&pk_kwd=readme-by
  * Text Domain: youtube-showcase
@@ -87,7 +87,7 @@ if (!class_exists('Youtube_Showcase')):
 		 * @return void
 		 */
 		private function define_constants() {
-			define('YOUTUBE_SHOWCASE_VERSION', '3.5.2');
+			define('YOUTUBE_SHOWCASE_VERSION', '3.5.3');
 			define('YOUTUBE_SHOWCASE_AUTHOR', 'eMarket Design');
 			define('YOUTUBE_SHOWCASE_NAME', 'Youtube Showcase');
 			define('YOUTUBE_SHOWCASE_PLUGIN_FILE', __FILE__);
