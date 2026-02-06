@@ -18,7 +18,7 @@ function youtube_showcase_settings_glossary() {
 ?>
 <div class="wrap">
 <h2><?php echo esc_html($title); ?></h2>
-<p><?php esc_html_e('YouTube Showcase is a powerful but simple-to-use YouTube video gallery plugin with responsive frontend.', 'youtube-showcase'); ?></p>
+<p><?php esc_html_e('Create a responsive YouTube video gallery, playlist, or channel grid in WordPress with thumbnails, lightbox, and shortcode support.', 'youtube-showcase'); ?></p>
 <p><?php esc_html_e('The below are the definitions of entities, attributes, and terms included in Youtube Showcase.', 'youtube-showcase'); ?></p>
 <div id="glossary" class="accordion-container">
 <ul class="outer-border">

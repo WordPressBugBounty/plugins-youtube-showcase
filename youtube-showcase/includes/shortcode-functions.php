@@ -76,7 +76,7 @@ if (!function_exists('emd_shc_get_layout_list')) {
 			else {
 				$fields['pageno'] = get_query_var('paged');
 			}
-			if($fields['pageno'] == 0){
+			if(empty($fields['pageno'])){
 				$fields['pageno'] = 1;	
 			}	
 		}

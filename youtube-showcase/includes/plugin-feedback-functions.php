@@ -17,6 +17,12 @@ add_action('wp_ajax_youtube_showcase_show_rateme', 'youtube_showcase_show_rateme
 add_action('admin_notices', 'youtube_showcase_show_optin');
 add_action('admin_post_youtube-showcase_check_optin', 'youtube_showcase_check_optin');
 function youtube_showcase_check_optin() {
+	if (!current_user_can('manage_options')) {
+		wp_die('You do not have permission to modify tracking settings.');
+	}
+	if (!isset($_POST['optin_nonce']) || !wp_verify_nonce(sanitize_text_field($_POST['optin_nonce']) , 'youtube_showcase_check_optin_nonce')) {
+		wp_die('Security check failed.');
+	}
 	if (!empty($_POST['youtube-showcase_optin'])) {
 		if (!function_exists('wp_get_current_user')) {
 			require_once (ABSPATH . 'wp-includes/pluggable.php');
@@ -41,6 +47,8 @@ function youtube_showcase_check_optin() {
 			$data['language'] = get_bloginfo('language');
 			$resp = wp_remote_post('https://api.emarketdesign.com/optin_info.php', array(
 				'body' => $data,
+				'timeout' => 15,
+				'blocking' => false,
 			));
 			update_option('youtube_showcase_tracking_optin', 1);
 		} else {
@@ -51,12 +59,15 @@ function youtube_showcase_check_optin() {
 		//opt-out
 		update_option('youtube_showcase_tracking_optin', -1);
 	}
-	wp_redirect(admin_url('admin.php?page=youtube_showcase'));
+	wp_safe_redirect(admin_url('admin.php?page=youtube_showcase'));
 	exit;
 }
 function youtube_showcase_show_optin() {
 	if (!current_user_can('manage_options')) {
-		return;
+		wp_die('You do not have permission.');
+	}
+	if (isset($_POST['optin_nonce']) && !wp_verify_nonce(sanitize_text_field($_POST['optin_nonce']) , 'youtube_showcase_check_optin_nonce')) {
+		wp_die('Security check failed.');
 	}
 	if (!get_option('youtube_showcase_tracking_optin')) {
 		$tr_title = __('Please help us improve YouTube Showcase', 'youtube-showcase');
@@ -70,6 +81,7 @@ function youtube_showcase_show_optin() {
 		));
 		echo '<form method="post" action="' . admin_url('admin-post.php') . '">';
 		echo '<input type="hidden" name="action" value="youtube-showcase_check_optin">';
+		echo '<input type="hidden" name="optin_nonce" value="' . wp_create_nonce('youtube_showcase_check_optin_nonce') . '">';
 		echo '<div class="update-nag emd-admin-notice">';
 		echo '<h3 class="emd-notice-title"><span class="dashicons dashicons-smiley"></span>' . esc_html($tr_title) . '<span class="dashicons dashicons-smiley"></span></h3><p class="emd-notice-body">';
 		echo wp_kses_post($tr_msg) . '</p>';
@@ -106,7 +118,7 @@ function youtube_showcase_show_optin() {
 }
 function youtube_showcase_show_rateme_action() {
 	if (!wp_verify_nonce(sanitize_text_field($_POST['rateme_nonce']) , 'youtube_showcase_rateme_nonce')) {
-		exit;
+		wp_die('Security check failed.');
 	}
 	$min_trigger = get_option('youtube_showcase_show_rateme_plugin_min', 5);
 	if ($min_trigger == - 1) {
@@ -309,10 +321,10 @@ function youtube_showcase_deactivation_feedback_box() {
 }
 function youtube_showcase_send_deactivate_reason() {
 	if (empty($_POST['deactivate_nonce']) || !isset($_POST['reason_id'])) {
-		exit;
+		wp_die('Security check failed.');
 	}
 	if (!wp_verify_nonce(sanitize_text_field($_POST['deactivate_nonce']) , 'youtube_showcase_deactivate_nonce')) {
-		exit;
+		wp_die('Security check failed.');
 	}
 	$uemail = '';
 	$reason_info = isset($_POST['reason_info']) ? sanitize_text_field($_POST['reason_info']) : '';

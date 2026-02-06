@@ -1,13 +1,15 @@
 <?php
 /** 
- * Plugin Name: Responsive YouTube Video Gallery Plugin for WordPress – YouTube Showcase
+ * Plugin Name: Video Gallery – YouTube Gallery & Responsive Video Playlist
  * Plugin URI: https://emarketdesign.com
- * Description: Create a responsive YouTube video gallery, playlist, or channel grid in WordPress with thumbnails, lightbox, and shortcode support.
- * Version: 3.5.3
+ * Description: Responsive video gallery and YouTube gallery for WordPress. Create a video grid or YouTube playlist visually in the block editor. No shortcodes!
+ * Version: 4.0.0
  * Author: eMarket Design
  * Author URI: https://emdplugins.com?pk_campaign=youtube-showcase-com&pk_kwd=readme-by
  * Text Domain: youtube-showcase
  * Domain Path: /lang
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * @package YOUTUBE_SHOWCASE
  * @since WPAS 4.0
  */
@@ -87,7 +89,7 @@ if (!class_exists('Youtube_Showcase')):
 		 * @return void
 		 */
 		private function define_constants() {
-			define('YOUTUBE_SHOWCASE_VERSION', '3.5.3');
+			define('YOUTUBE_SHOWCASE_VERSION', '4.0.0');
 			define('YOUTUBE_SHOWCASE_AUTHOR', 'eMarket Design');
 			define('YOUTUBE_SHOWCASE_NAME', 'Youtube Showcase');
 			define('YOUTUBE_SHOWCASE_PLUGIN_FILE', __FILE__);
@@ -184,6 +186,7 @@ if (!class_exists('Youtube_Showcase')):
 			require_once YOUTUBE_SHOWCASE_PLUGIN_DIR . 'includes/query-filters.php';
 			require_once YOUTUBE_SHOWCASE_PLUGIN_DIR . 'includes/plugin-feedback-functions.php';
 			require_once YOUTUBE_SHOWCASE_PLUGIN_DIR . 'includes/content-functions.php';
+			require_once YOUTUBE_SHOWCASE_PLUGIN_DIR . 'includes/blocks/block.php';
 		}
 		/**
 		 * Loads plugin language files

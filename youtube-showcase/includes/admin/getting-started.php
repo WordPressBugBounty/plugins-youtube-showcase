@@ -327,6 +327,25 @@ line-height: normal;
 ?>
 <p class="about-description">This page lists the release notes from every production version of YouTube Showcase Community.</p>
 
+<h3 style="font-size: 18px;font-weight:700;color: white;background: #708090;padding:5px 10px;width:155px;border: 2px solid #fff;border-radius:4px;text-align:center">4.0.0 changes</h3>
+<div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1622" style="margin:0">
+<h3 style="font-size:18px;" class="tweak"><div  style="font-size:110%;color:#33b5e5"><span class="dashicons dashicons-admin-settings"></span> TWEAK</div>
+Tested and confirmed compatibility with WordPress 6.9.</h3>
+<div ></a></div></div></div><hr style="margin:30px 0"><div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1621" style="margin:0">
+<h3 style="font-size:18px;" class="new"><div style="font-size:110%;color:#00C851"><span class="dashicons dashicons-megaphone"></span> NEW</div>
+Added a Gutenberg block to insert YouTube video galleries and grids directly from the block editor.</h3>
+<div ></a></div></div></div><hr style="margin:30px 0">
+<h3 style="font-size:18px;" class="new"><div style="font-size:110%;color:#00C851"><span class="dashicons dashicons-megaphone"></span> NEW</div>
+Added a Gutenberg block to insert YouTube video galleries, grids, and search forms directly from the block editor.</h3>
+<div ></a></div></div></div><hr style="margin:30px 0">
+<h3 style="font-size: 18px;font-weight:700;color: white;background: #708090;padding:5px 10px;width:155px;border: 2px solid #fff;border-radius:4px;text-align:center">3.5.4 changes</h3>
+<div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1612" style="margin:0">
+<h3 style="font-size:18px;" class="fix"><div  style="font-size:110%;color:#c71585"><span class="dashicons dashicons-admin-tools"></span> FIX</div>
+Updated internationalization</h3>
+<div ></a></div></div></div><hr style="margin:30px 0"><div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1611" style="margin:0">
+<h3 style="font-size:18px;" class="fix"><div  style="font-size:110%;color:#c71585"><span class="dashicons dashicons-admin-tools"></span> FIX</div>
+Updated title for trademark</h3>
+<div ></a></div></div></div><hr style="margin:30px 0">
 <h3 style="font-size: 18px;font-weight:700;color: white;background: #708090;padding:5px 10px;width:155px;border: 2px solid #fff;border-radius:4px;text-align:center">3.5.3 changes</h3>
 <div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1608" style="margin:0">
 <h3 style="font-size:18px;" class="fix"><div  style="font-size:110%;color:#c71585"><span class="dashicons dashicons-admin-tools"></span> FIX</div>

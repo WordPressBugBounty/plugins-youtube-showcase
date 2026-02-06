@@ -1,256 +1,172 @@
-=== YouTube Showcase – Responsive YouTube Video Gallery Plugin for WordPress ===
+=== Video Gallery – YouTube Gallery & Responsive Video Playlist ===
 Contributors: emarket-design,safiye
-Plugin URI: https://emdplugins.com
-Author URI: https://emarketdesign.com
-Donate link: https://emarketdesign.com/donate-emarket-design/
-Requires at least: 4.5
-Tested up to: 6.8.2
-Stable tag: 3.5.3
+Tags: video gallery, youtube, playlist, youtube gallery, youtube channel
+Requires at least: 5.8
+Tested up to: 6.9
+Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: youtube, youtube gallery, video gallery, youtube channel, playlist, lightbox, responsive, wordpress video plugin  
+Plugin URI: https://emdplugins.com/youtube-showcase
+Author URI: https://emarketdesign.com
 
-Create a responsive YouTube video gallery, playlist, or channel grid in WordPress with thumbnails, lightbox, and shortcode support.
+Responsive video gallery and YouTube gallery for WordPress. Create a video grid or YouTube playlist visually in the block editor. No shortcodes!
 
 == Description ==
 
-**WordPress YouTube Video Gallery Plugin**
+**Stop wrestling with complex shortcodes. Start building visually.**
 
-[YouTube Showcase](https://emdplugins.com/youtube-showcase/?pk_campaign=youtube-showcase-com&pk_kwd=readme) is the easiest way to create responsive YouTube video galleries in WordPress. Whether you're a content creator, blogger, marketer, or agency, this plugin helps you display YouTube videos, playlists, or entire channels in beautiful grid or gallery formats.
+[Video Gallery & Playlist for YouTube](https://emdplugins.com/youtube-showcase/?pk_campaign=youtube-showcase-com&pk_kwd=readme) (**YouTube Showcase**) is the most intuitive way to transform your website into a professional **WordPress video hub**. Featured in [**WPBeginner’s** Best YouTube Video Gallery Plugins](https://www.wpbeginner.com/plugins/best-youtube-video-gallery-plugins-for-wordpress/), our all-new **Visual Block** lets you design high-impact grids and cinematic playlists directly inside the WordPress Block Editor with a real-time preview.
 
-Use it to:
-- Showcase your own YouTube content
-- Create curated video galleries
-- Display playlists or YouTube channels on any page or post
-- Engage visitors with responsive video layouts and lightbox popups
+Whether you are a creator, blogger, or marketer, this plugin helps you display YouTube content in beautiful, mobile-ready layouts. No coding, no guesswork—just a seamless video experience for your visitors.
 
+### 🔗 Quick Links
+* [Live Demo Site](https://ytshowcasecom.emdplugins.com?pk_campaign=youtube-showcase-com&pk_kwd=readme) – See it in action.
+* [WPBeginner Featured Review](https://www.wpbeginner.com/plugins/best-youtube-video-gallery-plugins-for-wordpress/) – Rated as a top choice.
+* [Documentation](https://docs.emdplugins.com/youtube-showcase-community/?pk_campaign=youtube-showcase-com&pk_kwd=readme) – Easy step-by-step setup guides.
 
-Please watch the introduction video to get started.
+### 🚀 Key Features
+* **Visual Block Builder:** Select your videos and watch your gallery update live in the sidebar—no more "save and refresh."
+* **Optional Setup Assistant:** Get up and running in seconds. Create ready-to-use gallery and grid pages with one click.
+* **Cinematic Playlists:** A large featured player with a beautiful thumbnail navigation "playlist" below.
+* **Responsive Video Grids:** Clean, 4-column layouts that automatically adjust for mobile and tablet devices.
+* **Automated Video Pages:** Every video gets its own SEO-optimized page with WordPress comments enabled.
+* **Lightweight Performance:** Optimized code ensures your page speed stays high.
+* **Full Customization:** Change thumbnail quality (16:9 or 4:3) and adjust video URL slugs for better branding.
 
-> <strong>LIVE DEMO SITE</strong>
-> [YouTube Showcase Starter Demo Site](https://ytshowcasecom.emdplugins.com?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-> Powerful | Easy to use | Beautiful 
+== Getting Started & Details ==
 
-[Mentioned in WPBeginner's Best YouTube Video Gallery Plugins](http://www.wpbeginner.com/plugins/x-best-youtube-video-gallery-plugins-for-wordpress/)
+### How to Add Videos
+Adding content is simple. The plugin uses the **YouTube Video ID** (the 11-character string at the end of a YouTube URL). 
+* *Example:* For `youtube.com/watch?v=9K4uBRkFJEU`, the ID is `9K4uBRkFJEU`.
+* Simply enter this ID in the Video editor, and the plugin fetches the rest.
 
-**Get started with YouTube Showcase**
+### Built-in Layouts
+If you use the **Optional Setup Assistant**, it will create two ready-to-use pages for you:
+1.  **YouTube Video Gallery:** Features a main player with thumbnail navigation at the bottom.
+2.  **YouTube Video Grid:** A high-resolution 4-column responsive layout.
 
-https://www.youtube.com/watch?v=8MtOJaKQZKQ
+### Customization Tips
+* **Thumbnail Quality:** You can change dimensions (e.g., 4:3 instead of 16:9) in the settings to match your site's design.
+* **Content & Excerpts:** Add custom text for every video. The content appears on the single video page, while the excerpt appears right below the main video in the gallery view.
 
-**Details**
+### 💎 Get More with YouTube Showcase Pro
+Need more power? The Pro version includes Auto-Sync for channels, Lightbox popups, search filtering, and premium layouts (Coverflow, Masonry, and more).
 
-Each YouTube video resides on its own page with WordPress comments enabled. YouTube video pages are automatically created when you insert the YouTube VIDEO ID on the video page.
+👉 [Upgrade to YouTube Showcase Pro](https://emdplugins.com/youtube-showcase/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
 
-YouTube Video ID is a 11 character string that YouTube uses to uniquely identify each video. For example, the video at https://www.youtube.com/watch?v=9K4uBRkFJEU has the id 9K4uBRkFJEU.
+== Technical Foundation ==
 
-Using video thumbnail quality option for videos, you can change the dimensions of thumbnails offered by YouTube. For example, you can use an image 4:3 ratio instead of default 16:9. However, you should stick to this ratio for all videos.
-
-After you install our plugin you will see our setup assistant which creates all the required pages, ready to use.
-
-
-Two YouTube Video Gallery pages are provided:
-
-* YouTube Video Gallery
-* YouTube Video Grid Gallery
-
-**YouTube Video Gallery**
-
-* Displays YouTube video thumbnail navigation at the bottom.
-* YouTube Videos are paged after every 8th video. Page navigation is available. You can adjust the number of YouTube videos shown with a shortcode.
-* For phones, thumbnail navigation is replaced with two large size PREV and NEXT icons.
-* YouTube videos are ordered by the lasted video first
-
-**YouTube Video Grid Gallery**
-
-Displays high resolution YouTube video thumbnails in a 4 column responsive layout. YouTube Videos are paged after every 16th video.
-
-You can build your YouTube video galleries by adding the VIDEO ID for the videos you’d like. You can add Content and Excerpt for every YouTube video. The YouTube video CONTENT text is displayed in the video page. The video EXCERPT is displayed in *YouTube Video Gallery* page, right below the main video.
-
-All YouTube video pages are responsive and adjusts to the container so you do not need to give height or weight.
-
-Comes with two sidebar widgets:
-
-* Featured YouTube Videos
-* Recent YouTube Videos
-
-**Shortcode Examples**
-
-Note: In examples, yoyoma is the slug not the label of tag or category
-
-* Display 5 YouTube videos per page. If you have more than 5 videos, it will display a page navigation bar:
-
-[video_grid filter="misc::posts_per_page::is::5;"]
-
-[video_gallery filter="misc::posts_per_page::is::5;"]
-
-* Display YouTube videos with category "yoyoma"
-
-[video_grid filter="tax::category::is::yoyoma;"]
-
-[video_gallery filter="tax::category::is::yoyoma;"]
-
-* Display YouTube videos with tag "yoyoma".
-
-[video_grid filter="tax::post_tag::is::yoyoma;"]
-
-[video_gallery filter="tax::post_tag::is::yoyoma;"]
-
-**RELATED PLUGINS YOU MAY LIKE**
-
-* [WP Easy Events Starter](https://wpeasyeventscom.emdplugins.com) Perfect event management and ticketing software for your business.
-* [WP Easy Contact Starter](https://wpeasycontactcom.emdplugins.com) Complete contact management solution to start, develop and grow your customer relationships.
-* [Knowledge Center Starter](https://kcentercom.emdplugins.com/) Great knowledge base software for helping your customers and employees to find answers faster.
-* [WP Ticket Starter](https://wpticketcom.emdplugins.com/) Powerful customer support and helpdesk ticketing system.
-* [Request a quote Starter](https://requestaquote.emdplugins.com/) The Best Sales Quoting software for WordPress.
-
-**Best YouTube Video Gallery and Management Plugin for WordPress**
-
-* [Create Stunning Video Experiences](https://emdplugins.com/youtube-showcase-beautiful-video-pages/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Create Stunning Video Galleries with YouTube Showcase](https://emdplugins.com/youtube-showcase-video-gallery/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Centralized Management, Secure Storage](https://emdplugins.com/youtube-showcase-all-your-videos-in-one-place/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Intuitive  Video Categorization And Tagging](https://emdplugins.com/youtube-showcase-categorize-and-tag-videos/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Easy To Use Widgets](https://emdplugins.com/youtube-showcase-easy-to-use-widgets/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Mobile-Ready Video Showcase](https://emdplugins.com/youtube-showcase-responsive-mobile-friendly/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [Add captivating videos to your website in seconds](https://emdplugins.com/youtube-showcase-get-videos-instantly/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Non-Tech Friendly Video Management](https://emdplugins.com/youtube-showcase-let-video-managers-do-more/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Enhance Your Website with Dynamic Video Integration Using YouTube Showcase](https://emdplugins.com/youtube-showcase-display-playlists-and-more/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Elevate your team's capabilities through designated roles.](https://emdplugins.com/youtube-showcase-assign-roles-to-your-team/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Customize Your Video Display Order with Drag-and-Drop interface](https://emdplugins.com/youtube-showcase-drag-drop-ordering/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Establish Connections Between Your Videos](https://emdplugins.com/youtube-showcase-relate-your-videos-to-each-other/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Gain a deeper understanding of your audience](https://emdplugins.com/youtube-showcase-video-statistics/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Design Freedom: Customize Videos & Galleries to Match Your Website](https://emdplugins.com/youtube-showcase-customize-your-videos/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Foster a Community with Custom Video Comments](https://emdplugins.com/youtube-showcase-custom-video-comments/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Easily Build Engaging, custom Video Galleries](https://emdplugins.com/youtube-showcase-create-custom-video-galleries/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Choose from Multiple Views with YouTube Showcase.](https://emdplugins.com/youtube-showcase-tailor-video-layouts-to-match-your-vision/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Premium feature (included in Pro)
-* [Effortlessly find specific videos](https://emdplugins.com/youtube-showcase-smart-search-and-columns-addon/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Add-on (included in Pro)
-* [Optimize Video Management: YouTube Showcase Import/Export Addon](https://emdplugins.com/youtube-showcase-import-export-addon/?pk_campaign=youtube-showcase-com&pk_kwd=readme) - Add-on (included in Pro)
-
-**PLUGIN LINKS**
-* [YouTube Showcase Starter Demo Site](https://ytshowcasecom.emdplugins.com?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [YouTube Showcase Starter Documentation](https://docs.emdplugins.com/youtube-showcase-community/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [YouTube Showcase Professional Demo Site](https://ytshowcase.emdplugins.com/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [YouTube Showcase Professional Documentation](https://docs.emdplugins.com/youtube-showcase-professional/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-* [YouTube Showcase Professional Changes](https://emdplugins.com/articles/yt-scase-pro-wordpress-plugin-changelog/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
-
-> This plugin's code was generated by [WP App Studio](https://wpappstudio.com) Professional WordPress Design and Development Platform based on the plugin's design. You can develop a plugin like YouTube Showcase using [WP App Studio](https://wpappstudio.com/quick-start/) plugin and sell its designs by [becoming a SellDev author](https://wpappstudio.com/become-a-selldev-author/) <br>
+This plugin was developed using the [WP App Studio](http://wpappstudio.com/?pk_campaign=youtube-showcase-com&pk_kwd=readme) design and development platform, ensuring a modular and maintainable code structure that follows WordPress standards.
 
 == Installation ==
 
-The simplest way to install is to click on 'Plugins' then 'Add' and type 'YouTube Showcase' in the search field.
-
-= Manual Installation Type 1 =
-
-* Login to your website and go to the Plugins section of your admin panel.
-* Click the Add New button.
-* Under Install Plugins, click the Upload link.
-* Select the plugin zip file from your computer then click the Install Now button.
-* You should see a message stating that the plugin was installed successfully.
-* Click the Activate Plugin link.
-
-= Manual Installation Type 2 =
-
-* You should have access to the server where WordPress is installed. If you don't, see your system administrator.
-* Copy the plugin zip file up to your server and unzip it somewhere on the file system.
-* Copy the "youtube-showcase" folder into the /wp-content/plugins directory of your WordPress installation.
-* Login to your website and go to the Plugins section of your admin panel.
-* Look for "YouTube Showcase" and click Activate.
-
-== Screenshots ==
-
-1. Displays a responsive video gallery with thumbnail navigation created automatically during plugin setup
-2. Hides thumbnail navigation for devices with screen sizes below 768px.
-3. Displays a 4 column responsive video grid gallery created automatically during plugin setup
-4. Each video resides on its own page with WordPress comments enabled, optionally you could display Featured and Recent Sidebar Widgets
-5. Enter your videos using a simple and intuitive interface from admin video editor
-6. YouTube Showcase PRO Edition offers 40-65% faster page loads, many advanced video management,player configuration, and display options. Highly recommended for site owners.
-7. Ability to change videos slug
-8. [eMD CSV Import Export Extension](https://emdplugins.com/plugin-features/youtube-showcase-importexport-addon/) for bulk import/export from/to CSV files
+1. Upload the `youtube-showcase` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Use the **Optional Setup Assistant** to automatically create your core gallery pages, or skip to build manually.
+4. To build manually: Go to any Page/Post, click **(+)**, and search for **"YouTube Showcase"** to start building visually!
 
 == Frequently Asked Questions ==
 
-= Can I display a full YouTube channel? =  
-Yes. You can enter a channel URL or ID and the plugin will fetch and display the latest videos.
+= How do I add videos? =
+The plugin creates a "Video" menu in your dashboard. Simply enter the 11-character YouTube Video ID (e.g., 9K4uBRkFJEU), and the plugin handles the rest.
 
-= Can I display a playlist instead of individual videos? =  
-Absolutely. Just paste the YouTube playlist URL and choose the layout you want.
+= Does this work with the new Block Editor? =
+Yes! Version 4.0.0 is built specifically for the Block Editor. Search for the **YouTube Showcase** block to design your galleries visually.
 
-= Is this mobile-friendly? =  
-Yes! All layouts are fully responsive and look great on phones and tablets.
+= Can I display a full channel or playlist? =
+In this free version, you can curate your channel content manually using categories. For automatic syncing of entire channels or playlists, check out [YouTube Showcase Pro](https://emdplugins.com/plugins/youtube-showcase-pro/).
 
-= Does it support a lightbox video player? =  
-Yes, clicking a thumbnail opens the video in a lightbox so users never leave the page.
+= Is it mobile-friendly? =
+Absolutely. All layouts are fully responsive. On mobile, the playlist navigation automatically switches to an intuitive icon-based system for better usability.
 
-= How do I add videos to the gallery? =  
-Use the admin panel under **YouTube Showcase > Add New Video**. Enter a YouTube URL, and the plugin fetches the details automatically.
+= Can I categorize videos? =
+Yes. You can assign categories to your videos and then use the Visual Block settings to filter and display only specific categories in your grids or galleries.
 
-= Can I sort or categorize videos? =  
-Yes. You can assign categories and use shortcodes to filter videos by category.
+
+== Screenshots ==
+
+1. The Visual Block Editor – Design your YouTube Showcase with a real-time preview directly in the sidebar.
+2. Automatic Setup Gallery – A responsive video gallery with thumbnail navigation created during setup.
+3. Mobile Optimized – Thumbnail navigation automatically hides on devices below 768px for better UX.
+4. Responsive Video Grid – A clean 4-column grid layout generated automatically by the setup assistant.
+5. Individual Video Pages – SEO-friendly pages with comments and optional Featured/Recent widgets.
+6. Intuitive Admin Interface – Easily add and manage your YouTube videos via the dedicated video editor.
+7. YouTube Showcase PRO – Unlock 40-65% faster page loads and advanced player configurations.
+8. Custom URL Slugs – Total control over your video permalinks for better branding and SEO.
+9. CSV Import/Export – Bulk manage your library with the eMD CSV Extension for high-volume sites.
 
 == Changelog ==
-=3.5.3=
+= 4.0.0 =
+* NEW Added a Gutenberg block to insert YouTube video galleries, grids, and search forms directly from the block editor.
+* NEW Real-time preview within the editor sidebar.
+* TWEAK tested with WP 6.9
+= 3.5.4 =
+* FIXED Updated title for trademark
+* FIXED Updated internationalization
+= 3.5.3 =
 * FIXED Validate input for emd_form_builder_lite_pagenum function
-=3.5.2=
+= 3.5.2 =
 * FIXED XSS vulnerability for noaccess_msg
 * FIXED Validate input for emd_form_builder_lite_pagenum function
 * FIXED Vulnerability related to emd_get_widg_pagenum
-=3.5.1=
+= 3.5.1 =
 * TWEAK tested with WP 6.8
 * FIXED XSS vulnerability when using custom fields
-=3.5.0=
+= 3.5.0 =
 * FIXED WordPress dashboard accordions issue on setting and glossary pages due to changes in core code on WP 6.7.1
-=3.4.0=
+= 3.4.0 =
 * FIXED Vulnerability on form submit
 * FIXED Translation to one textdomain
-=3.3.6=
+= 3.3.6 =
 ** Fix CSRF in form settings
-=3.3.5=
+= 3.3.5 =
 * * FIXED widgets
-=3.3.4=
+= 3.3.4 =
 * * TWEAK tested with WP 6.0
-=3.3.3=
+= 3.3.3 =
 * TWEAK tested with WP 5.9.1 and PHP 8
-=3.3.2=
+= 3.3.2 =
 * TWEAK tested with WP 5.8.1
 * TWEAK Added ability to set the maximum number of videos to show in multiple sidebar widgets.
 * TWEAK Added ability to set pagination support with customization options for multiple sidebar widgets.
-= 3.3.1=
+= 3.3.1 =
 * TWEAK tested with WP 5.7
-= 3.3.0=
+= 3.3.0 =
 * FIXED Pagination bar not showing in mobile devices in the video gallery view.
-= 3.2.9=
+= 3.2.9 =
 * FIXED multi-select form component missing scroll bars when the content overflows its fixed height.
-= 3.2.8=
+= 3.2.8 =
 * TWEAK fixes and improvements for better performance and compatibility
-= 3.2.7=
+= 3.2.7 =
 * TWEAK updates to translation strings and libraries
 * NEW Added version numbers to js and CSS files for caching purposes
 * TWEAK tested with WP 5.5.1
-= 3.2.6=
+= 3.2.6 =
 * NEW Added previous and next buttons for the edit screens of videos
 * TWEAK updates and improvements to libraries
-=3.2.5=
+= 3.2.5 =
 * TWEAK updates and improvements to form library
 * TWEAK Emd templates
-=3.2.4=
+= 3.2.4 =
 * TWEAK Fix issue related to extensions
-=3.2.3=
+= 3.2.3 =
 * TWEAK Remove unused code and additional hardening for security
-=3.2.2=
+= 3.2.2 =
 * FIXED Paging issue on Video Gallery
 * FIXED XSS related issues
-=3.2.1=
+= 3.2.1 =
 * TWEAK Emd form builder upgrade messages
-=3.2.0=
+= 3.2.0 =
 * NEW Added Emd form builder support
 * FIXED Session cleanup workflow by creating a custom table to process records.
-=3.1.1=
+= 3.1.1 =
 * TWEAK Misc. library updates for better stability and compatibility.
 = 3.1.0 =
 * NEW Created a new shortcode page which displays all available shortcodes. You can access this page under the plugin settings.
 * TWEAK Emd templating system to match modern web standards
-=3.0.1=
+= 3.0.1 =
 * FIXED the Jump from the selected video to the main video frame in Firefox.
-=3.0.0=
+= 3.0.0 =
 * NEW Added a sidebar widget allowing to search videos by title, category or tag.
 * NEW Added ability enable or disable any video search field in the plugin settings.
 * NEW Added option to show login or register before searching videos - handy feature for private or customer only videos.
@@ -258,7 +174,7 @@ Yes. You can assign categories and use shortcodes to filter videos by category.
 * NEW Added option to set No results found and No access messages in the plugin settings.
 * TWEAK Improved the emd templating system removing obsolete code.
 * TWEAK Updated the third party code included in the plugin.
-=2.9.7=
+= 2.9.7 =
 * TWEAK Misc. library updates for better stability and compatibility.
 = 2.9.6 =
 * TWEAK Fixed the issue related to video thumbnails not displayed correctly in the widgets when video image resolution field is set.
@@ -336,3 +252,8 @@ Yes. You can assign categories and use shortcodes to filter videos by category.
 * Fixed issue with Video Grid Gallery Navigation
 = 1.0.0 =
 * Initial release
+
+== Upgrade Notice ==
+
+= 4.0.0 =
+This major update introduces the Visual Block Editor. Upgrade now to start building your galleries visually without shortcodes!

@@ -159,9 +159,9 @@ if (!function_exists('emd_form_builder_lite_search_form')) {
 		if(!empty($_POST) && empty($filter) && empty($args['emd_blts'])){
 			if(!empty($fcontent['settings']['ajax_search'])){
 				$layout .= '<div id="' . $myform . '_show_link" style="padding-top:10px;padding-bottom:20px;"><a href="#">
-                        <span id="' . $myform . '_show_link_span" style="color:#fff;background-color:#5bc0de;border-color:#5bc0de;padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid rgba(0,0,0,0);white-space:nowrap;">'. __('Show Form','emd-plugins') . '</span></a></div>
+                        <span id="' . $myform . '_show_link_span" style="color:#fff;background-color:#5bc0de;border-color:#5bc0de;padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid rgba(0,0,0,0);white-space:nowrap;">'. __('Show Form','youtube-showcase') . '</span></a></div>
                         <div id="' . $myform . '_hide_link" style="display:none;padding-top:10px;padding-bottom:20px;"><a href="#">
-                        <span id="' . $myform . '_hide_link_span" style="color:#fff;background-color:#d9534f;border-color:#d43f3a;padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid rgba(0,0,0,0);white-space:nowrap;">' . __('Hide Form','emd-plugins') . '</span></a></div>';
+                        <span id="' . $myform . '_hide_link_span" style="color:#fff;background-color:#d9534f;border-color:#d43f3a;padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid rgba(0,0,0,0);white-space:nowrap;">' . __('Hide Form','youtube-showcase') . '</span></a></div>';
 			}
 			return $layout;
 		}
@@ -214,9 +214,9 @@ if (!function_exists('emd_form_builder_lite_search_form')) {
 			$fields['posts_per_page'] = 10;
 			if(!empty($fcontent['settings']['ajax_search']) && (empty($fcontent['settings']['display_records']) || (!empty($fcontent['settings']['display_records']) && empty($_POST)))){
 				$layout .= '<div id="' . $myform . '_show_link" style="padding-top:10px;padding-bottom:20px;"><a href="#">
-                        <span id="' . $myform . '_show_link_span" style="color:#fff;background-color:#5bc0de;border-color:#5bc0de;padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid rgba(0,0,0,0);white-space:nowrap;">'. __('Show Form','emd-plugins') . '</span></a></div>
+                        <span id="' . $myform . '_show_link_span" style="color:#fff;background-color:#5bc0de;border-color:#5bc0de;padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid rgba(0,0,0,0);white-space:nowrap;">'. __('Show Form','youtube-showcase') . '</span></a></div>
                         <div id="' . $myform . '_hide_link" style="display:none;padding-top:10px;padding-bottom:20px;"><a href="#">
-                        <span id="' . $myform . '_hide_link_span" style="color:#fff;background-color:#d9534f;border-color:#d43f3a;padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid rgba(0,0,0,0);white-space:nowrap;">' . __('Hide Form','emd-plugins') . '</span></a></div>';
+                        <span id="' . $myform . '_hide_link_span" style="color:#fff;background-color:#d9534f;border-color:#d43f3a;padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid rgba(0,0,0,0);white-space:nowrap;">' . __('Hide Form','youtube-showcase') . '</span></a></div>';
 			}
 			if(!empty($fcontent['settings']['display_records'])){
 				$layout .= '<div class="emd-form-search-results">'; 
@@ -609,13 +609,13 @@ function emd_form_builder_lite_search_results($fields,$type,$pid){
 				<i class="fa fa-fw fa-share"></i><span class="emd-table-export" id="' . $fields['form'] . '-export"></span> <span class="caret"></span> </button>
 				<ul class="dropdown-menu">
 				<li data-type="">
-				<a href="#"><i class="fa fa-fw fa-check"></i>' . __('Current Page', 'emd-plugins') . '</a>
+				<a href="#"><i class="fa fa-fw fa-check"></i>' . __('Current Page', 'youtube-showcase') . '</a>
 				</li>
 				<li data-type="all">
-				<a href="#"><i class="fa fa-fw"></i>' . __('All', 'emd-plugins') . '</a>
+				<a href="#"><i class="fa fa-fw"></i>' . __('All', 'youtube-showcase') . '</a>
 				</li>
 				<li data-type="selected">
-				<a href="#"><i class="fa fa-fw"></i>' . __('Selected', 'emd-plugins') . '</a>
+				<a href="#"><i class="fa fa-fw"></i>' . __('Selected', 'youtube-showcase') . '</a>
 				</li>
 				</ul>';
 			}
