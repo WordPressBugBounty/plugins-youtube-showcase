@@ -3,7 +3,7 @@ Contributors: emarket-design,safiye
 Tags: video gallery, youtube, playlist, youtube gallery, youtube channel
 Requires at least: 5.8
 Tested up to: 6.9
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Plugin URI: https://emdplugins.com/youtube-showcase
@@ -96,6 +96,8 @@ Yes. You can assign categories to your videos and then use the Visual Block sett
 9. CSV Import/Export – Bulk manage your library with the eMD CSV Extension for high-volume sites.
 
 == Changelog ==
+= 4.0.1 =
+* FIXED YouTube "Error 153 – video player configuration error" by updating embed security and referrer policy.
 = 4.0.0 =
 * NEW Added a Gutenberg block to insert YouTube video galleries, grids, and search forms directly from the block editor.
 * NEW Real-time preview within the editor sidebar.
@@ -182,7 +184,7 @@ Yes. You can assign categories to your videos and then use the Visual Block sett
 * NEW Demo site - https://ytshowcasecom.emdplugins.com/ - where the latest version of YouTube Showcase Starter edition is installed.
 * TWEAK Featured and recent video widget now use Video Image Resolution field to set the video image thumbnail and defaults to medium quality resolution.
 * TWEAK Video grid and Video Grid Gallery thumbnails now use Video Image Resolution field to set the video image thumbnail and defaults to medium quality resolution.
-=2.9.0 =
+= 2.9.0 =
 * FIXED paging css
 * TWEAK library updates
 = 2.8.0 =

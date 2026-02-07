@@ -3,7 +3,7 @@
  * Plugin Name: Video Gallery – YouTube Gallery & Responsive Video Playlist
  * Plugin URI: https://emarketdesign.com
  * Description: Responsive video gallery and YouTube gallery for WordPress. Create a video grid or YouTube playlist visually in the block editor. No shortcodes!
- * Version: 4.0.0
+ * Version: 4.0.1
  * Author: eMarket Design
  * Author URI: https://emdplugins.com?pk_campaign=youtube-showcase-com&pk_kwd=readme-by
  * Text Domain: youtube-showcase
@@ -89,7 +89,7 @@ if (!class_exists('Youtube_Showcase')):
 		 * @return void
 		 */
 		private function define_constants() {
-			define('YOUTUBE_SHOWCASE_VERSION', '4.0.0');
+			define('YOUTUBE_SHOWCASE_VERSION', '4.0.1');
 			define('YOUTUBE_SHOWCASE_AUTHOR', 'eMarket Design');
 			define('YOUTUBE_SHOWCASE_NAME', 'Youtube Showcase');
 			define('YOUTUBE_SHOWCASE_PLUGIN_FILE', __FILE__);
