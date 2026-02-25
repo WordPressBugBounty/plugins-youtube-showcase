@@ -3,7 +3,7 @@ Contributors: emarket-design,safiye
 Tags: video gallery, youtube, playlist, youtube gallery, youtube channel
 Requires at least: 5.8
 Tested up to: 6.9
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Plugin URI: https://emdplugins.com/youtube-showcase
@@ -96,6 +96,8 @@ Yes. You can assign categories to your videos and then use the Visual Block sett
 9. CSV Import/Export – Bulk manage your library with the eMD CSV Extension for high-volume sites.
 
 == Changelog ==
+= 4.0.2 =
+* FIXED An issue where non-admin users were blocked from wp-admin due to an incorrect wp_die() call in show_optin()
 = 4.0.1 =
 * FIXED YouTube "Error 153 – video player configuration error" by updating embed security and referrer policy.
 = 4.0.0 =
