@@ -1,27 +1,27 @@
-=== Video Gallery – YouTube Gallery & Responsive Video Playlist ===
+=== Video Gallery – YouTube Gallery, Playlist & Video Grid ===
 Contributors: emarket-design,safiye
 Tags: video gallery, youtube, playlist, youtube gallery, youtube channel
 Requires at least: 5.8
-Tested up to: 6.9
-Stable tag: 4.0.2
+Tested up to: 7.0
+Stable tag: 4.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Plugin URI: https://emdplugins.com/youtube-showcase
 Author URI: https://emarketdesign.com
 
-Responsive video gallery and YouTube gallery for WordPress. Create a video grid or YouTube playlist visually in the block editor. No shortcodes!
+Create a YouTube video gallery or playlist visually in the block editor. No shortcodes, no coding — just beautiful responsive video grids.
 
 == Description ==
 
-**Stop wrestling with complex shortcodes. Start building visually.**
+**Display YouTube videos in beautiful, responsive galleries and playlists — built visually inside the block editor, no shortcodes needed.**
 
-[Video Gallery & Playlist for YouTube](https://emdplugins.com/youtube-showcase/?pk_campaign=youtube-showcase-com&pk_kwd=readme) (**YouTube Showcase**) is the most intuitive way to transform your website into a professional **WordPress video hub**. Featured in [**WPBeginner’s** Best YouTube Video Gallery Plugins](https://www.wpbeginner.com/plugins/best-youtube-video-gallery-plugins-for-wordpress/), our all-new **Visual Block** lets you design high-impact grids and cinematic playlists directly inside the WordPress Block Editor with a real-time preview.
+[Video Gallery & Playlist for YouTube](https://emdplugins.com/youtube-showcase/?pk_campaign=youtube-showcase-com&pk_kwd=readme) (**YouTube Showcase**) is the most intuitive way to transform your website into a professional **WordPress video hub**. Featured in [**WPBeginner’s** Best YouTube Video Gallery Plugins](https://www.wpbeginner.com/plugins/x-best-youtube-video-gallery-plugins-for-wordpress/), our all-new **Visual Block** lets you design high-impact grids and cinematic playlists directly inside the WordPress Block Editor with a real-time preview.
 
 Whether you are a creator, blogger, or marketer, this plugin helps you display YouTube content in beautiful, mobile-ready layouts. No coding, no guesswork—just a seamless video experience for your visitors.
 
 ### 🔗 Quick Links
 * [Live Demo Site](https://ytshowcasecom.emdplugins.com?pk_campaign=youtube-showcase-com&pk_kwd=readme) – See it in action.
-* [WPBeginner Featured Review](https://www.wpbeginner.com/plugins/best-youtube-video-gallery-plugins-for-wordpress/) – Rated as a top choice.
+* [WPBeginner Featured Review](https://www.wpbeginner.com/plugins/x-best-youtube-video-gallery-plugins-for-wordpress/) – Rated as a top choice.
 * [Documentation](https://docs.emdplugins.com/youtube-showcase-community/?pk_campaign=youtube-showcase-com&pk_kwd=readme) – Easy step-by-step setup guides.
 
 ### 🚀 Key Features
@@ -50,7 +50,12 @@ If you use the **Optional Setup Assistant**, it will create two ready-to-use pag
 * **Content & Excerpts:** Add custom text for every video. The content appears on the single video page, while the excerpt appears right below the main video in the gallery view.
 
 ### 💎 Get More with YouTube Showcase Pro
-Need more power? The Pro version includes Auto-Sync for channels, Lightbox popups, search filtering, and premium layouts (Coverflow, Masonry, and more).
+Need more power? The Pro version includes :
+* Auto-sync entire YouTube channels or playlists — no manual adding
+* Lightbox popup player — videos open without leaving the page
+* Filter and search videos by category or tag on the frontend
+* Masonry, Coverflow, and additional premium grid layouts
+* 40–65% faster page loads with optimized embed loading
 
 👉 [Upgrade to YouTube Showcase Pro](https://emdplugins.com/youtube-showcase/?pk_campaign=youtube-showcase-com&pk_kwd=readme)
 
@@ -82,6 +87,8 @@ Absolutely. All layouts are fully responsive. On mobile, the playlist navigation
 = Can I categorize videos? =
 Yes. You can assign categories to your videos and then use the Visual Block settings to filter and display only specific categories in your grids or galleries.
 
+= Can I control the order videos appear? =
+Yes. Videos are displayed newest first by default. You can control the order by adjusting the publish date of each video in the dashboard.
 
 == Screenshots ==
 
@@ -96,6 +103,8 @@ Yes. You can assign categories to your videos and then use the Visual Block sett
 9. CSV Import/Export – Bulk manage your library with the eMD CSV Extension for high-volume sites.
 
 == Changelog ==
+= 4.0.3 =
+* FIXED Patched an unrestricted file upload vulnerability.
 = 4.0.2 =
 * FIXED An issue where non-admin users were blocked from wp-admin due to an incorrect wp_die() call in show_optin()
 = 4.0.1 =

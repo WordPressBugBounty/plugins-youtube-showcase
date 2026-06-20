@@ -164,24 +164,29 @@ if (!function_exists('emd_author_search_results')) {
 			$search = $query->query_vars['s'];
 			foreach (array_values($set_types) as $ptype) {
 				$pids = apply_filters('emd_limit_by', $pids, $app, $ptype, 'frontend');
-				$diff_pids = array_diff($pids,Array('0'));	
+				$diff_pids = array_diff($pids,Array('0'));
+				// Prepare wildcard searching safely
+				// esc_like() ensures literal '%' or '_' in user input doesn't break logic
+				$wildcard_search = '%' . $wpdb->esc_like($search) . '%';
+
 				if(empty($pids)){
-					$input_add .= " UNION (SELECT * FROM " . $wpdb->posts . " WHERE " . $wpdb->posts . ".post_type ='" . $ptype . "' AND " . $wpdb->posts . ".post_status = 'publish' AND ";
+					$input_add .= " UNION (SELECT * FROM " . $wpdb->posts . " WHERE " . $wpdb->posts . ".post_type ='" . esc_sql($ptype) . "' AND " . $wpdb->posts . ".post_status = 'publish' AND ";
 					if($type == 'author'){
 						$input_add .=  $wpdb->posts . ".post_author=" . $auth_id . ")";
 					}
 					elseif($type == 'search'){
-						$input_add .=  "(" . $wpdb->posts . ".post_title LIKE '%" . $search . "%' OR " . $wpdb->posts . ".post_content LIKE '%" . $search . "%'))";
+						$input_add .=  $wpdb->prepare("(" . $wpdb->posts . ".post_title LIKE %s OR " . $wpdb->posts . ".post_content LIKE %s))", $wildcard_search,$wildcard_search);
 					}
 				}
 				elseif(!empty($diff_pids)) {
-					$pids_arr = "(" . implode(",",$pids) . ")";
+					$pids_cleaned = array_map('intval', $pids);
+					$pids_arr = "(" . implode(",", $pids_cleaned) . ")";
 					$input_add .= " UNION (SELECT * FROM " . $wpdb->posts . " WHERE " . $wpdb->posts . ".ID IN " . $pids_arr . " AND ";
 					if($type == 'author'){
 						$input_add .= $wpdb->posts . ".post_author=" . $auth_id . ")";
 					}
 					elseif($type == 'search'){
-						$input_add .=  "(" . $wpdb->posts . ".post_title LIKE '%" . $search . "%') OR (" . $wpdb->posts . ".post_content LIKE '%" . $search . "%'))";
+						$input_add .=  $wpdb->prepare("(" . $wpdb->posts . ".post_title LIKE %s) OR (" . $wpdb->posts . ".post_content LIKE %s))",$wildcard_search,$wildcard_search);
 					}
 				}
 			}
@@ -1018,11 +1023,38 @@ if (!function_exists('emd_load_file')) {
 			echo '<div class="text-danger"><a href="' . wp_get_referer() . '">' . esc_html__('Please refresh the page and try again.', 'youtube-showcase') . '</a></div>';
 			die();
 		}
-		$path = sanitize_text_field($_POST['path']);
-		$myapp = strtolower(preg_replace('/_PLUGIN_DIR$/','',$path));
-		require_once constant($path) . 'assets/ext/filepicker/upload.php';
-		$upload_handler = new UploadHandler(true, sanitize_text_field($_POST['field']), sanitize_text_field($_POST['extensions']),$myapp);
-		die();
+		if ( ! defined( 'YOUTUBE_SHOWCASE_PLUGIN_DIR' ) ) {
+			echo '<div class="text-danger">' . esc_html__('Configuration error.', 'youtube-showcase') . '</div>';
+			die();
+		}
+		$myapp = 'youtube_showcase';
+		require_once YOUTUBE_SHOWCASE_PLUGIN_DIR . 'assets/ext/filepicker/upload.php';
+
+		$master_allowed = array('jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx', 'zip');
+
+		$final_extensions = array();
+		if ( ! empty( $_POST['extensions'] ) ) {
+                        // Clean the incoming text field and convert it to an array
+                        $user_input = sanitize_text_field( $_POST['extensions'] );
+                        $user_extensions = explode( ',', $user_input );
+
+                        foreach ( $user_extensions as $ext ) {
+                            $ext = strtolower( trim( $ext ) ); // Normalize
+
+                            if ( in_array( $ext, $master_allowed, true ) ) {
+                                $final_extensions[] = $ext;
+                            }
+                        }
+                }
+
+		if ( empty( $final_extensions ) ) {
+                        $final_extensions = $master_allowed;
+                }
+
+                $field = isset($_POST['field']) ? sanitize_text_field($_POST['field']) : '';
+
+                $upload_handler = new UploadHandler(true, $field, $final_extensions, $myapp);
+                die();
 	}
 }
 if (!function_exists('emd_delete_file')) {

@@ -28,49 +28,72 @@ class UploadHandler
 			'min_height' => __('Image requires a minimum height','youtube-showcase')
 			);
 
-		if (!empty($_FILES)) {
-			$upload_file = 1;
+		if (!empty($_FILES) && isset($_FILES['file'])) {
+			$upload_file = 0;
 			// Validate the file type
-			if(!empty($fileTypes))
+			if(empty($fileTypes))
 			{
-				$fileTypes_arr = explode(",",$fileTypes);
-		
-				$fileParts = pathinfo($_FILES['file']['name']);
-				if (!in_array(strtolower($fileParts['extension']),$fileTypes_arr)) {
-					$upload_file = 0;
-					echo esc_html__('Invalid file type.','youtube-showcase');
-				}
-				else {
-					$upload_file = 1;
-				}
+				$fileTypes_arr = array('jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx', 'zip');
 			}
-			
-			if($upload_file == 1){
-				$file = wp_handle_upload($_FILES['file'] , array( 'test_form' => false ) );
-				if(isset($file['error'])){
-					echo esc_html($file['error']);
-				}
-				else {
-					$_FILES['file']['path'] = $file['file'];
-					if(!empty($myapp)){
-						$new_sess_files = Array();
-						$sess_name = strtoupper($myapp);
-						$session_class = $sess_name();
-						$sess_files = $session_class->session->get('uploads');
-						if(!empty($sess_files) && is_array($sess_files)){
-							$new_sess_files = $sess_files;
-						}
-						if(empty($sess_files[$fieldid])){
-							$new_sess_files[$fieldid][]  = $_FILES['file'];
-						}
-						elseif(is_array($sess_files[$fieldid])){
-							$new_sess_files[$fieldid]  = $sess_files[$fieldid];
-							$new_sess_files[$fieldid][]  = $_FILES['file'];
-						}
-						$session_class->session->set('uploads',$new_sess_files);
-					}
-					echo '1';
-				}
+			else {
+				$fileTypes_arr = is_array($fileTypes) ? $fileTypes : explode(",", $fileTypes);
+			}
+			$fileTypes_arr = array_map('trim', $fileTypes_arr);
+                        $fileTypes_arr = array_map('strtolower', $fileTypes_arr);
+
+                        $original_name = $_FILES['file']['name'];
+                        $fileParts = pathinfo($original_name);
+                        $file_ext = isset($fileParts['extension']) ? strtolower($fileParts['extension']) : '';
+
+			if (empty($file_ext) || !in_array($file_ext, $fileTypes_arr, true)) {
+                                echo esc_html__('Invalid file type.', 'youtube-showcase');
+                                return; // Halt execution immediately
+                        }
+                        if (strpos(strtolower($original_name), '.php') !== false) {
+                                echo esc_html__('Invalid file type signature.', 'youtube-showcase');
+                                return;
+			}
+			// If it survives all checks above, flag it as safe to upload
+                        $upload_file = 1;
+
+                        if ($upload_file === 1) {
+                                // Sanitize the file name inside the $_FILES array before WordPress touches it
+                                $_FILES['file']['name'] = sanitize_file_name($original_name);
+
+                                $file = wp_handle_upload($_FILES['file'], array('test_form' => false));
+
+                                if (isset($file['error'])) {
+                                        echo esc_html($file['error']);
+                                } else {
+                                        $_FILES['file']['path'] = $file['file'];
+					
+					if (!empty($myapp)) {
+                                                $new_sess_files = array();
+
+                                                // Sanitize $myapp dynamically to prevent arbitrary class instantiation attacks
+                                                $clean_myapp = preg_replace('/[^a-zA-Z0-9_-]/', '', $myapp);
+                                                $sess_name = strtoupper($clean_myapp);
+
+                                                if (function_exists($sess_name)) {
+                                                        $session_class = $sess_name();
+                                                        $sess_files = $session_class->session->get('uploads');
+
+                                                        if (!empty($sess_files) && is_array($sess_files)) {
+                                                            $new_sess_files = $sess_files;
+                                                        }
+
+                                                        if (empty($sess_files[$fieldid])) {
+                                                            $new_sess_files[$fieldid][] = $_FILES['file'];
+                                                        } elseif (is_array($sess_files[$fieldid])) {
+                                                            $new_sess_files[$fieldid] = $sess_files[$fieldid];
+                                                            $new_sess_files[$fieldid][] = $_FILES['file'];
+                                                        }
+
+                                                        $session_class->session->set('uploads', $new_sess_files);
+                                                }
+                                        }
+                                        echo '1';
+                                }
 			}
 		}
 	}
