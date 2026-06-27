@@ -3,7 +3,7 @@ Contributors: emarket-design,safiye
 Tags: video gallery, youtube, playlist, youtube gallery, youtube channel
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 4.0.3
+Stable tag: 4.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Plugin URI: https://emdplugins.com/youtube-showcase
@@ -103,6 +103,8 @@ Yes. Videos are displayed newest first by default. You can control the order by 
 9. CSV Import/Export – Bulk manage your library with the eMD CSV Extension for high-volume sites.
 
 == Changelog ==
+= 4.0.4 =
+* FIXED Function call vulnerability in the file deletion AJAX handler.
 = 4.0.3 =
 * FIXED Patched an unrestricted file upload vulnerability.
 = 4.0.2 =

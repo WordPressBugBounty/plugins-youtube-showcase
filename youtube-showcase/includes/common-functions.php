@@ -1062,24 +1062,35 @@ if (!function_exists('emd_delete_file')) {
 		$ret = check_ajax_referer('emd_delete_file', 'nonce', false);
 		if ($ret === false) {
 			echo '<div class="text-danger"><a href="' . wp_get_referer() . '">' . esc_html__('Please refresh the page and try again.', 'youtube-showcase') . '</a></div>';
-			die();
+			wp_die();
 		}
-		$path = sanitize_text_field($_POST['path']);
-		$myapp = strtolower(preg_replace('/_PLUGIN_DIR$/','',$path));
+		$myapp = 'youtube_showcase';
 		$sess_name = strtoupper($myapp);
-		$session_class = $sess_name();
+		if ( function_exists($sess_name) ) {
+			$session_class = $sess_name();
+		} else {
+			echo '<div class="text-danger">' . esc_html__('System configuration error.', 'youtube-showcase') . '</div>';
+			wp_die();
+		}
+		if ( ! $session_class || ! isset($session_class->session) ) {
+			echo '<div class="text-danger">' . esc_html__('Session handler unavailable.', 'youtube-showcase') . '</div>';
+			wp_die();
+		}
 		$sess_files = $session_class->session->get('uploads');
-		$field = sanitize_text_field($_POST['field']);
-		if(!empty($sess_files[$field])){
-			foreach($sess_files[$field] as $kattch => $myattch){
-				if($myattch['name'] == sanitize_text_field($_POST['del_file'])){
+		$field = isset($_POST['field']) ? sanitize_text_field($_POST['field']) : '';
+		if ( ! empty( $sess_files[$field] ) && isset( $_POST['del_file'] ) ) {
+			$del_file_target = sanitize_text_field($_POST['del_file']);
+
+			foreach ( $sess_files[$field] as $kattch => $myattch ) {
+				if ( isset($myattch['full_path']) && $myattch['full_path'] === $del_file_target ) {
 					unset($sess_files[$field][$kattch]);
 				}
 			}
-			$session_class->session->set('uploads',$sess_files);
+			// Update the user's specific session
+			$session_class->session->set('uploads', $sess_files);
 		}
 		echo 1;
-		die();
+		wp_die();
 	}
 }
 if(!function_exists('emd_get_attachment_layout')){
