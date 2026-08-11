@@ -1044,8 +1044,8 @@ if (!function_exists('emd_load_file')) {
                             if ( in_array( $ext, $master_allowed, true ) ) {
                                 $final_extensions[] = $ext;
                             }
-                        }
-                }
+			} 
+		}
 
 		if ( empty( $final_extensions ) ) {
                         $final_extensions = $master_allowed;

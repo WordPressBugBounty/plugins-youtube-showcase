@@ -51,9 +51,9 @@ if ( ! class_exists( 'EMD_MB_Helper' ) )
 				{
 					$content .= sprintf(
 						'<li><a href="%s" title="%s">%s</a></li>',
-						$file['url'],
-						$file['title'],
-						$file['name']
+						esc_url($file['url']),
+						esc_attr($file['title']),
+						esc_html($file['name'])
 					);
 				}
 				$content .= '</ul>';
@@ -70,20 +70,20 @@ if ( ! class_exists( 'EMD_MB_Helper' ) )
 					{
 						$content .= sprintf(
 							'<li><a href="%s" title="%s"><img src="%s" alt="%s" title="%s" /></a></li>',
-							$image['full_url'],
-							$image['title'],
-							$image['url'],
-							$image['alt'],
-							$image['title']
+							esc_url($image['full_url']),
+							esc_attr($image['title']),
+							esc_url($image['url']),
+							esc_attr($image['alt']),
+							esc_attr($image['title'])
 						);
 					}
 					else
 					{
 						$content .= sprintf(
 							'<li><img src="%s" alt="%s" title="%s" /></li>',
-							$image['url'],
-							$image['alt'],
-							$image['title']
+							esc_url($image['url']),
+							esc_attr($image['alt']),
+							esc_attr($image['title'])
 						);
 					}
 				}
@@ -98,9 +98,9 @@ if ( ! class_exists( 'EMD_MB_Helper' ) )
 				{
 					$content .= sprintf(
 						'<li><a href="%s" title="%s">%s</a></li>',
-						get_term_link( $term, $atts['taxonomy'] ),
-						$term->name,
-						$term->name
+						esc_url(get_term_link( $term, $atts['taxonomy'] )),
+						esc_attr($term->name),
+						esc_html($term->name)
 					);
 				}
 				$content .= '</ul>';
@@ -319,9 +319,9 @@ if ( ! class_exists( 'EMD_MB_Helper' ) )
 
 			$html = sprintf(
 				'<div id="emd-mb-map-canvas-%d" style="width:%s;height:%s"></div>',
-				$counter,
-				$args['width'],
-				$args['height']
+				esc_attr($counter),
+				esc_attr($args['width']),
+				esc_attr($args['height'])
 			);
 
 			// Load Google Maps script only when needed
