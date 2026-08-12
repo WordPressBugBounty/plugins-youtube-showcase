@@ -2,8 +2,8 @@
 /** 
  * Plugin Name: Video Gallery – YouTube Gallery, Playlist & Video Grid
  * Plugin URI: https://emarketdesign.com
- * Description: Display YouTube videos in a gallery, playlist, or grid using the block editor or shortcodes.
- * Version: 4.0.5
+ * Description: Responsive YouTube gallery, playlist, and video grid builder. Curate YouTube videos into beautiful grids, blocks, or playlists, no coding required.
+ * Version: 4.0.6
  * Author: eMarket Design
  * Author URI: https://emdplugins.com?pk_campaign=youtube-showcase-com&pk_kwd=readme-by
  * Text Domain: youtube-showcase
@@ -89,7 +89,7 @@ if (!class_exists('Youtube_Showcase')):
 		 * @return void
 		 */
 		private function define_constants() {
-			define('YOUTUBE_SHOWCASE_VERSION', '4.0.5');
+			define('YOUTUBE_SHOWCASE_VERSION', '4.0.6');
 			define('YOUTUBE_SHOWCASE_AUTHOR', 'eMarket Design');
 			define('YOUTUBE_SHOWCASE_NAME', 'Youtube Showcase');
 			define('YOUTUBE_SHOWCASE_PLUGIN_FILE', __FILE__);

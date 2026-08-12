@@ -508,7 +508,7 @@ if (!class_exists('Youtube_Showcase_Install_Deactivate')):
 ?>
 <div class="updated">
 <?php
-				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://emdplugins.com/plugins/youtube-showcase-wordpress-plugin?pk_campaign=youtube-showcase&amp;pk_source=plugin&amp;pk_medium=link&amp;pk_content=notice', __('Want to Keep Your Visitors Longer on Your Site? Get Pro Now!', 'youtube-showcase') , __('&#187;', 'youtube-showcase') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , __('Dismiss', 'youtube-showcase'));
+				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://emdplugins.com/youtube-showcase?pk_campaign=youtube-showcase&amp;pk_source=plugin&amp;pk_medium=link&amp;pk_content=notice', __('Want to Keep Your Visitors Longer on Your Site? Get Pro Now!', 'youtube-showcase') , __('&#187;', 'youtube-showcase') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , __('Dismiss', 'youtube-showcase'));
 ?>
 </div>
 <?php

@@ -49,7 +49,7 @@ width:14px;
 <div style="margin-bottom: 30px;background-color:white;max-width: 728px;padding:10px 30px 10px;">
 		<h2 class="text-center">eMDPlugins Expert Services</h2>
 		<p class="text-center">We're committed to providing excellent support service when you invest in our products.</p>
-		<div style="margin:10px 0;"><a target="_blank" href="https://emdplugins.com/expert-service-pricing/?pk_source=plugin-support-page&pk_medium=plugin&pk_campaign=plugin-support&pk_content=expertserv-img"><img alt="eMarket Design Expert Support Service" class="aligncenter size-medium" height="90" src="<?php echo esc_url($dir_url) . 'assets/img/addons/expert_service_728x90_bxuqng.png';?>" style="width:100%;height:auto;max-width:728px"></a></div>
+		<div style="margin:10px 0;"><a target="_blank" href="https://support.emdplugins.com/expert-service-pricing/?pk_source=plugin-support-page&pk_medium=plugin&pk_campaign=plugin-support&pk_content=expertserv-img"><img alt="eMarket Design Expert Support Service" class="aligncenter size-medium" height="90" src="<?php echo esc_url($dir_url) . 'assets/img/addons/expert_service_728x90_bxuqng.png';?>" style="width:100%;height:auto;max-width:728px"></a></div>
 		<div class="divTable">
 			<div class="divTableHeading">
 				<div class="divTableRow">

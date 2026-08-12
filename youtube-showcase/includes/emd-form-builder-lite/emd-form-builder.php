@@ -304,7 +304,7 @@ function emd_show_forms_lite_page($app){
 	echo '<a href="#" class="add-new-h2 upgrade-pro" style="padding:6px 10px;">' . esc_html('Import', 'youtube-showcase') . '</a>';
 	echo '<a href="#" class="add-new-h2 upgrade-pro" style="padding:6px 10px;">' . esc_html('Export', 'youtube-showcase') . '</a>';
 	echo '</h2>';
-	echo '<p>' . esc_html__('Emd Form Builder makes it easy to create simple or advanced forms with a few clicks.','youtube-showcase') . ' <a href="https://emdplugins.com/best-form-builder-for-wordpress/?pk_campaign=' . esc_attr($app) . '&pk_kwd=emdformbuilderpagelink" target="_blank">' . esc_html__('Click here to learn more.','youtube-showcase') . '</a></p>';
+	echo '<p>' . esc_html__('Emd Form Builder makes it easy to create simple or advanced forms with a few clicks.','youtube-showcase') . ' <a href="https://support.emdplugins.com/best-form-builder-for-wordpress/?pk_campaign=' . esc_attr($app) . '&pk_kwd=emdformbuilderpagelink" target="_blank">' . esc_html__('Click here to learn more.','youtube-showcase') . '</a></p>';
 	echo '<style>.tablenav.top{display:none;}</style>';
 	if(!empty($_POST['submit']) && !empty($_POST['submit_settings'])){
 		emd_form_builder_lite_save_settings($app);

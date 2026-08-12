@@ -52,7 +52,7 @@ ul.tabs li.current {
  <div class="tab-content current"  id="tab-1"><div class="emd-plugin-card" style="width:100%;max-width: 320px;">
 	<div class="emd-plugin-card-top" style="">
 		<div class="name column-name">
-			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/plugins/software-issue-manager-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=software-issue-manager-pluginspage&pk_content=plugin-title">Software Issue Manager</a></h4>
+			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/software-issue-manager/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=software-issue-manager-pluginspage&pk_content=plugin-title">Software Issue Manager</a></h4>
 		</div>
 		<div class="img-caption">
 			<img alt="Software Issue Manager" height="200" src="<?php echo esc_url($dir_url) . 'assets/img/addons/sim-arch-320x200.gif';?>" style="width:100%" title="Software Issue Manager">
@@ -60,13 +60,13 @@ ul.tabs li.current {
 		</div>
 	</div>
 	<div class="emd-plugin-card-bottom">
-		<a class="button-primary" href="https://emdplugins.com/plugins/software-issue-manager-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=software-issue-manager-pluginspage&pk_content=plugin-primary-button" title="Software Issue Manager">Get it Now</a>
+		<a class="button-primary" href="https://emdplugins.com/software-issue-manager/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=software-issue-manager-pluginspage&pk_content=plugin-primary-button" title="Software Issue Manager">Get it Now</a>
 		<a class="button-secondary" href="https://downloads.wordpress.org/plugin/software-issue-manager.zip/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=software-issue-manager-pluginpage&pk_content=plugin-secondary-button" title="Software Issue Manager">Download Starter</a>
 	</div>
 </div><div class="emd-plugin-card" style="width:100%;max-width: 320px;">
 	<div class="emd-plugin-card-top" style="">
 		<div class="name column-name">
-			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/plugins/wp-ticket-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-ticket-pluginspage&pk_content=plugin-title">WP Ticket</a></h4>
+			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/wp-ticket/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-ticket-pluginspage&pk_content=plugin-title">WP Ticket</a></h4>
 		</div>
 		<div class="img-caption">
 			<img alt="WP Ticket" height="200" src="<?php echo esc_url($dir_url) . 'assets/img/addons/wpticket-arch-320x200.gif';?>" style="width:100%" title="WP Ticket">
@@ -74,13 +74,13 @@ ul.tabs li.current {
 		</div>
 	</div>
 	<div class="emd-plugin-card-bottom">
-		<a class="button-primary" href="https://emdplugins.com/plugins/wp-ticket-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-ticket-pluginspage&pk_content=plugin-primary-button" title="WP Ticket">Get it Now</a>
+		<a class="button-primary" href="https://emdplugins.com/wp-ticket/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-ticket-pluginspage&pk_content=plugin-primary-button" title="WP Ticket">Get it Now</a>
 		<a class="button-secondary" href="https://downloads.wordpress.org/plugin/wp-ticket.zip/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-ticket-pluginpage&pk_content=plugin-secondary-button" title="WP Ticket">Download Starter</a>
 	</div>
 </div><div class="emd-plugin-card" style="width:100%;max-width: 320px;">
 	<div class="emd-plugin-card-top" style="">
 		<div class="name column-name">
-			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/plugins/youtube-showcase-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=youtube-showcase-pluginspage&pk_content=plugin-title">YouTube Showcase</a></h4>
+			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/youtube-showcase/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=youtube-showcase-pluginspage&pk_content=plugin-title">YouTube Showcase</a></h4>
 		</div>
 		<div class="img-caption">
 			<img alt="YouTube Showcase" height="200" src="<?php echo esc_url($dir_url) . 'assets/img/addons/youtubesc-arch-320x200.gif';?>" style="width:100%" title="YouTube Showcase">
@@ -88,13 +88,13 @@ ul.tabs li.current {
 		</div>
 	</div>
 	<div class="emd-plugin-card-bottom">
-		<a class="button-primary" href="https://emdplugins.com/plugins/youtube-showcase-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=youtube-showcase-pluginspage&pk_content=plugin-primary-button" title="YouTube Showcase">Get it Now</a>
+		<a class="button-primary" href="https://emdplugins.com/youtube-showcase/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=youtube-showcase-pluginspage&pk_content=plugin-primary-button" title="YouTube Showcase">Get it Now</a>
 		<a class="button-secondary" href="https://downloads.wordpress.org/plugin/youtube-showcase.zip/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=youtube-showcase-pluginpage&pk_content=plugin-secondary-button" title="YouTube Showcase">Download Starter</a>
 	</div>
 </div><div class="emd-plugin-card" style="width:100%;max-width: 320px;">
 	<div class="emd-plugin-card-top" style="">
 		<div class="name column-name">
-			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/plugins/wp-easy-contact-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-easy-contact-pluginspage&pk_content=plugin-title">WP Easy Contact</a></h4>
+			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/wp-easy-contact/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-easy-contact-pluginspage&pk_content=plugin-title">WP Easy Contact</a></h4>
 		</div>
 		<div class="img-caption">
 			<img alt="WP Easy Contact" height="200" src="<?php echo esc_url($dir_url) . 'assets/img/addons/wpcontact-arch-320x200.gif';?>" style="width:100%" title="WP Easy Contact">
@@ -102,13 +102,13 @@ ul.tabs li.current {
 		</div>
 	</div>
 	<div class="emd-plugin-card-bottom">
-		<a class="button-primary" href="https://emdplugins.com/plugins/wp-easy-contact-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-easy-contact-pluginspage&pk_content=plugin-primary-button" title="WP Easy Contact">Get it Now</a>
+		<a class="button-primary" href="https://emdplugins.com/wp-easy-contact/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-easy-contact-pluginspage&pk_content=plugin-primary-button" title="WP Easy Contact">Get it Now</a>
 		<a class="button-secondary" href="https://downloads.wordpress.org/plugin/wp-easy-contact.zip/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-easy-contact-pluginpage&pk_content=plugin-secondary-button" title="WP Easy Contact">Download Starter</a>
 	</div>
 </div><div class="emd-plugin-card" style="width:100%;max-width: 320px;">
 	<div class="emd-plugin-card-top" style="">
 		<div class="name column-name">
-			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/plugins/employee-directory-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=employee-directory-pluginspage&pk_content=plugin-title">Employee Directory</a></h4>
+			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/employee-directory/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=employee-directory-pluginspage&pk_content=plugin-title">Employee Directory</a></h4>
 		</div>
 		<div class="img-caption">
 			<img alt="Employee Directory" height="200" src="<?php echo esc_url($dir_url) . 'assets/img/addons/emddir-arch-300x200.gif';?>" style="width:100%" title="Employee Directory">
@@ -116,13 +116,13 @@ ul.tabs li.current {
 		</div>
 	</div>
 	<div class="emd-plugin-card-bottom">
-		<a class="button-primary" href="https://emdplugins.com/plugins/employee-directory-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=employee-directory-pluginspage&pk_content=plugin-primary-button" title="Employee Directory">Get it Now</a>
+		<a class="button-primary" href="https://emdplugins.com/employee-directory/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=employee-directory-pluginspage&pk_content=plugin-primary-button" title="Employee Directory">Get it Now</a>
 		<a class="button-secondary" href="https://downloads.wordpress.org/plugin/employee-directory.zip/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=employee-directory-pluginpage&pk_content=plugin-secondary-button" title="Employee Directory">Download Starter</a>
 	</div>
 </div><div class="emd-plugin-card" style="width:100%;max-width: 320px;">
 	<div class="emd-plugin-card-top" style="">
 		<div class="name column-name">
-			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/plugins/employee-spotlight-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=employee-spotlight-pluginspage&pk_content=plugin-title">Employee Spotlight</a></h4>
+			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/employee-spotlight/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=employee-spotlight-pluginspage&pk_content=plugin-title">Employee Spotlight</a></h4>
 		</div>
 		<div class="img-caption">
 			<img alt="Employee Spotlight" height="200" src="<?php echo esc_url($dir_url) . 'assets/img/addons/spotlight-arch-300x200.png';?>" style="width:100%" title="Employee Spotlight">
@@ -130,13 +130,13 @@ ul.tabs li.current {
 		</div>
 	</div>
 	<div class="emd-plugin-card-bottom">
-		<a class="button-primary" href="https://emdplugins.com/plugins/employee-spotlight-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=employee-spotlight-pluginspage&pk_content=plugin-primary-button" title="Employee Spotlight">Get it Now</a>
+		<a class="button-primary" href="https://emdplugins.com/employee-spotlight/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=employee-spotlight-pluginspage&pk_content=plugin-primary-button" title="Employee Spotlight">Get it Now</a>
 		<a class="button-secondary" href="https://downloads.wordpress.org/plugin/employee-spotlight.zip/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=employee-spotlight-pluginpage&pk_content=plugin-secondary-button" title="Employee Spotlight">Download Starter</a>
 	</div>
 </div><div class="emd-plugin-card" style="width:100%;max-width: 320px;">
 	<div class="emd-plugin-card-top" style="">
 		<div class="name column-name">
-			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/plugins/knowledge-center-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=knowledge-center-pluginspage&pk_content=plugin-title">Knowledge Center</a></h4>
+			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/knowledge-center/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=knowledge-center-pluginspage&pk_content=plugin-title">Knowledge Center</a></h4>
 		</div>
 		<div class="img-caption">
 			<img alt="Knowledge Center" height="200" src="<?php echo esc_url($dir_url) . 'assets/img/addons/kcenter-arch-300x200.gif';?>" style="width:100%" title="Knowledge Center">
@@ -144,13 +144,13 @@ ul.tabs li.current {
 		</div>
 	</div>
 	<div class="emd-plugin-card-bottom">
-		<a class="button-primary" href="https://emdplugins.com/plugins/knowledge-center-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=knowledge-center-pluginspage&pk_content=plugin-primary-button" title="Knowledge Center">Get it Now</a>
+		<a class="button-primary" href="https://emdplugins.com/knowledge-center/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=knowledge-center-pluginspage&pk_content=plugin-primary-button" title="Knowledge Center">Get it Now</a>
 		<a class="button-secondary" href="https://downloads.wordpress.org/plugin/knowledge-center.zip/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=knowledge-center-pluginpage&pk_content=plugin-secondary-button" title="Knowledge Center">Download Starter</a>
 	</div>
 </div><div class="emd-plugin-card" style="width:100%;max-width: 320px;">
 	<div class="emd-plugin-card-top" style="">
 		<div class="name column-name">
-			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/plugins/wp-easy-events-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-easy-events-pluginspage&pk_content=plugin-title">WP Easy Events</a></h4>
+			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/wp-easy-events/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-easy-events-pluginspage&pk_content=plugin-title">WP Easy Events</a></h4>
 		</div>
 		<div class="img-caption">
 			<img alt="WP Easy Events" height="200" src="<?php echo esc_url($dir_url) . 'assets/img/addons/wpee-arch-300x200.gif';?>" style="width:100%" title="WP Easy Events">
@@ -158,13 +158,13 @@ ul.tabs li.current {
 		</div>
 	</div>
 	<div class="emd-plugin-card-bottom">
-		<a class="button-primary" href="https://emdplugins.com/plugins/wp-easy-events-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-easy-events-pluginspage&pk_content=plugin-primary-button" title="WP Easy Events">Get it Now</a>
+		<a class="button-primary" href="https://emdplugins.com/wp-easy-events/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-easy-events-pluginspage&pk_content=plugin-primary-button" title="WP Easy Events">Get it Now</a>
 		<a class="button-secondary" href="https://downloads.wordpress.org/plugin/wp-easy-events.zip/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=wp-easy-events-pluginpage&pk_content=plugin-secondary-button" title="WP Easy Events">Download Starter</a>
 	</div>
 </div><div class="emd-plugin-card" style="width:100%;max-width: 320px;">
 	<div class="emd-plugin-card-top" style="">
 		<div class="name column-name">
-			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/plugins/campus-directory-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=campus-directory-pluginspage&pk_content=plugin-title">Campus Directory</a></h4>
+			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/campus-directory/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=campus-directory-pluginspage&pk_content=plugin-title">Campus Directory</a></h4>
 		</div>
 		<div class="img-caption">
 			<img alt="Campus Directory" height="200" src="<?php echo esc_url($dir_url) . 'assets/img/addons/campusdir-arch-300x200.png';?>" style="width:100%" title="Campus Directory">
@@ -172,13 +172,13 @@ ul.tabs li.current {
 		</div>
 	</div>
 	<div class="emd-plugin-card-bottom">
-		<a class="button-primary" href="https://emdplugins.com/plugins/campus-directory-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=campus-directory-pluginspage&pk_content=plugin-primary-button" title="Campus Directory">Get it Now</a>
+		<a class="button-primary" href="https://emdplugins.com/campus-directory/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=campus-directory-pluginspage&pk_content=plugin-primary-button" title="Campus Directory">Get it Now</a>
 		<a class="button-secondary" href="https://downloads.wordpress.org/plugin/campus-directory.zip/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=campus-directory-pluginpage&pk_content=plugin-secondary-button" title="Campus Directory">Download Starter</a>
 	</div>
 </div><div class="emd-plugin-card" style="width:100%;max-width: 320px;">
 	<div class="emd-plugin-card-top" style="">
 		<div class="name column-name">
-			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/plugins/request-a-quote-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=request-a-quote-pluginspage&pk_content=plugin-title">Request a quote</a></h4>
+			<h4 class="emd-plugin-title" style="height:24px"><a class="thickbox" href="https://emdplugins.com/request-a-quote/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=request-a-quote-pluginspage&pk_content=plugin-title">Request a quote</a></h4>
 		</div>
 		<div class="img-caption">
 			<img alt="Request a quote" height="200" src="<?php echo esc_url($dir_url) . 'assets/img/addons/request-a-quote-arch-320x200.gif';?>" style="width:100%" title="Request a quote">
@@ -186,7 +186,7 @@ ul.tabs li.current {
 		</div>
 	</div>
 	<div class="emd-plugin-card-bottom">
-		<a class="button-primary" href="https://emdplugins.com/plugins/request-a-quote-wordpress-plugin/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=request-a-quote-pluginspage&pk_content=plugin-primary-button" title="Request a quote">Get it Now</a>
+		<a class="button-primary" href="https://emdplugins.com/request-a-quote/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=request-a-quote-pluginspage&pk_content=plugin-primary-button" title="Request a quote">Get it Now</a>
 		<a class="button-secondary" href="https://downloads.wordpress.org/plugin/request-a-quote.zip/?pk_source=plugins-page&pk_medium=plugin&pk_campaign=request-a-quote-pluginpage&pk_content=plugin-secondary-button" title="Request a quote">Download Starter</a>
 	</div>
 </div></div>

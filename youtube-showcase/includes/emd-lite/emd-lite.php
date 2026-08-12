@@ -28,7 +28,7 @@ function emd_lite_modal($strings,$app,$hook){
 	$strings['upgrade_title']   = apply_filters('emd_lite_upgrade_title',esc_html__('Premium Feature', 'youtube-showcase'),$hook);
 	$strings['upgrade_message'] = '<p>' . apply_filters('emd_lite_upgrade_message',esc_html__('Unfortunately, this feature is not available. Please upgrade to a premium edition to unlock all awesome features.', 'youtube-showcase'),$hook) . '</p>';
 	$strings['upgrade_button']  = apply_filters('emd_lite_upgrade_button',esc_html__('Upgrade NOW', 'youtube-showcase'),$hook);
-	$strings['upgrade_url']     = apply_filters('emd_lite_upgrade_url',esc_url("https://emdplugins.com/plugin-pricing/youtube-showcase-wordpress-plugin-pricing/?pk_campaign=upgradelink"),$hook);
+	$strings['upgrade_url']     = apply_filters('emd_lite_upgrade_url',esc_url("https://emdplugins.com/youtube-showcase/pricing/?pk_campaign=upgradelink"),$hook);
 	$strings['upgrade_modal']   = apply_filters('emd_lite_upgrade_modal',emd_lite_upgrade_modal_text($app),$hook);
 	return $strings;
 }
@@ -53,7 +53,7 @@ function emd_lite_upgrade_modal_text($app){
 					),
 				)
 			),
-			'https://emdplugins.com/questions/how-do-i-upgrade-my-plugin/?pk_campaign=' . esc_attr($app) . '&pk_kwd=upgradelink'
+			'https://support.emdplugins.com/questions/how-do-i-upgrade-my-plugin/?pk_campaign=' . esc_attr($app) . '&pk_kwd=upgradelink'
 		) .
 		'</p>';
 }
@@ -270,7 +270,7 @@ function emd_lite_get_operations($type,$plural_label,$app){
 		</div>
 		</div>
 		<div class="emd-oper-modal-button">
-			<a href="' . esc_url("https://emdplugins.com/plugin-pricing/youtube-showcase-wordpress-plugin-pricing/?pk_campaign=upgradelink&pk_kwd=operations") . '" class="emdmodalbtn" target="_blank" rel="noopener noreferrer">';
+			<a href="' . esc_url("https://emdplugins.com/youtube-showcase/pricing/?pk_campaign=upgradelink&pk_kwd=operations") . '" class="emdmodalbtn" target="_blank" rel="noopener noreferrer">';
 	}
 	elseif($type == 'yt_api'){
 		echo '<h2>' . sprintf(esc_html__('Get your YouTube videos and update stats with a few clicks', 'youtube-showcase'),esc_attr($plural_label)) . '</h2>
@@ -294,15 +294,15 @@ function emd_lite_get_operations($type,$plural_label,$app){
 		</div>
 		</div>
 		<div class="emd-oper-modal-button">
-			<a href="' . esc_url("https://emdplugins.com/plugin-pricing/youtube-showcase-wordpress-plugin-pricing/?pk_campaign=upgradelink&pk_kwd=youtube-api") . '" class="emdmodalbtn" target="_blank" rel="noopener noreferrer">';
+			<a href="' . esc_url("https://emdplugins.com/youtube-showcase/pricing/?pk_campaign=upgradelink&pk_kwd=youtube-api") . '" class="emdmodalbtn" target="_blank" rel="noopener noreferrer">';
 
 	}
 	elseif($type == 'cust_fields'){
 		echo '<h2>' . esc_html__('Gather, display and search information with ease', 'youtube-showcase') . '</h2>
 		<div style="max-width:470px;margin: auto;margin-bottom:15px;"><strong>' . esc_html__('EMD Custom Field Builder is an easy to use yet powerful tool to customize your plugin by adding custom fields and taxonomies. ', 'youtube-showcase') . '</strong>
-		<span><a href="https://emdplugins.com/questions/how-to-use-emd-custom-field-builder/?pk_campaign=' . esc_attr($app) . '-cust-fields&pk_kwd=learnmore" target="_blank">' . 
+		<span><a href="https://support.emdplugins.com/questions/how-to-use-emd-custom-field-builder/?pk_campaign=' . esc_attr($app) . '-cust-fields&pk_kwd=learnmore" target="_blank">' . 
 		esc_html__('Learn more', 'youtube-showcase') . '</a>' . 
-		'</span><div style="font-size:85%">* <a href="https://emdplugins.com/best-form-builder-for-wordpress/?pk_campaign=' . esc_attr($app) . '-cust-fields&pk_kwd=formbuilder" target="_blank">EMD Form Builder</a> is required</div></div>
+		'</span><div style="font-size:85%">* <a href="https://support.emdplugins.com/best-form-builder-for-wordpress/?pk_campaign=' . esc_attr($app) . '-cust-fields&pk_kwd=formbuilder" target="_blank">EMD Form Builder</a> is required</div></div>
 		<div class="emd-flex emdflexrow">
 		<ul class="left">
 		<li><span class="emdiconpad dashicons dashicons-thumbs-up" aria-hidden="true"></span>' . esc_html__('Create unlimited number of custom fields', 'youtube-showcase') . '</li>
@@ -321,7 +321,7 @@ function emd_lite_get_operations($type,$plural_label,$app){
 		</div>
 		</div>
 		<div class="emd-oper-modal-button">
-			<a href="' . esc_url("https://emdplugins.com/plugin-pricing/youtube-showcase-wordpress-plugin-pricing/?pk_campaign=" . esc_attr($app) . "-cust-fields&pk_kwd=upgradelink") . '" class="emdmodalbtn" target="_blank" rel="noopener noreferrer">';
+			<a href="' . esc_url("https://emdplugins.com/youtube-showcase/pricing/?pk_campaign=" . esc_attr($app) . "-cust-fields&pk_kwd=upgradelink") . '" class="emdmodalbtn" target="_blank" rel="noopener noreferrer">';
 
 	}
 	echo esc_html('Upgrade Now', 'youtube-showcase') .

@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 add_filter('emd_lite_upgrade_url', 'emd_yt_lite_upgrade_url', 10, 2);
 function emd_yt_lite_upgrade_url($url, $hook) {
 	if (!preg_match('/_shortcodes$/', $hook)) {
-		$url = esc_url("https://emdplugins.com/support/?pk_campaign=upgradelink");
+		$url = esc_url("https://support.emdplugins.com/?pk_campaign=upgradelink");
 	}
 	return $url;
 }

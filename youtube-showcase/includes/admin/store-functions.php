@@ -21,7 +21,7 @@ if (!function_exists('emd_display_store')) {
 		wp_enqueue_script('jquery');
 		ob_start(); ?>
 	<div class="wrap">
-	<h2><?php echo esc_html($title);?> &nbsp;&mdash;&nbsp;<a href="https://emdplugins.com/plugins?pk_source=plugin-addons-page&pk_medium=plugin&pk_campaign=<?php echo esc_attr($appd);?>-addonspage&pk_content=browseall" class="button-primary" title="<?php esc_html_e( 'Browse All', 'youtube-showcase' ); ?>" target="_blank"><?php esc_html_e( 'Browse All', 'youtube-showcase' ); ?></a>
+	<h2><?php echo esc_html($title);?> &nbsp;&mdash;&nbsp;<a href="https://emdplugins.com/wordpress-plugins?pk_source=plugin-addons-page&pk_medium=plugin&pk_campaign=<?php echo esc_attr($appd);?>-addonspage&pk_content=browseall" class="button-primary" title="<?php esc_html_e( 'Browse All', 'youtube-showcase' ); ?>" target="_blank"><?php esc_html_e( 'Browse All', 'youtube-showcase' ); ?></a>
 	</h2>
 	<p><?php esc_html_e('The following plugins extend and expand the functionality of your app.','youtube-showcase'); ?></p>
 			<?php echo esc_html(emd_add_ons('tabs',$appd)); ?>
@@ -61,7 +61,7 @@ if (!function_exists('emd_display_support')) {
 		ob_start(); ?>
 		<div class="wrap">
 		<h2><?php echo esc_html($title);?></h2>
-		<div id="support-header"><?php printf(__('Thanks for installing %s.','youtube-showcase'),constant(strtoupper($appd) . '_NAME'));?> &nbsp; <?php  printf(__('All support requests are accepted through <a href="%s" target="_blank">our support site.</a>','youtube-showcase'),'https://emdplugins.com/support/?pk_source=support-page&pk_medium=plugin&pk_campaign=plugin-support&pk_content=supportlink'); ?>
+		<div id="support-header"><?php printf(__('Thanks for installing %s.','youtube-showcase'),constant(strtoupper($appd) . '_NAME'));?> &nbsp; <?php  printf(__('All support requests are accepted through <a href="%s" target="_blank">our support site.</a>','youtube-showcase'),'https://support.emdplugins.com/?pk_source=support-page&pk_medium=plugin&pk_campaign=plugin-support&pk_content=supportlink'); ?>
 	<?php 
 		switch($show_review){
 			case '1':

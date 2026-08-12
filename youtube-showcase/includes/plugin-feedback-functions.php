@@ -128,7 +128,7 @@ function youtube_showcase_show_rateme_action() {
 		$response['redirect'] = "https://wordpress.org/support/plugin/youtube-showcase/reviews/#postform";
 		$min_trigger = 10;
 	} else {
-		$response['redirect'] = "https://emdplugins.com/plugins/youtube-showcase-wordpress-plugin/";
+		$response['redirect'] = "https://emdplugins.com/youtube-showcase/";
 		$min_trigger = - 1;
 	}
 	update_option('youtube_showcase_show_rateme_plugin_min', $min_trigger);
@@ -192,7 +192,7 @@ function youtube_showcase_plugin_row_meta($input, $file) {
 	if ($file != 'youtube-showcase/youtube-showcase.php') return $input;
 	$links = array(
 		'<a href="https://docs.emdplugins.com/docs/youtube-showcase-community-documentation/">' . __('Docs', 'youtube-showcase') . '</a>',
-		'<a href="https://emdplugins.com/plugins/youtube-showcase-wordpress-plugin/">' . __('Pro Version', 'youtube-showcase') . '</a>'
+		'<a href="https://emdplugins.com/youtube-showcase/">' . __('Pro Version', 'youtube-showcase') . '</a>'
 	);
 	$input = array_merge($input, $links);
 	return $input;
