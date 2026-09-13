@@ -16,61 +16,6 @@ jQuery(document).ready(function($){
 			}
 		});
 	}
-	$.fn.verifyRegistration = function (el,event){
-		$.ajax({
-			type: 'POST',
-			url:emd_form_vars.ajax_url ,
-			data: {action:'emd_lite_verify_registration',reg_username:el.val(),nonce:emd_form_vars.nonce},
-			cache: false,
-			async: false,
-			success: function(resp) {
-				if(!resp.success){
-					el.addClass('text-danger');
-					if(!el.closest('.emd-form-field').find('label.text-danger').length > 0){
-						$('<label class="text-danger">'+resp.data.msg+'</label>').insertAfter(el.parent());
-					}
-					else if(!el.closest('.emd-form-field').find('label.text-danger').html()){
-						el.closest('.emd-form-field').find('label.text-danger').html(resp.data.msg);
-						el.closest('.emd-form-field').find('label.text-danger').show();
-					}
-					if(event){
-						event.preventDefault();
-						return false;
-					}
-				}
-				else {
-					el.removeClass('text-danger');
-					el.closest('.emd-form-field').find('label.text-danger').remove();
-					if(event){
-						$.fn.checkPassword($('#login_box_reg_confirm_password'),event);
-					}
-				}
-			}
-		});
-	}
-	$.fn.checkPassword = function (el,event){
-		if(el.val() != $('#login_box_reg_password').val()){
-			el.addClass('text-danger');
-			if(!el.closest('.emd-form-field').find('label.text-danger').length > 0){
-				$('<label class="text-danger">'+emd_form_vars.validate_msg.passw+'</label>').insertAfter(el.parent());
-			}
-			else if(!el.closest('.emd-form-field').find('label.text-danger').html()){
-				el.closest('.emd-form-field').find('label.text-danger').html(emd_form_vars.validate_msg.passw);
-				el.closest('.emd-form-field').find('label.text-danger').show();
-			}
-			if(event){
-				event.preventDefault();
-				return false;
-			}
-		}
-		else {
-			el.removeClass('text-danger');
-			el.closest('.emd-form-field').find('label.text-danger').remove();
-			if(event){
-				$.fn.submitEmdForm(emd_form_vars.form_steps);
-			}
-		}
-	}
 	$.fn.submitEmdForm = function (form_steps){
 		last_step = 1;	
 		$.each(form_steps, function (ind, val){
@@ -380,13 +325,7 @@ jQuery(document).ready(function($){
 				event.preventDefault();
 				return false;
 			}
-			//see if registration fields
-			if($('#login_box_reg_username').val()){
-				$.fn.verifyRegistration($('#login_box_reg_username'),event);
-			}
-			else {
-				$.fn.submitEmdForm(emd_form_vars.form_steps);
-			}
+			$.fn.submitEmdForm(emd_form_vars.form_steps);
 		});
 	}
 	else if(emd_form_vars.enable_ajax){
@@ -686,73 +625,9 @@ jQuery(document).ready(function($){
                 $(this).closest('.emd-form-group').removeClass('required');
         });
 	$('.emd-form-container :input').change(function () {
-		if(!$(this).hasClass('emd-radio') && $(this).val() && $(this).attr('name') != 'login_box_password' && $(this).attr('name') != 'login_box_username'){
+		if(!$(this).hasClass('emd-radio') && $(this).val()){
 			localStorage[$(this).attr('name')] = $(this).val();
 		}
 	});
 		
-	$("#login_box_reg_username").on('change', function() {
-		if($(this).val()){
-			$.fn.verifyRegistration($(this));
-		}
-	});
-	$("#login_box_reg_confirm_password").on('change', function() {
-		$.fn.checkPassword($(this));
-	});
-
-	// Show the login form 
-	$(document).on('click','.emd-login-box',function(event){
-		event.preventDefault();
-		$('.emd-form-row').hide();
-		$('.emd-btn-toolbar').hide();
-		$(this).closest('.emd-form-row').find('.emd-form-field.emd-login').show();	
-		$(this).closest('.emd-form-row').show();	
-		$(this).closest('.emd-form-row').addClass('loginbox');	
-		$(this).closest('.emd-form-row').css('display', 'inline-block');	
-		$('.emd-login-label').hide();
-		$('.emd-login-button').show();
-		$(this).closest('.emd-form-row').find('.emd-reg-label').show();
-        });
-	$(document).on('click','.emd-register-login',function(event){
-		event.preventDefault();
-		$('.emd-login-label').show();
-		$('.emd-form-row').show();
-		$('.emd-btn-toolbar').show();
-		$(this).closest('.emd-form-row').removeClass('loginbox');	
-		$(this).closest('.emd-form-row').find('.emd-form-field.emd-login').hide();	
-		$(this).closest('.emd-form-row').find('.emd-form-field.emd-reg').show();	
-		$('.emd-reg-label').hide();
-		$('.emd-login-button').hide();
-		$('.emd-reg-error').hide();
-        });
-	$(document).on('click','.emd-login-submit',function(event){
-		event.preventDefault();
-		redirect = '';
-		if($('#emd_login_redirect').val()){
-			redirect = $('#emd_login_redirect').val();
-		}
-		$.ajax({
-			type: 'POST',
-			url:emd_form_vars.ajax_url ,
-			data: {action:'emd_lite_process_login',
-				nonce: $('#emd_login_nonce').val(),
-				emd_user_pass:$('#login_box_password').val(),
-				emd_user_login:$('#login_box_username').val(),
-				emd_login_entity:$('#emd_login_entity').val(),
-				emd_login_user_attr:$('#emd_login_user_attr').val(),
-				emd_hidden_rel:$('#emd_hidden_rel').val(),
-				emd_hidden_rel_val:$('#emd_hidden_rel_val').val(),
-				emd_login_redirect:redirect,
-			},
-			success: function(msg) {
-				if(msg.success && msg.data.redirect){
-					window.location.href = msg.data.redirect;
-				}
-				else if(!msg.success){
-					$('.emd-reg-error').html(msg.data.error);
-					$('.emd-reg-error').show();
-				}
-			}
-		});
-	});
 });

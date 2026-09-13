@@ -86,7 +86,14 @@ if ( ! class_exists( 'EMD_MB_Taxonomy_Field' ) )
 		static function html( $meta, $field )
 		{
 			$options = $field['options'];
-			$terms   = get_terms( $options['taxonomy'], $options['args'] );
+
+			$args = wp_parse_args( $options['args'] );
+			$args['taxonomy'] = $options['taxonomy'];
+			$terms = get_terms( $args );
+
+			if ( is_wp_error( $terms ) ) {
+			    $terms = array();
+			}
 
 			$field['options'] = self::get_options( $terms );
 

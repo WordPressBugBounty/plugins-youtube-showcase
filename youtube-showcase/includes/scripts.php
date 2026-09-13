@@ -25,7 +25,7 @@ function youtube_showcase_load_admin_enq($hook) {
 		wp_enqueue_script('emd-plugin-rateme-js', $dir_url . 'assets/js/emd-plugin-rateme.js');
 	}
 	if ($hook == 'widgets.php') {
-		wp_enqueue_script('emd-widg-js', $dir_url . 'assets/js/emd-widget-admin.js', array() , '', true);
+		wp_enqueue_script('emd-widg-js', $dir_url . 'assets/js/emd-widget-admin.js', array() , YOUTUBE_SHOWCASE_VERSION, true);
 		return;
 	}
 	if ($hook == 'edit-tags.php') {
@@ -34,10 +34,23 @@ function youtube_showcase_load_admin_enq($hook) {
 	if (isset($_GET['page']) && $_GET['page'] == 'youtube_showcase_settings') {
 		wp_enqueue_style('emd-accordion-css', $dir_url . 'assets/css/emd-accordion.css');
 		wp_enqueue_script('accordion');
-		wp_enqueue_style('codemirror-css', $dir_url . 'assets/ext/codemirror/codemirror.min.css');
-		wp_enqueue_script('codemirror-js', $dir_url . 'assets/ext/codemirror/codemirror.min.js', array() , '', true);
-		wp_enqueue_script('codemirror-css-js', $dir_url . 'assets/ext/codemirror/css.min.js', array() , '', true);
-		wp_enqueue_script('codemirror-jvs-js', $dir_url . 'assets/ext/codemirror/javascript.min.js', array() , '', true);
+		wp_enqueue_script('code-editor');
+		wp_enqueue_style('code-editor');
+		// Get settings for both editors
+                $css_settings = wp_get_code_editor_settings( array( 'type' => 'text/css' ) );
+                $js_settings  = wp_get_code_editor_settings( array( 'type' => 'text/javascript' ) );
+		$js_settings['codemirror']['lint'] = false;
+		// Initialize both editors
+                $init_script = 'jQuery(function() {';
+                if ( ! empty( $css_settings ) ) {
+                $init_script .= 'wp.codeEditor.initialize( "youtube_showcase_tools_custom_css", ' . wp_json_encode( $css_settings ) . ' );';
+                }
+                if ( ! empty( $js_settings ) ) {
+                $init_script .= 'wp.codeEditor.initialize( "youtube_showcase_tools_custom_js", ' . wp_json_encode( $js_settings ) . ' );';
+                }
+                $init_script .= '});';
+
+                wp_add_inline_script( 'code-editor', $init_script );
 		return;
 	} else if (isset($_GET['page']) && in_array($_GET['page'], Array(
 		'youtube_showcase_notify'
@@ -68,7 +81,7 @@ function youtube_showcase_load_admin_enq($hook) {
 	} else if (isset($_GET['page']) && $_GET['page'] == 'youtube_showcase_shortcodes') {
 		wp_enqueue_script('emd-copy-js', $dir_url . 'assets/js/emd-copy.js', array(
 			'clipboard'
-		) , '');
+		) , YOUTUBE_SHOWCASE_VERSION);
 		return;
 	}
 	if (in_array($typenow, Array(
@@ -192,7 +205,7 @@ function youtube_showcase_enq_custom_css_js() {
 		if (is_ssl()) {
 			$url = home_url('/', 'https');
 		}
-		wp_register_style('youtube-showcase-custom', false);
+		wp_register_style('youtube-showcase-custom', false, array(), YOUTUBE_SHOWCASE_VERSION);
 		wp_enqueue_style('youtube-showcase-custom');
 		wp_add_inline_style('youtube-showcase-custom', $tools['custom_css']);
 	}
@@ -201,7 +214,7 @@ function youtube_showcase_enq_custom_css_js() {
 		if (is_ssl()) {
 			$url = home_url('/', 'https');
 		}
-		wp_register_script('youtube-showcase-custom', false);
+		wp_register_script('youtube-showcase-custom', false, array(), YOUTUBE_SHOWCASE_VERSION, true);
 		wp_enqueue_script('youtube-showcase-custom');
 		wp_add_inline_script('youtube-showcase-custom', $tools['custom_js']);
 	}
@@ -255,20 +268,20 @@ function youtube_showcase_edit_next_prev_button() {
 		}
 		if ($screen->is_block_editor) { ?>
                                                 if(is_prev_post_available && is_next_post_available){
-                                                        $('.edit-post-header__settings').prepend('<a href="<?php echo get_edit_post_link($previous_post_id) ?>" class="prev-post components-button editor-post-preview is-button is-primary is-large">&larr; <?php esc_html_e('Previous', 'youtube-showcase') ?></a><a href="<?php echo get_edit_post_link($next_post_id) ?>" class="next-post components-button editor-post-preview is-button is-primary is-large"><?php esc_html_e('Next', 'youtube-showcase') ?> &rarr;</a>');
+                                                        $('.edit-post-header__settings').prepend('<a href="<?php echo esc_url(get_edit_post_link($previous_post_id)) ?>" class="prev-post components-button editor-post-preview is-button is-primary is-large">&larr; <?php esc_html_e('Previous', 'youtube-showcase') ?></a><a href="<?php echo esc_url(get_edit_post_link($next_post_id)) ?>" class="next-post components-button editor-post-preview is-button is-primary is-large"><?php esc_html_e('Next', 'youtube-showcase') ?> &rarr;</a>');
                                                 }else if(is_prev_post_available && !is_next_post_available){
-                                                        $('.edit-post-header__settings').prepend('<a href="<?php echo get_edit_post_link($previous_post_id) ?>" class="prev-post components-button editor-post-preview is-button is-primary is-large">&larr; <?php esc_html_e('Previous', 'youtube-showcase') ?></a>');
+                                                        $('.edit-post-header__settings').prepend('<a href="<?php echo esc_url(get_edit_post_link($previous_post_id)) ?>" class="prev-post components-button editor-post-preview is-button is-primary is-large">&larr; <?php esc_html_e('Previous', 'youtube-showcase') ?></a>');
                                                 }else if(is_next_post_available && !is_prev_post_available){
-                                                        $('.edit-post-header__settings').prepend('<a href="<?php echo get_edit_post_link($next_post_id) ?>" class="next-post components-button editor-post-preview is-button is-primary is-large"><?php esc_html_e('Next', 'youtube-showcase') ?> &rarr;</a>');
+                                                        $('.edit-post-header__settings').prepend('<a href="<?php echo esc_url(get_edit_post_link($next_post_id)) ?>" class="next-post components-button editor-post-preview is-button is-primary is-large"><?php esc_html_e('Next', 'youtube-showcase') ?> &rarr;</a>');
                                                 }
                                         <?php
 		} else { ?>
                                                 if(is_prev_post_available && is_next_post_available){
-                                                        $('.wrap .page-title-action').after('<a href="<?php echo get_edit_post_link($previous_post_id) ?>" class="prev-post page-title-action">&larr; <?php esc_html_e('Previous', 'youtube-showcase') ?></a><a href="<?php echo get_edit_post_link($next_post_id) ?>" class="next-post page-title-action"><?php esc_html_e('Next', 'youtube-showcase') ?> &rarr;</a>');
+                                                        $('.wrap .page-title-action').after('<a href="<?php echo esc_url(get_edit_post_link($previous_post_id)) ?>" class="prev-post page-title-action">&larr; <?php esc_html_e('Previous', 'youtube-showcase') ?></a><a href="<?php echo esc_url(get_edit_post_link($next_post_id)) ?>" class="next-post page-title-action"><?php esc_html_e('Next', 'youtube-showcase') ?> &rarr;</a>');
                                                 }else if(is_prev_post_available && !is_next_post_available){
-                                                        $('.wrap .page-title-action').after('<a href="<?php echo get_edit_post_link($previous_post_id) ?>" class="prev-post page-title-action">&larr; <?php esc_html_e('Previous', 'youtube-showcase') ?></a>');
+                                                        $('.wrap .page-title-action').after('<a href="<?php echo esc_url(get_edit_post_link($previous_post_id)) ?>" class="prev-post page-title-action">&larr; <?php esc_html_e('Previous', 'youtube-showcase') ?></a>');
                                                 }else if(is_next_post_available && !is_prev_post_available){
-                                                        $('.wrap .page-title-action').after('<a href="<?php echo get_edit_post_link($next_post_id) ?>" class="next-post page-title-action"><?php esc_html_e('Next', 'youtube-showcase') ?> &rarr;</a>');
+                                                        $('.wrap .page-title-action').after('<a href="<?php echo esc_url(get_edit_post_link($next_post_id)) ?>" class="next-post page-title-action"><?php esc_html_e('Next', 'youtube-showcase') ?> &rarr;</a>');
                                                 }
                                         <?php
 		} ?>                                                      

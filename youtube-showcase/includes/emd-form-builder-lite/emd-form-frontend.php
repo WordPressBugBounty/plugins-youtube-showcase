@@ -73,83 +73,6 @@ function emd_form_builder_lite_process(){
 				}
 				$app = sanitize_text_field($_POST['emd_app']);
 				$new_user_id = 0;
-				if(!empty($_POST['emd_reg_user'])){
-					//register user
-					//first check if username and password are valid
-					if(!empty($_POST['login_box_reg_username']) && !empty(trim($_POST['login_box_reg_password'])) && !empty(trim($_POST['login_box_reg_confirm_password']))){
-						if(trim($_POST['login_box_reg_password']) == trim($_POST['login_box_reg_confirm_password'])){
-							if(!validate_username(sanitize_text_field($_POST['login_box_reg_username']))){	
-								wp_send_json_error(array('msg' => __('Invalid username','youtube-showcase')));
-								die();
-							}
-							elseif(username_exists(sanitize_text_field($_POST['login_box_reg_username']))){
-								wp_send_json_error(array('msg' => __('Username already taken','youtube-showcase')));
-								die();
-							}
-							else {
-								$ent_list = get_option($app . '_ent_list');
-								$attr_list = get_option($app . '_attr_list');
-								$user_args = Array('user_login' => trim(sanitize_text_field($_POST['login_box_reg_username'])),
-										'user_pass' => trim(sanitize_text_field($_POST['login_box_reg_password'])),
-										'user_registered' => date('Y-m-d H:i:s'),
-								);
-								if(!empty($ent_list[$fcontent['entity']]['user_email_key']) && !empty($_POST[$ent_list[$fcontent['entity']]['user_email_key']])){
-									$user_args['user_email'] = trim(sanitize_text_field($_POST[$ent_list[$fcontent['entity']]['user_email_key']]));
-								}
-								if(!empty($ent_list[$fcontent['entity']]['limit_user_roles'])){
-									$user_args['role'] = $ent_list[$fcontent['entity']]['limit_user_roles'][0];
-								}
-								else {
-									$user_args['role'] = get_option('default_role');
-								}
-								$user_fname_key = '';
-								$user_lname_key = '';
-								if(!empty($attr_list[$fcontent['entity']])){
-									foreach($attr_list[$fcontent['entity']] as $kattr => $vattr){
-										if(!empty($vattr['user_map']) && $vattr['user_map'] == 'user_firstname'){
-												$user_fname_key = $kattr;
-										}
-										elseif(!empty($vattr['user_map']) && $vattr['user_map'] == 'user_lastname'){
-												$user_lname_key = $kattr;
-										}
-									}
-								}
-								if(!empty($user_fname_key) && !empty($_POST[$user_fname_key])){
-									$user_args['first_name'] = sanitize_text_field($_POST[$user_fname_key]);
-								}	
-								if(!empty($user_lname_key) && !empty($_POST[$user_lname_key])){
-									$user_args['last_name'] = sanitize_text_field($_POST[$user_lname_key]);
-								}
-								// Insert new user
-								$new_user_id = wp_insert_user($user_args);
-								// Validate inserted user
-								if(is_wp_error($new_user_id)){
-									wp_send_json_error(array('msg' => __('Please try again','youtube-showcase')));
-									die();
-								}
-								add_user_meta($new_user_id, 'emd_status', 'draft');
-							}
-						}
-						else {
-							$ret = '<div class="text-danger"><a href="' . wp_get_referer() . '">' . __('Please enter same password.', 'youtube-showcase') . '</a></div>';
-							wp_send_json_error(array('status' => 'error', 'msg' => $ret));
-							die();
-						}
-					}
-					else {
-						if(empty($_POST['login_box_reg_username'])){
-							$ret = '<div class="text-danger"><a href="' . wp_get_referer() . '">' . __('Please enter username.', 'youtube-showcase') . '</a></div>';
-						}
-						elseif(empty($_POST['login_box_reg_password'])){
-							$ret = '<div class="text-danger"><a href="' . wp_get_referer() . '">' . __('Please enter password.', 'youtube-showcase') . '</a></div>';
-						}
-						elseif(empty($_POST['login_box_reg_confirm_password'])){
-							$ret = '<div class="text-danger"><a href="' . wp_get_referer() . '">' . __('Please enter confirm password.', 'youtube-showcase') . '</a></div>';
-						}
-						wp_send_json_error(array('status' => 'error', 'msg' => $ret));
-						die();
-					}
-				}
 				if(!empty($_POST['save_step']) || !empty($_POST['save_end'])){
 					$result = emd_form_builder_lite_submit_form($app, $fcontent);
 					if ($result === false) {
@@ -858,9 +781,10 @@ function emd_form_builder_lite_txn_display($kfield,$cfield){
 		$def = $set_arrs['tax'][$kfield];
 	}
 	$options = Array();
-	$txn_obj = get_terms($kfield, array(
-				'hide_empty' => 0
-				));
+	$txn_obj = get_terms( array(
+		'taxonomy'   => $kfield,
+		'hide_empty' => false,
+	) );
 	foreach ($txn_obj as $txn) {
 		$options[$txn->slug] = $txn->name;
 	}
@@ -1164,7 +1088,7 @@ function emd_form_builder_lite_render_form($form_id,$app,$fcontent,$error='',$su
 	$version = constant(strtoupper($app) . "_VERSION");
 	//Enqueue	
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('wpas-jvalidate', $dir_url . 'assets/ext/jvalidate/wpas.validate.min.js', array('jquery'),'',true);
+	wp_enqueue_script('wpas-jvalidate', $dir_url . 'assets/ext/jvalidate/wpas.validate.min.js', array('jquery'),$version,true);
 	$local_vars['locale'] = get_locale();
 	//file begin
 	$ret_attrs = emd_form_builder_lite_check_attr($fcontent['layout'],$fentity,$ent_list,$attr_list,$txn_list,$rel_list,$glob_list);
@@ -1212,7 +1136,7 @@ function emd_form_builder_lite_render_form($form_id,$app,$fcontent,$error='',$su
 
 	$cond_js = 0;
 	if($fcontent['type'] == 'submit' && !empty($local_vars['conditional_rules'])){
-		wp_enqueue_script('cond-js', $dir_url . '/assets/js/cond-forms.js',array(),'',true);
+		wp_enqueue_script('cond-js', $dir_url . '/assets/js/cond-forms.js',array(),$version,true);
 		$cond_js = 1;
 	}
 	$func_name = sanitize_text_field($app) . "_enq_bootstrap";
@@ -1237,7 +1161,7 @@ function emd_form_builder_lite_render_form($form_id,$app,$fcontent,$error='',$su
 		if(!empty($js_enqs)){
 			$count_js = 1;
 			foreach($js_enqs as $myjs){
-				wp_enqueue_script('emd-form-js-' . $count_js, $myjs,array(),'',true);
+				wp_enqueue_script('emd-form-js-' . $count_js, $myjs,array(),$version,true);
 				$count_js++;
 			}
 		}
@@ -1260,7 +1184,7 @@ function emd_form_builder_lite_render_form($form_id,$app,$fcontent,$error='',$su
 		$local_vars['nonce'] = wp_create_nonce('emd_form');
 		wp_enqueue_style(str_replace('_','-',$app) . '-allview-css');
 		wp_enqueue_style('form-frontend-css', $dir_url . '/includes/emd-form-builder-lite/css/emd-form-frontend.min.css');
-		wp_enqueue_script('form-frontend-search-js', $dir_url . '/includes/emd-form-builder-lite/js/emd-form-frontend-search.js',array(),'',true);
+		wp_enqueue_script('form-frontend-search-js', $dir_url . '/includes/emd-form-builder-lite/js/emd-form-frontend-search.js',array(),$version,true);
 		wp_localize_script('form-frontend-search-js', 'emd_form_vars', $local_vars);
 		if(!empty($fcontent['settings']['result_templ']) && $fcontent['settings']['result_templ'] == 'simple_table'){
 			wp_enqueue_style('emd-simple-table-css', $dir_url . '/includes/emd-form-builder-lite/css/emd-simple-table.min.css');
@@ -1539,12 +1463,6 @@ function emd_form_builder_lite_show_rows($cpage,$fcontent,$attr_list,$app,$atts_
 		foreach($crow as $fcount => $field){
 			foreach($field as $kfield => $cfield){
 				if(!empty($cfield['show'])){
-					if($kfield == 'login_box_username'){
-						$layout .= emd_form_builder_lite_display_login_box($cfield);
-					}
-					elseif($kfield == 'login_box_reg_username'){
-						$layout .= '<div class="emd-form-row emd-row">';
-					}
 					//if this field is an html field
 					if(!empty($cfield['value'])){
 						$cfield['size'] = 12;
@@ -1568,19 +1486,7 @@ function emd_form_builder_lite_show_rows($cpage,$fcontent,$attr_list,$app,$atts_
 							$layout .= ' emd-sm-' . $cfield['size']. ' emd-xs-12';
 							break;
 					}
-					if(preg_match('/^login_box/',$kfield)){
-						$cfield['req'] = 1;
-						if(in_array($kfield,Array('login_box_username','login_box_password'))){
-							$layout .= ' emd-login';
-						}
-						else {
-							$layout .= ' emd-reg';
-						}
-					}
 					$layout .= '" data-field="' . $kfield . '"';
-					if(in_array($kfield,Array('login_box_username','login_box_password'))){
-						$layout .= ' style="display:none;"';	
-					}
 					$layout .= '>';
 					$cfield['label_position'] = 'top';
 					if(!empty($fcontent['settings']['label_position'])){
@@ -1606,11 +1512,6 @@ function emd_form_builder_lite_show_rows($cpage,$fcontent,$attr_list,$app,$atts_
 					}
 					if(!empty($fcontent['settings']['fill_usermap'])){
 						$cfield['fill_usermap'] = $fcontent['settings']['fill_usermap'];
-					}
-					if(preg_match('/^login_box/',$kfield)){
-						$layout .= emd_form_builder_lite_display_top($kfield,$cfield);
-						$layout .= emd_form_builder_lite_login_fields_display($kfield,$cfield);
-						$layout .= '</div>';	
 					}
 					if(in_array($kfield,Array('blt_title','blt_content','blt_excerpt'))){
 						if(!empty($ent_list[$fentity]['unique_keys']) && in_array($kfield,$ent_list[$fentity]['unique_keys'])){
@@ -1771,10 +1672,6 @@ function emd_form_builder_lite_show_rows($cpage,$fcontent,$attr_list,$app,$atts_
 						$layout .= $cfield['value'];
 					}	
 					$layout .= '</div>';	
-					if($kfield == 'login_box_password'){
-						$layout .= emd_form_builder_lite_display_login_button($fcontent,$ent_list,$cfield,$hidden_rel);
-						$layout .= '</div>';
-					}
 				}
 			}
 		}
@@ -1839,7 +1736,7 @@ function emd_form_builder_lite_get_form_hidden($fcontent,$form_id,$app,$atts_set
 	//if honeypot is enabled
 	if(!empty($fcontent['settings']['honeypot'])){	
 		$honeys = Array('web_site','url','email','company','name','phone','twitter');
-		$honey_key = $honeys[rand(0, count($honeys) - 1)];
+		$honey_key = $honeys[wp_rand(0, count($honeys) - 1)];
 		$honeypot = Array('label' => ucwords(str_replace('_', ' ',$honey_key)), 'size' => 12, 'css_class' => 'emd-ahp', 
 				'label_position' => 'top', 'element_size' => 'emd-input-md','display_type'=>'text', 'autocomplete' => 'off');
 		$layout_hidden .= '<div class="emd-form-row emd-row emd-ahp-row">';	
@@ -1865,14 +1762,6 @@ function emd_form_builder_lite_get_form_hidden($fcontent,$form_id,$app,$atts_set
 		$layout_hidden .= '</div></div></div>';
 	}
 	$layout .= $layout_hidden;
-	return $layout;
-}
-function emd_form_builder_lite_display_login_box($cfield){
-	$layout = '<div class="emd-login-label"><a href="#" class="emd-login-box">';
-	$layout .= $cfield['login_label'] . '</a></div>';
-	$layout .= '<div class="emd-reg-label" style="display:none;"><a href="#" class="emd-register-login">'; 
-	$layout .= $cfield['reg_label'] . '</a></div>';
-	$layout .= '<div class="emd-reg-error" style="display:none;"></div>'; 
 	return $layout;
 }
 function emd_form_builder_lite_display_login_button($fcontent,$ent_list,$cfield,$hidden_rel=''){
@@ -1909,88 +1798,6 @@ function emd_form_builder_lite_display_login_button($fcontent,$ent_list,$cfield,
 	$layout .= '</div>';
 	return $layout;
 }
-function emd_form_builder_lite_login_fields_display($kfield,$cfield){
-	$login_lay = '<input type="';
-	if(in_array($kfield, Array('login_box_password','login_box_reg_password','login_box_reg_confirm_password'))){
-		$login_lay .= 'password';
-	}
-	else {
-		$login_lay .= 'text';
-	}	
-	$login_lay .= '" name="' . $kfield . '" id="' . $kfield . '" class="text required';
-	if(!empty($cfield['css_class'])){
-		$login_lay .= ' ' . $cfield['css_class'];
-	}
-	$login_lay .= ' '  . $cfield['element_size'] . ' emd-form-control" placeholder="' . $cfield['placeholder'] . '"';
-	$login_lay .= '/>';
-	if($kfield == 'login_box_reg_username' && !empty($cfield['enable_registration'])){
-		$login_lay .= "<input type='hidden' value='1' name='emd_reg_user' id='emd_reg_user'>";
-	}	
-	return $login_lay;
-}
-add_action('wp_ajax_nopriv_emd_lite_process_login', 'emd_form_builder_lite_process_login');
-add_action('wp_ajax_emd_lite_process_login', 'emd_form_builder_lite_process_login');
-
-function emd_form_builder_lite_process_login(){
-	$nonce_verified = wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'emd_login_form');
-        if(false === $nonce_verified){
-		//error
-		$error = __('Please refresh the page and try again.','youtube-showcase');
-	}
-	else {
-		$error = "";
-		$user_data = get_user_by('login', sanitize_text_field($_POST['emd_user_login']));
-		if(!$user_data){
-			$user_data = get_user_by('email', sanitize_email($_POST['emd_user_login']));
-		}
-		if($user_data) {
-			$user_id = $user_data->ID;
-			$user_email = $user_data->user_email;
-			if(wp_check_password(sanitize_text_field($_POST['emd_user_pass']), $user_data->user_pass, $user_data->ID)) {
-				if($user_id < 1) return;
-				wp_set_auth_cookie($user_id);
-				wp_set_current_user($user_id, sanitize_text_field($_POST['emd_user_login']));
-				do_action('wp_login', sanitize_text_field($_POST['emd_user_login']), get_userdata($user_id));
-			} else {
-				$error = __( 'The password or username you entered is incorrect.', 'youtube-showcase');
-			}
-		} else {
-			$error = __('The password or username you entered is incorrect.', 'youtube-showcase');
-		}
-	}
-	// Check for errors and redirect if none present
-	if(!empty($error)){
-		wp_send_json_error(array('error' => $error));
-	}
-	else {
-		if(!empty($_POST['emd_hidden_rel']) && !empty($_POST['emd_hidden_rel_val'])){
-			$emd_hidden_rel_val = (int) $_POST['emd_hidden_rel_val'];
-			$emd_hidden_rel = sanitize_text_field($_POST['emd_hidden_rel']);
-			//update the previous entity authors for limitby
-			update_post_meta($emd_hidden_rel_val,'wpas_form_submitted_by',$user_data->user_login);
-			wp_update_post(Array('ID' => $emd_hidden_rel_val,'post_author'=>$user_id));
-			do_action('emd_form_after_login',$emd_hidden_rel,$emd_hidden_rel_val);
-		}
-		$emd_login_ent = sanitize_text_field($_POST['emd_login_entity']);
-		$emd_user_attr = sanitize_text_field($_POST['emd_login_user_attr']);
-		$args = Array('posts_per_page' => 1, 'post_type' => $emd_login_ent, 'meta_key' => $emd_user_attr, 'meta_value' => $user_id,'fields'=>'ids');
-		$posts = get_posts($args);
-		if(empty($_POST['emd_login_redirect'])){
-			$redirect = get_permalink($posts[0]);
-			if(!empty($_POST['emd_hidden_rel']) && !empty($_POST['emd_hidden_rel_val'])){
-				$emd_hidden_rel_val = (int) $_POST['emd_hidden_rel_val'];
-				$emd_hidden_rel = sanitize_text_field($_POST['emd_hidden_rel']);
-				$rel = preg_replace('/rel_/','',$emd_hidden_rel);
-				emd_p2p_type($rel)->connect($posts[0],$emd_hidden_rel_val);	
-			}
-		}
-		else {
-			$redirect = sanitize_url($_POST['emd_login_redirect']);
-		}
-		wp_send_json_success(array('redirect' => $redirect));
-        }
-	die();
-}
 function emd_form_builder_lite_check_loginbox($layout_rows,$entity){
 	$has_login_reg_box = Array();
 	if(!empty($layout_rows)){
@@ -2016,8 +1823,8 @@ function emd_form_builder_lite_check_loginbox($layout_rows,$entity){
 	}
 	return $has_login_reg_box;
 }
-add_action('wp_ajax_nopriv_emd_lite_verify_registration', 'emd_lite_verify_registration');
-add_action('wp_ajax_emd_lite_verify_registration', 'emd_lite_verify_registration');
+add_action('wp_ajax_nopriv_emd_verify_registration', 'emd_lite_verify_registration');
+add_action('wp_ajax_emd_verify_registration', 'emd_lite_verify_registration');
 
 function emd_lite_verify_registration(){
 	check_ajax_referer('emd_form', 'nonce');

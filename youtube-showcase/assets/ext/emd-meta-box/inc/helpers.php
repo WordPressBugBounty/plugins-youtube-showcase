@@ -191,8 +191,8 @@ if ( ! class_exists( 'EMD_MB_Helper' ) )
 						'include'    => $term_ids,
 						'hide_empty' => false,
 					), $args );
-					unset( $func_args['type'], $func_args['taxonomy'], $func_args['multiple'] );
-					$meta = get_terms( $args['taxonomy'], $func_args );
+					unset( $func_args['type'], $func_args['multiple'] );
+					$meta = get_terms( $func_args );
 				}
 				else
 				{
@@ -317,6 +317,8 @@ if ( ! class_exists( 'EMD_MB_Helper' ) )
 			// Counter to display multiple maps on same page
 			static $counter = 0;
 
+			wp_enqueue_script('google-maps','https://maps.googleapis.com/maps/api/js',array(),null,true);
+
 			$html = sprintf(
 				'<div id="emd-mb-map-canvas-%d" style="width:%s;height:%s"></div>',
 				esc_attr($counter),
@@ -324,9 +326,6 @@ if ( ! class_exists( 'EMD_MB_Helper' ) )
 				esc_attr($args['height'])
 			);
 
-			// Load Google Maps script only when needed
-			$html .= '<script>if ( typeof google !== "object" || typeof google.maps !== "object" )
-						document.write(\'<script src="//maps.google.com/maps/api/js"><\/script>\')</script>';
 			$html .= '<script>
 				( function()
 				{

@@ -17,7 +17,9 @@ function emd_glob_settings_tab($tabs,$app){
 	$init_variables = apply_filters('emd_ext_glob_var_init', $init_variables);
 	if(!empty($init_variables)){
 		$tabs['global'] = __('Global', 'youtube-showcase');
-		echo '<p>' . settings_errors($app . '_glob_list') . '</p>';
+		echo '<p>';
+		settings_errors($app . '_glob_list');
+	       	echo '</p>';
 	}
 	return $tabs;
 }
@@ -175,7 +177,7 @@ function emd_global_view_tab($app,$active_tab,$init_variables,$variables){
 				echo "<textarea id='" . esc_attr($app) . "_glob_list_" . esc_attr($id) . "' name='" . esc_attr($app) . "_glob_list[" . esc_attr($id) . "]'>" . esc_attr($val) ."</textarea>";
 				break;
 			case 'wysiwyg':
-				echo wp_editor($val, esc_attr($app) . "_glob_list_" . $id, array(
+				wp_editor($val, esc_attr($app) . "_glob_list_" . $id, array(
 							'tinymce' => false,
 							'textarea_rows' => 10,
 							'media_buttons' => true,

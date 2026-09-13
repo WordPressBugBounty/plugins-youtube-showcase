@@ -362,7 +362,7 @@ if (!function_exists('emd_parse_template_tags')) {
 					$new = '<ul class="commentlist">';
 					foreach($mycomments as $mycomm){
 						$new .= "<li><div>" . __("Author:","youtube-showcase") . $mycomm->comment_author . "&nbsp;&nbsp;";
-						$new .= get_comment_date(sprintf(__('%s \a\t %s', 'youtube-showcase'),get_option('date_format'),get_option('time_format')),$mycomm->comment_ID) . "</div>";
+						$new .= get_comment_date(sprintf(__('%1$s \a\t %2$s', 'youtube-showcase'),get_option('date_format'),get_option('time_format')),$mycomm->comment_ID) . "</div>";
 						$com_content = str_replace("\n", "<br>", $mycomm->comment_content);	
 						$new .= "<p>" . $com_content . "</p>";
 						$new .= "</li>";
@@ -623,28 +623,37 @@ if (!function_exists('emd_check_unique')) {
 if (!function_exists('emd_check_uniq_from_wpdb')) {
 	function emd_check_uniq_from_wpdb($data, $post_id, $post_type, $title_set= 0) {
 		global $wpdb;
-		$where = "";
-		$where_last = "";
-		$join = "";
+		$where = array();
+		$where_last = '';
+		$join = array();
 		$count = 1;
+		$values = array();
+		
 		foreach ($data as $key => $val) {
-			if($key == 'blt_title'){
-				$where_last = " AND p.post_title='" . $val . "'";
-			}
-			else {
-				$join.= " LEFT JOIN " . $wpdb->postmeta . " pm" . $count . " ON p.ID = pm" . $count . ".post_id";
-				$where.= " pm" . $count . ".meta_key='" . $key . "' AND pm" . $count . ".meta_value='" . $val . "' AND ";
+			if ( 'blt_title' === $key ) { 
+				$where[] = 'p.post_title = %s';
+				$values[] = $val;
+			} else {
+				$join[] = 'LEFT JOIN ' . $wpdb->postmeta . ' pm' . $count . ' ON p.ID = pm' . $count . '.post_id';
+				$where[] = 'pm' . $count . '.meta_key = %s';
+				$values[] = $key;
+				$where[] = 'pm' . $count . '.meta_value = %s';
+				$values[] = $val;
 				$count++;
 			}
 		}
-		$where = rtrim($where, "AND");
-		if(empty($join)){
-			$where_last .= " AND p.ID != '" . $post_id . "'";
+		if ( empty( $join ) ) {
+			$where[] = 'p.ID != %d';
+			$values[] = absint( $post_id );
 		}
-		$result_arr = $wpdb->get_results($wpdb->prepare("SELECT p.ID FROM {$wpdb->posts} p " . $join . " WHERE " . $where . " p.post_type = %s " . $where_last,$post_type), ARRAY_A);
-		if (empty($result_arr)) {
+		$where[] = 'p.post_type = %s';
+		$values[] = $post_type;
+		$sql = 'SELECT p.ID FROM ' . $wpdb->posts . ' p ' . implode( ' ', $join ) . ' WHERE ' . implode( ' AND ', $where );
+		$result_arr = $wpdb->get_results( $wpdb->prepare( $sql, $values ), ARRAY_A );
+		
+		if ( empty( $result_arr ) ) {
 			return true;
-		} elseif (!empty($post_id) && $result_arr[0]['ID'] == $post_id) {
+		} elseif ( ! empty( $post_id ) && $result_arr[0]['ID'] == $post_id ) {
 			return true;
 		}
 		return false;
@@ -707,7 +716,7 @@ if (!function_exists('emd_get_tax_vals')) {
 			return '';
 		}	
 		if($nolink == 1){
-			return strip_tags($term_list);
+			return wp_strip_all_tags($term_list);
 		}	
 		return $term_list;		
 	}
@@ -734,21 +743,32 @@ if (!function_exists('emd_post_exists')) {
 		$post_title = wp_unslash(sanitize_post_field('post_title', $title, 0, 'db'));
 		$post_type = wp_unslash(sanitize_post_field('post_type', $type, 0, 'db'));
 
-		$query = "SELECT ID FROM $wpdb->posts WHERE 1=1";
-		$args = array();
-		
-		if(!empty($title)) {
-			$query .= ' AND post_title = %s';
-			$args[] = $post_title;
+		if ( ! empty( $title ) && ! empty( $type ) ) {
+			return (int) $wpdb->get_var(
+				$wpdb->prepare(
+					"SELECT ID FROM {$wpdb->posts} WHERE post_title = %s AND post_type = %s LIMIT 1",
+					$post_title,
+					$post_type
+				)
+			);
 		}
-	 
-		if(!empty($type)) {
-		     $query .= ' AND post_type = %s ';
-		     $args[] = $post_type;
+		if ( ! empty( $title ) ) {
+			return (int) $wpdb->get_var(
+				$wpdb->prepare(
+					"SELECT ID FROM {$wpdb->posts} WHERE post_title = %s LIMIT 1",
+					$post_title
+				)
+			);
 		}
 
-		if(!empty($args))
-			return (int) $wpdb->get_var($wpdb->prepare($query, $args));
+		if ( ! empty( $type ) ) {
+			return (int) $wpdb->get_var(
+				$wpdb->prepare(
+					"SELECT ID FROM {$wpdb->posts} WHERE post_type = %s LIMIT 1",
+					$post_type
+				)
+			);
+		}
 
 		return 0;
 	}
@@ -1020,7 +1040,7 @@ if (!function_exists('emd_load_file')) {
 	function emd_load_file() {
 		$ret = check_ajax_referer('emd_load_file', 'nonce', false);
 		if ($ret === false) {
-			echo '<div class="text-danger"><a href="' . wp_get_referer() . '">' . esc_html__('Please refresh the page and try again.', 'youtube-showcase') . '</a></div>';
+			echo '<div class="text-danger"><a href="' . esc_url(wp_get_referer()) . '">' . esc_html__('Please refresh the page and try again.', 'youtube-showcase') . '</a></div>';
 			die();
 		}
 		if ( ! defined( 'YOUTUBE_SHOWCASE_PLUGIN_DIR' ) ) {
@@ -1061,7 +1081,7 @@ if (!function_exists('emd_delete_file')) {
 	function emd_delete_file() {
 		$ret = check_ajax_referer('emd_delete_file', 'nonce', false);
 		if ($ret === false) {
-			echo '<div class="text-danger"><a href="' . wp_get_referer() . '">' . esc_html__('Please refresh the page and try again.', 'youtube-showcase') . '</a></div>';
+			echo '<div class="text-danger"><a href="' . esc_url(wp_get_referer()) . '">' . esc_html__('Please refresh the page and try again.', 'youtube-showcase') . '</a></div>';
 			wp_die();
 		}
 		$myapp = 'youtube_showcase';

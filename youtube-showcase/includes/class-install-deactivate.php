@@ -496,7 +496,7 @@ if (!class_exists('Youtube_Showcase_Install_Deactivate')):
 ?>
 <div class="updated">
 <?php
-				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://ytshowcasecom.emdplugins.com/?pk_campaign=youtube-showcase&amp;pk_source=plugin&amp;pk_medium=link&amp;pk_content=notice', __('New To Youtube Showcase? Check out live demo!', 'youtube-showcase') , __('&#187;', 'youtube-showcase') , esc_url(add_query_arg($this->option_name . '_adm_notice1', true)) , __('Dismiss', 'youtube-showcase'));
+				printf('<p><a href="%1s" target="_blank"> %2$s </a>&raquo;<a style="float:right;" href="%3$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%4$s</a></p>', 'https://ytshowcasecom.emdplugins.com/?pk_campaign=youtube-showcase&amp;pk_source=plugin&amp;pk_medium=link&amp;pk_content=notice', esc_html__('New To Youtube Showcase? Check out live demo!', 'youtube-showcase') , esc_url(add_query_arg($this->option_name . '_adm_notice1', true)) , esc_html__('Dismiss', 'youtube-showcase'));
 ?>
 </div>
 <?php
@@ -508,14 +508,14 @@ if (!class_exists('Youtube_Showcase_Install_Deactivate')):
 ?>
 <div class="updated">
 <?php
-				printf('<p><a href="%1s" target="_blank"> %2$s </a>%3$s<a style="float:right;" href="%4$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%5$s</a></p>', 'https://emdplugins.com/youtube-showcase?pk_campaign=youtube-showcase&amp;pk_source=plugin&amp;pk_medium=link&amp;pk_content=notice', __('Want to Keep Your Visitors Longer on Your Site? Get Pro Now!', 'youtube-showcase') , __('&#187;', 'youtube-showcase') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , __('Dismiss', 'youtube-showcase'));
+				printf('<p><a href="%1s" target="_blank"> %2$s </a>&raquo;<a style="float:right;" href="%3$s"><span class="dashicons dashicons-dismiss" style="font-size:15px;"></span>%4$s</a></p>', 'https://emdplugins.com/youtube-showcase?pk_campaign=youtube-showcase&amp;pk_source=plugin&amp;pk_medium=link&amp;pk_content=notice', esc_html__('Want to Keep Your Visitors Longer on Your Site? Get Pro Now!', 'youtube-showcase') , esc_url(add_query_arg($this->option_name . '_adm_notice2', true)) , esc_html__('Dismiss', 'youtube-showcase'));
 ?>
 </div>
 <?php
 			}
 			if (current_user_can('manage_options') && get_option($this->option_name . '_setup_pages') == 1) {
 				echo "<div id=\"message\" class=\"updated\"><p><strong>" . esc_html__('Welcome to Youtube Showcase', 'youtube-showcase') . "</strong></p>
-           <p class=\"submit\"><a href=\"" . add_query_arg('setup_youtube_showcase_pages', 'true', admin_url('index.php')) . "\" class=\"button-primary\">" . __('Setup Youtube Showcase Pages', 'youtube-showcase') . "</a> <a class=\"skip button-primary\" href=\"" . add_query_arg('skip_setup_youtube_showcase_pages', 'true', admin_url('index.php')) . "\">" . __('Skip setup', 'youtube-showcase') . "</a></p>
+           <p class=\"submit\"><a href=\"" . esc_url(add_query_arg('setup_youtube_showcase_pages', 'true', admin_url('index.php'))) . "\" class=\"button-primary\">" . esc_html__('Setup Youtube Showcase Pages', 'youtube-showcase') . "</a> <a class=\"skip button-primary\" href=\"" . esc_url(add_query_arg('skip_setup_youtube_showcase_pages', 'true', admin_url('index.php'))) . "\">" . esc_html__('Skip setup', 'youtube-showcase') . "</a></p>
          </div>";
 			}
 		}

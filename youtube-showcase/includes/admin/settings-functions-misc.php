@@ -33,7 +33,9 @@ if (!function_exists('emd_misc_settings_tab')) {
 		}
                 if($show_tab == 1){
 			$tabs['misc'] = __('Misc', 'youtube-showcase');
-			echo '<p>' . settings_errors(esc_attr($app) . '_misc_settings') . '</p>';
+			echo '<p>';
+			settings_errors(esc_attr($app) . '_misc_settings');
+		       	echo '</p>';
 		}
 		return $tabs;
 	}

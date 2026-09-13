@@ -28,7 +28,7 @@ $uniq_id = str_replace("_","-",get_post_type($post));
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php 
 		//emd_get_template_part('youtube-showcase', 'single', str_replace("_","-",$post->post_type)); 
-		echo apply_filters('the_content',$post->post_content);
+		the_content();
 		?>
 		</div>
 		<?php

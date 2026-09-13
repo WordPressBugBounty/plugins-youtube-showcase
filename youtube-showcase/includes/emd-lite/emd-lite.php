@@ -256,7 +256,7 @@ function emd_lite_get_operations($type,$plural_label,$app){
 		'</div>
 		<div class="emd-flex emdflexrow">
 		<ul class="left">
-		<li><span class="emdiconpad dashicons dashicons-thumbs-up" aria-hidden="true"></span>' . sprintf(esc_html__('Get your %s in %s fast', 'youtube-showcase'),esc_attr(strtolower($plural_label)),esc_attr($plugin_name)) . '</li>
+		<li><span class="emdiconpad dashicons dashicons-thumbs-up" aria-hidden="true"></span>' . sprintf(esc_html__('Get your %1$s in %2$s fast', 'youtube-showcase'),esc_attr(strtolower($plural_label)),esc_attr($plugin_name)) . '</li>
 		<li><span class="emdiconpad dashicons dashicons-thumbs-up" aria-hidden="true"></span>' . sprintf(esc_html__('Bulk update %s with a single click', 'youtube-showcase'),esc_attr(strtolower($plural_label))) . '</li>
 		<li><span class="emdiconpad dashicons dashicons-thumbs-up" aria-hidden="true"></span>' . esc_html__('Take periodic backups to protect yourself against data loss', 'youtube-showcase') . '</li>
 		<li><span class="emdiconpad dashicons dashicons-thumbs-up" aria-hidden="true"></span>' . esc_html__('Reset and start from scratch anytime', 'youtube-showcase') . '</li>

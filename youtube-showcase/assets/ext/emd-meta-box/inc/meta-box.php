@@ -296,7 +296,7 @@ if ( ! class_exists( 'EMD_Meta_Box' ) )
 			if(isset( $this->validation ) && $this->validation){
 				echo '
 					validationOptions : jQuery.parseJSON( \'' . wp_json_encode( $this->validation ) . '\' ),
-					summaryMessage : "' . __( 'Please correct the errors highlighted below and try again.', 'youtube-showcase' ) . '",';
+					summaryMessage : "' . esc_html__( 'Please correct the errors highlighted below and try again.', 'youtube-showcase' ) . '",';
 			}
 			if(isset($this->conditional) && $this->conditional){
 				echo 'conditional: jQuery.parseJSON( \'' . wp_json_encode($this->conditional) . '\' ),';

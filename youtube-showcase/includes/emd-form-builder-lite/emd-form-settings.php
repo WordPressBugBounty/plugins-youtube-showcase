@@ -73,7 +73,7 @@ function emd_form_builder_lite_settings($type,$app,$form_id=0,$result = ''){
 	foreach(array_keys($tabs) as $tab){
 		emd_form_builder_lite_tab($type,$tab,$app,$active_tab,$fcontent);
 	}
-	echo submit_button(); 
+	submit_button(); 
 	echo '</form>';
 	echo '</div>';
 }
@@ -333,7 +333,7 @@ function emd_form_builder_lite_tab($type,$mytab,$app,$active_tab,$fcontent){
 	} 
 	echo '>';
 	echo '<div class="emd-form-builder-fields-settings">';
-	echo emd_form_builder_lite_show_setting($tab_fields,$fcontent);
+	emd_form_builder_lite_show_setting($tab_fields,$fcontent);
 	echo '</div>';
 	echo '</div>';
 }

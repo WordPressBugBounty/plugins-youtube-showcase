@@ -10,8 +10,8 @@ $ent_attrs = get_option('youtube_showcase_attr_list');
 	</div>	
 <div class="panel panel-default">
   <div class="video-summary">
-<p><a title="<?php echo get_the_title(); ?>" href="<?php echo esc_url(get_permalink()); ?>"><?php echo get_the_title(); ?></a></p>
- <div class="video-excerpt"> <?php echo $post->post_excerpt; ?></div>
+<p><a title="<?php echo esc_attr(get_the_title()); ?>" href="<?php echo esc_url(get_permalink()); ?>"><?php echo esc_html(get_the_title()); ?></a></p>
+ <div class="video-excerpt"> <?php echo wp_kses_post($post->post_excerpt); ?></div>
   </div>
       <!-- Controls -->
       <div class="controls visible-xs-block">

@@ -21,7 +21,7 @@ if (!function_exists('emd_show_shortcodes_page')) {
 		if(function_exists('emd_std_media_js') || function_exists('emd_analytics_media_js')){	
 			echo '<span style="padding-right:10px;">' . esc_html__('Visual ShortCode Builder','youtube-showcase') . '</span>'; 
 			$has_bulk = 1;
-			$create_url = admin_url('admin.php?page=' . $app . '_shortcodes#TB_inline?width=640&height=750&inlineId=wpas-component');
+			$create_url = esc_url(admin_url('admin.php?page=' . $app . '_shortcodes#TB_inline?width=640&height=750&inlineId=wpas-component'));
 			echo '<a href="' . esc_url($create_url) . '" class="thickbox button button-primary">' . esc_html('Create New', 'youtube-showcase') . '</a>';
 			echo '</h2>';
 			echo '<p>' . esc_html__('The following shortcodes are provided by default. To use the shortcode, click copy button and paste it in a page.','youtube-showcase');
@@ -34,14 +34,14 @@ if (!function_exists('emd_show_shortcodes_page')) {
 			echo '<a href="#" class="add-new-h2 upgrade-pro" style="padding:6px 10px;">' . esc_html('Export', 'youtube-showcase') . '</a>';
 			echo '</h2>';
 			echo '<p>' . esc_html__('The following shortcodes are provided by default. To use the shortcode, click copy button and paste it in a page.','youtube-showcase');
-			echo ' ' . sprintf(esc_html__('To learn more on how to create new shortcodes with filters go to the %s documentation.%s','youtube-showcase'),'<a href="https://docs.emdplugins.com/docs/' . esc_attr(str_replace('_','-',$app)) . '" target="_blank">','</a>') . '</p>';
+			echo ' ' . sprintf(esc_html__('To learn more on how to create new shortcodes with filters go to the %1$s documentation.%2$s','youtube-showcase'),'<a href="https://docs.emdplugins.com/docs/' . esc_attr(str_replace('_','-',$app)) . '" target="_blank">','</a>') . '</p>';
 			echo '<style>.tablenav.top{display:none;}</style>';
 		}
 		$list_table = new Emd_List_Table($app,'shortcode',$has_bulk);
                 $list_table->prepare_items();
 ?>
 		<div class="emd-shortcode-list-admin-content">
-		<form id="emd-shortcode-list-table" method="get" action="<?php echo admin_url( 'admin.php?page=' . esc_attr($app) . '_shortcodes'); ?>">
+		<form id="emd-shortcode-list-table" method="get" action="<?php echo esc_url(admin_url( 'admin.php?page=' . esc_attr($app) . '_shortcodes')); ?>">
 		<input type="hidden" name="page" value="<?php echo esc_attr($app . '_shortcodes');?>"/>
 		<?php $list_table->views(); ?>
 		<?php $list_table->display(); ?>
@@ -58,12 +58,12 @@ app = $('#add-wpas-component').data('app');
 $.ajax({
 type:'GET',
 url : ajaxurl,
-data: {action:'emd_insert_new_shc',nonce:'<?php echo wp_create_nonce('emd-new-shc'); ?>',app:app,shc:shc},
+data: {action:'emd_insert_new_shc',nonce:'<?php echo esc_js(wp_create_nonce('emd-new-shc')); ?>',app:app,shc:shc},
 success : function(response){
 	if(!response){
 		alert('<?php echo esc_html__('Error: Please try again.','youtube-showcase'); ?>');
 	}
-	redirect_link = '<?php echo admin_url('admin.php');?>?page='+app+'_shortcodes';
+	redirect_link = '<?php echo esc_url(admin_url('admin.php'));?>?page='+app+'_shortcodes';
 	window.location.href = redirect_link;
 }
 });

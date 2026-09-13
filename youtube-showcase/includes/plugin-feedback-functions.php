@@ -79,9 +79,9 @@ function youtube_showcase_show_optin() {
 			'<input type="submit" value="' . __('Do not allow', 'youtube-showcase') . '" class="button-secondary" name="youtube-showcase_no_optin" id="youtube-showcase-do-not-allow-tracking"></input>',
 			'<input type="submit" value="' . __('Allow', 'youtube-showcase') . '" class="button-primary" name="youtube-showcase_optin" id="youtube-showcase-allow-tracking"></input>',
 		));
-		echo '<form method="post" action="' . admin_url('admin-post.php') . '">';
+		echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
 		echo '<input type="hidden" name="action" value="youtube-showcase_check_optin">';
-		echo '<input type="hidden" name="optin_nonce" value="' . wp_create_nonce('youtube_showcase_check_optin_nonce') . '">';
+		echo '<input type="hidden" name="optin_nonce" value="' . esc_attr(wp_create_nonce('youtube_showcase_check_optin_nonce')) . '">';
 		echo '<div class="update-nag emd-admin-notice">';
 		echo '<h3 class="emd-notice-title"><span class="dashicons dashicons-smiley"></span>' . esc_html($tr_title) . '<span class="dashicons dashicons-smiley"></span></h3><p class="emd-notice-body">';
 		echo wp_kses_post($tr_msg) . '</p>';
@@ -155,7 +155,7 @@ function youtube_showcase_show_rateme_notice() {
                         <br>
                         <div>';
 		if ($min_count > 5) {
-			$message_start.= sprintf(__("Hi, I noticed you just crossed the %d %s milestone - that's awesome!", "youtube-showcase") , $min_trigger, $label);
+			$message_start.= sprintf(__("Hi, I noticed you just crossed the %1\$d, %2\$s milestone - that's awesome!", "youtube-showcase") , $min_trigger, $label);
 		} elseif ($installed_date <= $today) {
 			$message_start.= __("Hi, I just noticed you have been using YouTube Showcase for about a week now - that's awesome!", "youtube-showcase");
 		}
@@ -212,7 +212,7 @@ function youtube_showcase_plugin_action_links($links, $file) {
 			$links[$key] = $link . '<i class="youtube_showcase-deactivate-slug" data-slug="youtube_showcase-deactivate-slug"></i>';
 		}
 	}
-	$new_links['settings'] = '<a href="' . admin_url('admin.php?page=youtube_showcase_settings') . '">' . __('Settings', 'youtube-showcase') . '</a>';
+	$new_links['settings'] = '<a href="' . esc_url(admin_url('admin.php?page=youtube_showcase_settings')) . '">' . __('Settings', 'youtube-showcase') . '</a>';
 	$links = array_merge($new_links, $links);
 	return $links;
 }

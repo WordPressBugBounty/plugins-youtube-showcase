@@ -150,17 +150,17 @@ class Emd_Entity {
 		global $post, $post_ID;
 		$messages[$this->post_type] = array(
 			0 => '', // Unused. Messages start at index 1.
-			1 => sprintf(__('%s updated. <a href="%s">View %s</a>', 'youtube-showcase') , $this->sing_label, esc_url(get_permalink($post_ID)) , $this->sing_label) ,
+			1 => sprintf(__('%1$s updated. <a href="%2$s">View %3$s</a>', 'youtube-showcase') , $this->sing_label, esc_url(get_permalink($post_ID)) , $this->sing_label) ,
 			2 => __('Custom field updated.', 'youtube-showcase') ,
 			3 => __('Custom field deleted.', 'youtube-showcase') ,
 			4 => sprintf(__('%s updated.', 'youtube-showcase') , $this->sing_label) ,
 			/* translators: %s: date and time of the revision */
-			5 => isset($_GET['revision']) ? sprintf(__('%s restored to revision from %s', 'youtube-showcase') , $this->sing_label, wp_post_revision_title((int)$_GET['revision'], false)) : false,
-			6 => sprintf(__('%s published. <a href="%s">View %s</a>', 'youtube-showcase') , $this->sing_label, esc_url(get_permalink($post_ID)) , $this->sing_label) ,
+			5 => isset($_GET['revision']) ? sprintf(__('%1$s restored to revision from %2$s', 'youtube-showcase') , $this->sing_label, wp_post_revision_title((int)$_GET['revision'], false)) : false,
+			6 => sprintf(__('%1$s published. <a href="%2$s">View %3$s</a>', 'youtube-showcase') , $this->sing_label, esc_url(get_permalink($post_ID)) , $this->sing_label) ,
 			7 => sprintf(__('%s saved.', 'youtube-showcase') , $this->sing_label) ,
-			8 => sprintf(__('%s submitted. <a target="_blank" href="%s">Preview %s</a>', 'youtube-showcase') , $this->sing_label, esc_url(add_query_arg('preview', 'true', get_permalink($post_ID))) , $this->sing_label) ,
-			9 => sprintf(__('%s scheduled for: <strong>%s</strong>. <a target="_blank" href="%s">Preview %s</a>', 'youtube-showcase') , $this->sing_label, date_i18n(__('M j, Y @ G:i','youtube-showcase') , strtotime($post->post_date)) , esc_url(get_permalink($post_ID)) , $this->sing_label) ,
-			10 => sprintf(__('%s draft updated. <a target="_blank" href="%s">Preview %s</a>', 'youtube-showcase') , $this->sing_label, esc_url(add_query_arg('preview', 'true', get_permalink($post_ID))) , $this->sing_label) ,
+			8 => sprintf(__('%1$s submitted. <a target="_blank" href="%2$s">Preview %3$s</a>', 'youtube-showcase') , $this->sing_label, esc_url(add_query_arg('preview', 'true', get_permalink($post_ID))) , $this->sing_label) ,
+			9 => sprintf(__('%1$s scheduled for: <strong>%2$s</strong>. <a target="_blank" href="%3$s">Preview %4$s</a>', 'youtube-showcase') , $this->sing_label, date_i18n(__('M j, Y @ G:i','youtube-showcase') , strtotime($post->post_date)) , esc_url(get_permalink($post_ID)) , $this->sing_label) ,
+			10 => sprintf(__('%1$s draft updated. <a target="_blank" href="%2$s">Preview %3$s</a>', 'youtube-showcase') , $this->sing_label, esc_url(add_query_arg('preview', 'true', get_permalink($post_ID))) , $this->sing_label) ,
 		);
 		return $messages;
 	}
@@ -179,7 +179,7 @@ class Emd_Entity {
 ?>
 			<script type="text/javascript">
 			jQuery(document).ready(function($){
-					$('a.page-title-action').after('<a id="opt-<?php echo str_replace("_", "-", $this->post_type); ?>" class="add-new-h2" href="<?php echo admin_url('edit.php?post_type=' . $this->menu_entity . '&page=operations_' . $this->post_type); ?>" ><?php esc_html_e('CSV Import/Export', 'youtube-showcase'); ?></a>');
+					$('a.page-title-action').after('<a id="opt-<?php echo esc_attr(str_replace("_", "-", $this->post_type)); ?>" class="add-new-h2" href="<?php echo esc_url(admin_url('edit.php?post_type=' . $this->menu_entity . '&page=operations_' . $this->post_type)); ?>" ><?php esc_html_e('CSV Import/Export', 'youtube-showcase'); ?></a>');
 					$('li.opt_<?php echo esc_attr($this->post_type); ?>').html('');
 					});     
 		</script>

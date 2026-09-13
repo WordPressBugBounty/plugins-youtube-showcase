@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div id="emd-login-container">
-<form id="emd_login_form" class="emdloginreg-container emd_form" action="<?php echo get_permalink($post->ID); ?>" method="post">
+<form id="emd_login_form" class="emdloginreg-container emd_form" action="<?php echo esc_url(get_permalink($post->ID)); ?>" method="post">
 <fieldset>
 <legend><?php esc_html_e( 'Log into Your Account', 'youtube-showcase' ); ?></legend>
 <div class="emd-form-row emd-row" style="display:flex;">
@@ -37,14 +37,14 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <div>
 <input type="hidden" name="redirect_to" value="<?php echo esc_url(get_permalink($post->ID)); ?>"/>
-<input type="hidden" name="emd_login_nonce" value="<?php echo wp_create_nonce( 'emd-login-nonce' ); ?>"/>
+<input type="hidden" name="emd_login_nonce" value="<?php echo esc_attr(wp_create_nonce( 'emd-login-nonce' )); ?>"/>
 <input type="hidden" name="emd_action" value="login"/>
 
 <input type="submit" class="emd_submit button" id="emd-login-submit" value="<?php esc_html_e( 'Log In', 'youtube-showcase' ); ?>"/>
 </div>
 <div style="clear:both">
 <p class="emd-lost-password" style="float:left">
-<a href="<?php echo wp_lostpassword_url(); ?>">
+<a href="<?php echo esc_url(wp_lostpassword_url()); ?>">
 <?php esc_html_e( 'Lost Password?', 'youtube-showcase' ); ?>
 </a>
 </p>

@@ -8,6 +8,7 @@ if (!defined('ABSPATH')) exit;
 require_once 'emd-form-frontend.php';
 require_once 'emd-form-settings.php';
 require_once 'emd-form-functions.php';
+require_once 'emd-shc-login-functions.php';
 
 add_action('emd_ext_set_conf','emd_form_builder_lite_install');
 
@@ -81,7 +82,7 @@ function emd_form_builder_lite_admin_enq($app,$hook){
 			return;
 		}
 		else {
-			wp_enqueue_script('emd-copy-js', $dir_url . 'assets/js/emd-copy.js', array('clipboard') , '');
+			wp_enqueue_script('emd-copy-js', $dir_url . 'assets/js/emd-copy.js', array('clipboard') , constant(strtoupper($app) . '_VERSION'));
 		}
 	}
 }
@@ -320,7 +321,7 @@ function emd_show_forms_lite_page($app){
 		$list_table->prepare_items();
 		?>
 			<div class="emd-form-list-admin-content">
-			<form id="emd-form-list-table" method="get" action="<?php echo admin_url( 'admin.php?page=' . esc_attr($app) . '_forms'); ?>">
+			<form id="emd-form-list-table" method="get" action="<?php echo esc_url( admin_url( 'admin.php?page=' . $app . '_forms')); ?>">
 			<input type="hidden" name="page" value="<?php echo esc_attr($app) . '_forms';?>"/>
 			<?php $list_table->views(); ?>
 			<?php $list_table->display(); ?>
@@ -625,27 +626,24 @@ function emd_form_builder_lite_get_form_layout($app,$fentity,$ftitle,$fcontent){
 									}
 									emd_form_builder_lite_layout_field_top_bottom($kfield,$cfield,'top');
 									if(in_array($kfield,Array('blt_title','blt_content','blt_excerpt'))){
-										echo emd_form_builder_lite_blt_fields($kfield,$cfield);
-									}
-									elseif(preg_match('/^login_box_/',$kfield)){
-										echo emd_form_builder_lite_login_box($kfield,$cfield);
+										emd_form_builder_lite_blt_fields($kfield,$cfield);
 									}
 									elseif(!empty($attr_list[$fentity]) && in_array($kfield,array_keys($attr_list[$fentity]))){
 										$cfield['display_type'] = $attr_list[$fentity][$kfield]['display_type'];
 										if(!empty($attr_list[$fentity][$kfield]['options'])){
 											$cfield['options'] = $attr_list[$fentity][$kfield]['options'];
 										}
-										echo emd_form_builder_lite_attr_fields($kfield,$cfield);
+										emd_form_builder_lite_attr_fields($kfield,$cfield);
 									}
 									elseif(!empty($txn_list[$fentity]) && in_array($kfield,array_keys($txn_list[$fentity]))){
-										echo emd_form_builder_lite_txn_fields($kfield,$cfield);
+										emd_form_builder_lite_txn_fields($kfield,$cfield);
 									}
 									elseif(!empty($rel_list) && array_key_exists($kfield,$rel_list)){
-										echo emd_form_builder_lite_rel_fields($kfield,$cfield);
+										emd_form_builder_lite_rel_fields($kfield,$cfield);
 									}
 									elseif(!empty($glob_list) && array_key_exists($kfield,$glob_list)){
 										$cfield['display_type'] = 'global';
-										echo emd_form_builder_lite_attr_fields($kfield,$cfield);
+										emd_form_builder_lite_attr_fields($kfield,$cfield);
 									}
 									if(!empty($attr_list[$fentity][$kfield]['display_type']) && in_array($attr_list[$fentity][$kfield]['display_type'], Array('checkbox'))){
 										emd_form_builder_lite_layout_field_top_bottom($kfield,$cfield,'bottom');
@@ -697,16 +695,7 @@ function emd_form_builder_lite_layout_field_top_bottom($kfield,$cfield,$loc){
 	else {
 		if($loc == 'top'){
 			echo '<div class="emd-form-group">';
-			if($kfield == 'login_box_username'){
-				echo '<input type="hidden" name="layout[]" value="login_box_username">';
-				echo '<input type="hidden" name="layout[]" value="login_box_password">';
-				echo '<input type="hidden" name="layout[]" value="login_box_reg_username">';
-				echo '<input type="hidden" name="layout[]" value="login_box_reg_password">';
-				echo '<input type="hidden" name="layout[]" value="login_box_reg_confirm_password">';
-			}
-			else {
-				echo '<input type="hidden" name="layout[]" value="' . esc_attr($kfield) . '">';
-			}
+			echo '<input type="hidden" name="layout[]" value="' . esc_attr($kfield) . '">';
 		}
 		echo '<label class="';
 		if(!empty($cfield['display_type']) && in_array($cfield['display_type'],Array('checkbox'))){
@@ -746,86 +735,81 @@ function emd_form_builder_lite_layout_field_top_bottom($kfield,$cfield,$loc){
 }
 function emd_form_builder_lite_blt_fields($kfield,$cfield){
 	if($kfield == 'blt_title'){
-		$blt_lay = '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled/>';
+		echo '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled/>';
 	}	
 	else {
-		$blt_lay = '<textarea name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="control wyrb" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled></textarea>';
+		echo '<textarea name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="control wyrb" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled></textarea>';
 	}
-	$blt_lay .= '</div>';
-	return $blt_lay;
+	echo '</div>';
 }
 function emd_form_builder_lite_attr_fields($kfield,$cfield){
-	$attr_lay = '';
 	switch($cfield['display_type']){
 		case 'select':
 		case 'select_advanced':
-			$attr_lay .= '<div class="dropdown">';
-			$attr_lay .= '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled>';
-			$attr_lay .= '<div class="emd-arrow"></div>';
-			$attr_lay .= '</div>';
+			echo '<div class="dropdown">';
+			echo '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled>';
+			echo '<div class="emd-arrow"></div>';
+			echo '</div>';
 			break;
 		case 'wysiwyg':
-			$attr_lay .= '<textarea name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="control wyrb" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled></textarea>';
+			echo '<textarea name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="control wyrb" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled></textarea>';
 			break;
 		case 'checkbox':
-			$attr_lay .= '<input type="checkbox" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="emd-checkbox emd-input-md emd-form-control" disabled>';
+			echo '<input type="checkbox" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="emd-checkbox emd-input-md emd-form-control" disabled>';
 			break;
 		case 'radio':
 			if(!empty($cfield['options'])){
 				foreach($cfield['options'] as $kopt => $vopt){
-					$attr_lay .= '<div class="emd-form-check">';
-					$attr_lay .= '<input type="radio" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '_' . esc_attr($kopt) . '" class="emd-radio emd-input-md emd-form-control" disabled>';
-					$attr_lay .= '<label class="emd-form-check-label" for="' . esc_attr($kfield) . '_' . esc_attr($kopt) . '">' . esc_html($vopt)  . '</label>';
-					$attr_lay .= '</div>';
+					echo '<div class="emd-form-check">';
+					echo '<input type="radio" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '_' . esc_attr($kopt) . '" class="emd-radio emd-input-md emd-form-control" disabled>';
+					echo '<label class="emd-form-check-label" for="' . esc_attr($kfield) . '_' . esc_attr($kopt) . '">' . esc_html($vopt)  . '</label>';
+					echo '</div>';
 				}
 			}
 			break;
 		case 'checkbox_list':
 			if(!empty($cfield['options'])){
 				foreach($cfield['options'] as $kopt => $vopt){
-					$attr_lay .= '<div class="emd-form-check">';
-					$attr_lay .= '<input type="checkbox" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '_' . esc_attr($kopt) . '" class="emd-checkbox emd-input-md emd-form-control" disabled>';
-					$attr_lay .= '<label class="emd-form-check-label" for="' . esc_attr($kfield) . '_' . esc_attr($kopt) . '">' . esc_html($vopt)  . '</label>';
-					$attr_lay .= '</div>';
+					echo '<div class="emd-form-check">';
+					echo '<input type="checkbox" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '_' . esc_attr($kopt) . '" class="emd-checkbox emd-input-md emd-form-control" disabled>';
+					echo '<label class="emd-form-check-label" for="' . esc_attr($kfield) . '_' . esc_attr($kopt) . '">' . esc_html($vopt)  . '</label>';
+					echo '</div>';
 				}
 			}
 			break;
 		case 'hidden':
 			if($cfield['form_type'] == 'search'){
-				$attr_lay .= '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled/>';
+				echo '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled/>';
 			}
 			elseif(empty($cfield['uniqueAttr'])){
-				$attr_lay .= '<div>' . __('Hidden field','youtube-showcase') . '</div>';
+				echo '<div>' . esc_html__('Hidden field','youtube-showcase') . '</div>';
 			}
 			break;
 		case 'global':
-			$attr_lay .= '<div>' . __('Global field','youtube-showcase') . '</div>';
+			echo '<div>' . esc_html__('Global field','youtube-showcase') . '</div>';
 			break;
 		case 'text':
 		default:
-			$attr_lay .= '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled/>';
+			echo '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled/>';
 			break;
 	}
 	if(!in_array($cfield['display_type'], Array('checkbox'))){
-		$attr_lay .= '</div>';
+		echo '</div>';
 	}
-	return $attr_lay;
 }
 function emd_form_builder_lite_txn_fields($kfield,$cfield){
-	$txn_lay = '<div class="dropdown">';
-	$txn_lay .= '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled>';
-	$txn_lay .= '<div class="emd-arrow"></div>';
-	$txn_lay .= '</div>';
-	$txn_lay .= '</div>';
-	return $txn_lay;
+	echo '<div class="dropdown">';
+	echo '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled>';
+	echo '<div class="emd-arrow"></div>';
+	echo '</div>';
+	echo '</div>';
 }
 function emd_form_builder_lite_rel_fields($kfield,$cfield){
-	$rel_lay = '<div class="dropdown">';
-	$rel_lay .= '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled>';
-	$rel_lay .= '<div class="emd-arrow"></div>';
-	$rel_lay .= '</div>';
-	$rel_lay .= '</div>';
-	return $rel_lay;
+	echo '<div class="dropdown">';
+	echo '<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_attr($cfield['placeholder']) . '" disabled>';
+	echo '<div class="emd-arrow"></div>';
+	echo '</div>';
+	echo '</div>';
 }
 add_action('wp_ajax_emd_form_builder_lite_get_field', 'emd_form_builder_lite_get_field');
 function emd_form_builder_lite_get_field(){
@@ -861,10 +845,7 @@ function emd_form_builder_lite_get_field(){
 		}
 		emd_form_builder_lite_layout_field_top_bottom($kfield,$cfield,'top');
 		if(in_array($kfield,Array('blt_title','blt_content','blt_excerpt'))){
-			echo emd_form_builder_lite_blt_fields($kfield,$cfield);
-		}
-		elseif(preg_match('/^login_box_/',$kfield)){
-			echo emd_form_builder_lite_login_box($kfield,$cfield);
+			emd_form_builder_lite_blt_fields($kfield,$cfield);
 		}
 		elseif(!empty($attr_list[$fentity]) && in_array($kfield,array_keys($attr_list[$fentity]))){
 			$cfield['display_type'] = $attr_list[$fentity][$kfield]['display_type'];
@@ -879,17 +860,17 @@ function emd_form_builder_lite_get_field(){
 			if(!empty($fcontent['type'])){
 				$cfield['form_type'] = $fcontent['type'];
 			}
-			echo emd_form_builder_lite_attr_fields($kfield,$cfield);
+			emd_form_builder_lite_attr_fields($kfield,$cfield);
 		}
 		elseif(!empty($txn_list[$fentity]) && in_array($kfield,array_keys($txn_list[$fentity]))){
-			echo emd_form_builder_lite_txn_fields($kfield,$cfield);
+			emd_form_builder_lite_txn_fields($kfield,$cfield);
 		}
 		elseif(!empty($rel_list) && array_key_exists($kfield,$rel_list)){
-			echo emd_form_builder_lite_rel_fields($kfield,$cfield);
+			emd_form_builder_lite_rel_fields($kfield,$cfield);
 		}
 		elseif(!empty($glob_list) && array_key_exists($kfield,$glob_list)){
 			$cfield['display_type'] = 'global';
-			echo emd_form_builder_lite_attr_fields($kfield,$cfield);
+			emd_form_builder_lite_attr_fields($kfield,$cfield);
 		}
 		if(!empty($attr_list[$fentity][$kfield]['display_type']) && in_array($attr_list[$fentity][$kfield]['display_type'],Array('checkbox'))){
 			emd_form_builder_lite_layout_field_top_bottom($kfield,$cfield,'bottom');
@@ -922,10 +903,7 @@ function emd_form_builder_lite_get_form_field_settings($app,$fentity,$fcontent){
 							$html_fields[$f] = $fval;
 						}
 						foreach($fields as $myfield){
-							if(!empty($fval[$myfield]) && preg_match('/^login_box/',$f)){
-								$login_fields[$f][$myfield] = $fval[$myfield];
-							}
-							elseif(!empty($fval[$myfield])){
+							if(!empty($fval[$myfield])){
 								$all_fields[$f][$myfield] = $fval[$myfield];
 							}
 						}
@@ -1097,97 +1075,6 @@ function emd_form_builder_lite_get_form_field_settings($app,$fentity,$fcontent){
 		echo '</textarea>
 			</div></div>';
 	}
-	if(!empty($has_user)){
-		echo '<div class="emd-form-builder-field-settings-wrap emd-field-login_box_username" style="display:none;">
-			<div class="emd-form-builder-field-setting label">
-			<label for="login_box-login-label">' . esc_html__('Login Label','youtube-showcase') . '</label>
-			<input type="text" name="fields[login_box_username][login_label]" class="emd-form-builder-field-label" id="emd-fbl-login_box_login_label" value="';
-		if(!empty($login_fields['login_box_username']['login_label'])){
-			echo  esc_html($login_fields['login_box_username']['login_label']);
-		}
-		else {
-			echo esc_html__('Already have an account? Login.','youtube-showcase');
-		}
-		echo  '"></div>
-			<div class="emd-form-builder-field-setting label">
-			<label for="login_box-register-label">' . esc_html__('Register Label','youtube-showcase') . '</label>
-			<input type="text" name="fields[login_box_username][reg_label]" class="emd-form-builder-field-label" id="emd-fbl-login_box_reg_label" value="';
-		if(!empty($login_fields['login_box_username']['reg_label'])){
-			echo  esc_html($login_fields['login_box_username']['reg_label']);
-		}
-		else {
-			echo esc_html__('Need to create an account? Register.','youtube-showcase');
-		}
-		echo  '"></div>
-		<div class="emd-form-builder-field-setting label">
-		<label for="login_box-username-label">' . esc_html__('Login Username Label','youtube-showcase') . '</label>
-		<input type="text" name="fields[login_box_username][label]" class="emd-form-builder-field-label" id="emd-fbl-login_box_username_label" value="';
-		if(!empty($login_fields['login_box_username']['label'])){
-			echo  esc_html($login_fields['login_box_username']['label']);
-		}
-		else {
-			echo esc_html__('Username','youtube-showcase');
-		}
-		echo  '"></div>
-		<div class="emd-form-builder-field-setting label">
-		<label for="login_box-password-label">' . esc_html__('Login Password Label','youtube-showcase') . '</label>
-		<input type="text" name="fields[login_box_password][label]" class="emd-form-builder-field-label" id="emd-fbl-login_box_password_label" value="';
-		if(!empty($login_fields['login_box_password']['label'])){
-			echo  esc_html($login_fields['login_box_password']['label']);
-		}
-		else {
-			echo esc_html__('Password','youtube-showcase');
-		}
-		echo  '"></div>
-		<div class="emd-form-builder-field-setting label">
-		<label for="login_box-redirect-link">' . esc_html__('Redirect Link','youtube-showcase') . '</label>
-		<input type="text" name="fields[login_box_username][redirect_link]" class="emd-form-builder-field-label" id="emd-fbl-login_box_redirect_link" value="';
-		if(!empty($login_fields['login_box_username']['redirect_link'])){
-			echo  esc_url($login_fields['login_box_username']['redirect_link']);
-		}
-		echo  '">';
-		echo '<p class="desc">' . esc_html__('If left empty after login user will be redirected to single entity page.','youtube-showcase') . '</p>
-		</div>
-		<div class="emd-form-builder-field-setting enable-register">';
-		echo '<input type="checkbox" name="fields[login_box_reg_username][enable_registration]" class="inline emd-form-builder-field-label" id="emd-fbr-login_box_enable_registation" value=1';
-		if(!empty($login_fields['login_box_reg_username']['enable_registration'])){
-			echo ' checked';
-		}
-		echo '>'; 
-		echo '<label class="inline" for="login_box-enable_registration">' . esc_html__('Enable Registration','youtube-showcase') . '</label>
-		</div>
-		<div class="emd-form-builder-field-setting label">
-		<label for="login_box-reg-username-label">' . esc_html__('Registration Username Label','youtube-showcase') . '</label>
-		<input type="text" name="fields[login_box_reg_username][label]" class="emd-form-builder-field-label" id="emd-fbl-login_box_reg_username_label" value="';
-		if(!empty($login_fields['login_box_reg_username']['label'])){
-			echo  esc_html($login_fields['login_box_reg_username']['label']);
-		}
-		else {
-			echo esc_html__('Username','youtube-showcase');
-		}
-		echo  '"></div>
-		<div class="emd-form-builder-field-setting label">
-		<label for="login_box-reg-password-label">' . esc_html__('Registration Password Label','youtube-showcase') . '</label>
-		<input type="text" name="fields[login_box_reg_password][label]" class="emd-form-builder-field-label" id="emd-fbl-login_box_reg_password_label" value="';
-		if(!empty($login_fields['login_box_reg_password']['label'])){
-			echo  esc_html($login_fields['login_box_reg_password']['label']);
-		}
-		else {
-			echo esc_html__('Password','youtube-showcase');
-		}
-		echo  '"></div>
-		<div class="emd-form-builder-field-setting label">
-		<label for="login_box-reg-confirm-password-label">' . esc_html__('Registration Confirm Password Label','youtube-showcase') . '</label>
-		<input type="text" name="fields[login_box_reg_confirm_password][label]" class="emd-form-builder-field-label" id="emd-fbl-login_box_reg_confirm_password_label" value="';
-		if(!empty($login_fields['login_box_reg_confirm_password']['label'])){
-			echo  esc_html($login_fields['login_box_reg_confirm_password']['label']);
-		}
-		else {
-			echo esc_html__('Confirm Password','youtube-showcase');
-		}
-		echo  '"></div>
-		</div>';
-	}
 }
 add_action('wp_ajax_emd_form_builder_lite_get_page', 'emd_form_builder_lite_get_page');
 function emd_form_builder_lite_get_page(){
@@ -1292,11 +1179,6 @@ function emd_form_builder_lite_save_form(){
 			}
 			elseif(preg_match('/^fields(\[([^\[\]]+)\]\[([^\[\]]+)\])/',$mydata['name'],$matches)){
 				$fields[$matches[2]][$matches[3]] = $mydata['value'];
-				if($matches[2] == 'login_box_username'){
-					$fields['login_box_password'][$matches[3]] = $mydata['value'];
-					$fields['login_box_password']['req'] = 1;
-					$fields[$matches[2]]['req'] = 1;
-				}
 			}
 		}
 		foreach($data as $mydata){
@@ -1445,15 +1327,4 @@ function emd_form_builder_lite_get_html(){
 			</div>';
 		wp_send_json_success(array('row' => $playout,'setting' => $psetting));
 	}
-}
-function emd_form_builder_lite_login_box($kfield,$cfield){
-	if($kfield == 'login_box_username'){
-		$lay = '<div class"login_register">
-			<input type="text" name="' . esc_attr($kfield) . '" id="' . esc_attr($kfield) . '" class="text emd-input-md emd-form-control" placeholder="' . esc_html__('Login / Register Box','youtube-showcase') . '" disabled/>';
-		$lay .= '</div></div>';
-	}
-	else {
-		$lay = '';
-	}
-	return $lay;
 }

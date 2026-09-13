@@ -16,20 +16,16 @@ class EMD_WP_Session_Utils {
 	public static function count_sessions() {
 		global $wpdb;
 
-        if (defined('EMD_WP_SESSION_USE_OPTIONS') && EMD_WP_SESSION_USE_OPTIONS) {
-            $query = "SELECT COUNT(*) FROM $wpdb->options WHERE option_name LIKE '_emd_wp_session_expires_%'";
-        } else {
-            $query = "SELECT COUNT(*) FROM {$wpdb->prefix}emd_sessions";
-        }
-
-		/**
-		 * Filter the query in case tables are non-standard.
-		 *
-		 * @param string $query Database count query
-		 */
-		$query = apply_filters( 'emd_wp_session_count_query', $query );
-
-		$sessions = $wpdb->get_var( $query );
+		if ( defined( 'EMD_WP_SESSION_USE_OPTIONS' ) && EMD_WP_SESSION_USE_OPTIONS ) {
+			$sessions = $wpdb->get_var(
+				$wpdb->prepare(
+					"SELECT COUNT(*) FROM {$wpdb->options} WHERE option_name LIKE %s",
+					$wpdb->esc_like( '_emd_wp_session_expires_' ) . '%'
+				)
+			);
+		} else {
+			$sessions = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}emd_sessions" );
+		}
 
 		return absint( $sessions );
 	}
@@ -120,7 +116,16 @@ class EMD_WP_Session_Utils {
 
         $limit = absint( $limit );
 
-        $keys = $wpdb->get_results($wpdb->prepare("SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE '_emd_wp_session_expires_%' ORDER BY option_value ASC LIMIT 0",$limit));
+	$keys = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT option_name, option_value FROM {$wpdb->options}
+				WHERE option_name LIKE %s
+				ORDER BY option_value ASC
+				LIMIT %d",
+				$wpdb->esc_like( '_emd_wp_session_expires_' ) . '%',
+				$limit
+			)
+		);
 
         $now = time();
         $expired = array();
@@ -137,19 +142,21 @@ class EMD_WP_Session_Utils {
                 $expired[] = "_emd_wp_session_{$session_id}";
                 $count += 1;
             }
- 		}
+ 	}
 
- 		// Delete expired sessions
- 		if ( ! empty( $expired ) ) {
-            $placeholders = array_fill( 0, count( $expired ), '%s' );
-            $format = implode( ', ', $placeholders );
-            $query = "DELETE FROM $wpdb->options WHERE option_name IN ($format)";
+ 	// Delete expired sessions
+	if ( ! empty( $expired ) ) {
+		$wpdb->query(
+			$wpdb->prepare(
+				"DELETE FROM {$wpdb->options} WHERE option_name IN ("
+				. implode( ', ', array_fill( 0, count( $expired ), '%s' ) )
+				. ")",
+				$expired
+			)
+		);
+	}
 
-            $prepared = $wpdb->prepare( $query, $expired );
-            $wpdb->query( $prepared );
-        }
-
- 		return $count;
+ 	return $count;
     }
 
 	/**

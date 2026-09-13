@@ -55,9 +55,13 @@ if (!function_exists('emd_show_settings_page')) {
 				}
 			}
 		}
-		echo '<p>' . settings_errors($app . '_ent_map_list') . '</p>';
+		echo '<p>';
+		settings_errors($app . '_ent_map_list');
+	       	echo '</p>';
 		if(!empty($new_tax_list)){	
-			echo '<p>' . settings_errors($app . '_tax_settings') . '</p>';
+			echo '<p>';
+			settings_errors($app . '_tax_settings');
+		       	echo '</p>';
 			$tabs['taxonomy'] = esc_html__('Taxonomies', 'youtube-showcase');
 		}
 		$tabs = apply_filters('emd_add_settings_tab',$tabs,$app);
@@ -221,7 +225,7 @@ if (!function_exists('emd_ent_map_tab')) {
 					}
 					echo ">" . esc_html($vcont) . "</option>";
 				}
-				echo "</select><p class='description'>" . sprintf(esc_html__('Change this if the sidebars are getting out of your page boundry. Fixed type provides a responsive fixed width container for single %s. Full type provides a full width container, spanning the entire width of the viewport for single %s.','youtube-showcase'),esc_html(strtolower($myent['label'])),esc_html(strtolower($myent['label']))) . "</p></td></tr>";
+				echo "</select><p class='description'>" . sprintf(esc_html__('Change this if the sidebars are getting out of your page boundry. Fixed type provides a responsive fixed width container for single %1$s. Full type provides a full width container, spanning the entire width of the viewport for single %2$s.','youtube-showcase'),esc_html(strtolower($myent['label'])),esc_html(strtolower($myent['label']))) . "</p></td></tr>";
 				echo "<tr><th scope='row'><label for='ent_map_list_" . esc_attr($kent) . "_hide_prev_next'>";
 				echo esc_html__('Hide previous next links','youtube-showcase');
 				echo '</label></th><td>';
@@ -230,7 +234,7 @@ if (!function_exists('emd_ent_map_tab')) {
 					echo " checked";
 				}
 				echo ">";
-				echo "<p class='description'>" . sprintf(esc_html__('Hides the previous and next %s links on the frontend for single %s.','youtube-showcase'),esc_html(strtolower($myent['label'])),esc_html(strtolower($myent['label']))) . "</p></td></tr>";
+				echo "<p class='description'>" . sprintf(esc_html__('Hides the previous and next %1$s links on the frontend for single %2$s.','youtube-showcase'),esc_html(strtolower($myent['label'])),esc_html(strtolower($myent['label']))) . "</p></td></tr>";
 				echo "<tr><th scope='row'><label for='ent_map_list_" . esc_attr($kent) . "_hide_edit_link'>";
 				echo esc_html__('Hide edit links','youtube-showcase');
 				echo '</label></th><td>';
@@ -239,7 +243,7 @@ if (!function_exists('emd_ent_map_tab')) {
 					echo " checked";
 				}
 				echo ">";
-				echo "<p class='description'>" . sprintf(esc_html__('Hides edit %s link on the frontend for single %s.','youtube-showcase'),esc_html(strtolower($myent['label'])),esc_html(strtolower($myent['label']))) . "</p></td></tr>";
+				echo "<p class='description'>" . sprintf(esc_html__('Hides edit %1$s link on the frontend for single %2$s.','youtube-showcase'),esc_html(strtolower($myent['label'])),esc_html(strtolower($myent['label']))) . "</p></td></tr>";
 			}
 			if($ent_list[$kent]['archive_view']){	
 				echo "<tr><th scope='row'><label for='ent_map_list_" . esc_attr($kent) . "_archive_temp'>";
@@ -268,7 +272,7 @@ if (!function_exists('emd_ent_map_tab')) {
 					}
 					echo ">" . esc_html($vcont) . "</option>";
 				}
-				echo "</select><p class='description'>" . sprintf(esc_html__('Change this if the sidebars are getting out of your page boundry. Fixed type provides a responsive fixed width container for archive %s. Full type provides a full width container, spanning the entire width of the viewport for archive %s.','youtube-showcase'),esc_html(strtolower($myent['label'])),esc_html(strtolower($myent['label']))) . "</p></td></tr>";
+				echo "</select><p class='description'>" . sprintf(esc_html__('Change this if the sidebars are getting out of your page boundry. Fixed type provides a responsive fixed width container for archive %1$s. Full type provides a full width container, spanning the entire width of the viewport for archive %2$s.','youtube-showcase'),esc_html(strtolower($myent['label'])),esc_html(strtolower($myent['label']))) . "</p></td></tr>";
 				echo "<tr><th scope='row'><label for='ent_map_list_" . esc_attr($kent) . "_hide_archive_page_nav'>";
 				echo esc_html__('Hide page navigation','youtube-showcase');
 				echo '</label></th><td>';
@@ -853,7 +857,7 @@ if (!function_exists('emd_ent_map_tab')) {
 				echo "<tr style='border-top:2px solid #e0e0e0;border-bottom:2px solid #e0e0e0;'><th scope='row' style='padding:5px 5px;' colspan=2><h3 style='display:inline;color:#5f9ea0;'>";
 				echo esc_html($comment_list[$kent]['label']);
 				echo '</h3>';
-				echo "<span class='description' style='padding-left:10px;color:#777;'>- " . sprintf(esc_html__('Use the options below to customize %s %s.','youtube-showcase'),esc_html(strtolower($myent['label'])),esc_html(strtolower($comment_list[$kent]['label']))) . "</span></th></tr>";
+				echo "<span class='description' style='padding-left:10px;color:#777;'>- " . sprintf(esc_html__('Use the options below to customize %1$s %2$s.','youtube-showcase'),esc_html(strtolower($myent['label'])),esc_html(strtolower($comment_list[$kent]['label']))) . "</span></th></tr>";
 				echo "<tr><th scope='row'><label for='ent_map_list_" . esc_attr($kent) . "_comment_placeholder'>";
 				echo esc_html__('Set placeholder','youtube-showcase');
 				echo "</label></th><td>";
@@ -1049,8 +1053,8 @@ if (!function_exists('emd_show_map_attrs')) {
 				echo ">" . esc_html($mtype) . "</option>";
 			}
 			echo "</select></td></tr>";
-			echo "<tr><th scope='row'><label for='ent_map_list_" . esc_attr($mattr_key) . "_marker'>" . esc_html__('Marker','youtube-showcase') . "</th><td><input id='" . esc_attr($app) . "_ent_map_list_" . esc_attr($mattr_key) . "_marker' name='" . esc_attr($app) . "_ent_map_list[" . esc_attr($mattr_key) . "][marker]' type='checkbox' value=1 $marker></input></td></tr>";
-			echo "<tr><th scope='row'><label for='ent_map_list_" . esc_attr($mattr_key) . "_load_info'>" . esc_html__('Display info window on page load','youtube-showcase') . "</th><td><input id='" . esc_attr($app) . "_ent_map_list_" . esc_attr($mattr_key) . "_load_info' name='" . esc_attr($app) . "_ent_map_list[" . esc_attr($mattr_key) . "][load_info]' type='checkbox' value=1 $load_info></input></td></tr>";
+			echo "<tr><th scope='row'><label for='ent_map_list_" . esc_attr($mattr_key) . "_marker'>" . esc_html__('Marker','youtube-showcase') . "</th><td><input id='" . esc_attr($app) . "_ent_map_list_" . esc_attr($mattr_key) . "_marker' name='" . esc_attr($app) . "_ent_map_list[" . esc_attr($mattr_key) . "][marker]' type='checkbox' value=1 " . esc_attr($marker) . "></input></td></tr>";
+			echo "<tr><th scope='row'><label for='ent_map_list_" . esc_attr($mattr_key) . "_load_info'>" . esc_html__('Display info window on page load','youtube-showcase') . "</th><td><input id='" . esc_attr($app) . "_ent_map_list_" . esc_attr($mattr_key) . "_load_info' name='" . esc_attr($app) . "_ent_map_list[" . esc_attr($mattr_key) . "][load_info]' type='checkbox' value=1 " . esc_attr($load_info) . "></input></td></tr>";
 			echo "</div></td></tr></table></td></tr>";
 			echo '</td>
 				</tr>';
@@ -1338,7 +1342,7 @@ if (!function_exists('emd_tools_tab')) {
 		echo "<tr><th scope='row'><label for='tools_install_pages'>";
 		echo esc_html__('Install pages','youtube-showcase');
 		echo '</label></th><td>';
-		echo '<a href="' .  wp_nonce_url( admin_url('admin.php?page=' . esc_attr($app) . '_settings&tab=tools&action=install_pages'), 'install_pages_action' ) . '" class="button install_pages">' . esc_html__( 'Install pages', 'youtube-showcase' ) . '</a>';
+		echo '<a href="' .  esc_url(wp_nonce_url( admin_url('admin.php?page=' . esc_attr($app) . '_settings&tab=tools&action=install_pages'), 'install_pages_action' )) . '" class="button install_pages">' . esc_html__( 'Install pages', 'youtube-showcase' ) . '</a>';
 		echo "<p class='description'>" . sprintf(esc_html__('This tool will install all the missing %s pages. Pages already defined and set up will not be replaced.','youtube-showcase'),esc_html($shc_list['app'])) . "</p></td></tr>";
 		echo "<tr><th scope='row'><label for='tools_disable_emd_templates'>";
 		echo esc_html__('Disable EMD Templating System','youtube-showcase');
@@ -1388,12 +1392,6 @@ if (!function_exists('emd_tools_tab')) {
 		echo '</tbody></table>';
 		submit_button(); 
 		echo '</form></div>';
-		echo '<script language="javascript">
-                        jQuery( document ).ready( function() {
-                                var editor = CodeMirror.fromTextArea(document.getElementById("' . esc_attr($app) . '_tools_custom_css"), {lineNumbers: true, lineWrapping: true, mode:"css"} );
-                                var editor = CodeMirror.fromTextArea(document.getElementById("' . esc_attr($app) . '_tools_custom_js"), {lineNumbers: true, lineWrapping: true, mode:"javascript"} );
-                        });
-                </script>';
 	}
 }
 if (!function_exists('emd_create_install_pages')) {

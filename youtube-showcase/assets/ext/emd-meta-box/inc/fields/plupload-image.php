@@ -39,16 +39,22 @@ if ( ! class_exists( 'EMD_MB_Plupload_Image_Field' ) )
 			$file_attr  = wp_handle_upload($_FILES['async-upload'], array( 'test_form' => false ) );
 			//Get next menu_order
 			$meta = get_post_meta( $post_id, $field_id, false );
-			if( empty( $meta ) ){
+			
+			$ids  = array_filter( array_map( 'absint', (array) $meta ) );
+
+			if ( empty( $ids ) ) {
 				$next = 0;
 			} else {
-				$meta = implode( ',' , (array) $meta );
-				$max = $wpdb->get_var($wpdb->prepare("
-					SELECT MAX(menu_order) FROM {$wpdb->posts}
-					WHERE post_type = 'attachment'
-					AND ID in ({$meta})
-				" ));
-				$next = is_numeric($max) ? (int) $max + 1: 0;
+				$placeholders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
+				$max = $wpdb->get_var(
+					$wpdb->prepare(
+						"SELECT MAX(menu_order) FROM {$wpdb->posts}
+						WHERE post_type = 'attachment'
+						AND ID IN ({$placeholders})",
+						$ids
+					)
+				);
+				$next = is_numeric( $max ) ? (int) $max + 1 : 0;
 			}
 
 			$attachment = array(

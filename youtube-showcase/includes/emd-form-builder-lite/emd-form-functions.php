@@ -337,69 +337,6 @@ if (!function_exists('emd_form_builder_lite_req_hide_vars')) {
 		return $ret;
 	}
 }
-add_filter('emd_ext_parse_tags', 'emd_form_builder_lite_parse_tags', 10, 3 );
-if (!function_exists('emd_form_builder_lite_parse_tags')) {
-	function emd_form_builder_lite_parse_tags($message,$pid,$app){
-		if(!empty($pid)){
-			$mypost = get_post($pid);
-			if(preg_match('/{' . $mypost->post_type . '_verify_link}/',$message)){
-				//create user_verify_link
-				 $base_url = add_query_arg(array(
-						'emd_action' => 'verify',
-						'id'    => $pid,
-						'app' => $app,
-				), untrailingslashit(home_url()));
-				$hash = 'sha256';
-				$secret = hash($hash, wp_salt());
-				$args['secret'] = $secret;
-				$url   = add_query_arg($args, $base_url);
-				$parts = parse_url($url);
-				$token = md5($parts['query']);
-				$verify_link = add_query_arg('token', $token, $base_url);
-				$new_message = preg_replace('/{' . $mypost->post_type . '_verify_link}/',$verify_link,$message);		
-				return $new_message;
-			}
-		}
-		return $message;
-	}
-}
-add_action('init', 'emd_form_builder_lite_user_actions');
-
-function emd_form_builder_lite_user_actions(){
-	if(!empty($_GET['emd_action']) && $_GET['emd_action'] == 'verify' && !empty($_GET['id']) && !empty($_GET['app']) && !empty($_GET['token'])){
-		//check if token is valid
-		$parts = parse_url(add_query_arg(array()));
-		wp_parse_str($parts['query'], $query_args);
-		unset($query_args['token']);
-		$base_url = add_query_arg($query_args, untrailingslashit(home_url()));
-		$hash = 'sha256';
-		$secret = hash($hash, wp_salt());
-		$args['secret'] = $secret;
-		$url = add_query_arg($args, $base_url);
-		$parts = parse_url($url);
-        	$token = md5($parts['query']);
-		if($token == $_GET['token']){
-			//verified, lets go to its 	
-			$app = sanitize_text_field($_GET['app']);
-			$ent_list = get_option($app . '_ent_list', Array());
-			$id = (int) $_GET['id'];
-			$entity = get_post_type($id);
-			$user_key = $ent_list[$entity]['user_key'];
-			wp_update_post(Array('ID'=>$id,'post_status'=>'publish'));
-			$user_id = get_post_meta($id,$user_key,true);
-			if(!empty($user_id)){
-				update_user_meta($user_id, 'emd_status', 1);
-				$new_user = get_user_by('id', $user_id);
-				wp_set_auth_cookie($user_id);
-				wp_set_current_user($user_id);
-				do_action('wp_login', $new_user->user_login, get_userdata($user_id));
-			}
-			do_action('emd_after_verify_token',$app, $id);
-			wp_redirect(get_permalink($id));
-			exit;
-		}
-	}
-}
 
 function emd_lite_get_form_shc($fname){
 	$forms = get_posts(Array(

@@ -173,7 +173,7 @@ class Emd_Widget extends WP_Widget {
 	 */
 	public function update($new_instance, $old_instance) {
 		$instance = $old_instance;
-		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['title'] = wp_strip_all_tags($new_instance['title']);
 		$instance['count'] = ( int )$new_instance['count'];
 		$instance['pagination'] = ( int )$new_instance['pagination'];
 		if($new_instance['pagination']){
@@ -220,13 +220,13 @@ class Emd_Widget extends WP_Widget {
 			</p>
 		<?php if($this->type != 'integration'){			?>
 			<p>
-			<label for="<?php echo esc_attr($this->get_field_id('count')); ?>"><?php printf(esc_html__('Max number of %s to show', 'youtube-showcase') , $this->class_label); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id('count')); ?>"><?php printf(esc_html__('Max number of %s to show', 'youtube-showcase') , esc_attr($this->class_label)); ?></label>
 			<input type="text" id="<?php echo esc_attr($this->get_field_id('count')); ?>" name="<?php echo esc_attr($this->get_field_name('count')); ?>" value="<?php echo esc_attr($instance['count']); ?>" size="3" maxlength="4" /> <br>
 			</p>
 			<p>
 			<input type="checkbox" class="emd-enable-pagination" id="<?php echo esc_attr($this->get_field_id('pagination')); ?>" name="<?php echo esc_attr($this->get_field_name('pagination')); ?>" value="1" 
 			<?php if($instance['pagination']) { echo 'checked'; } ?>/> 
-			<label for="<?php echo esc_attr($this->get_field_id('pagination')); ?>"><?php printf(esc_html__('Enable pagination', 'youtube-showcase') , $this->class_label); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id('pagination')); ?>"><?php printf(esc_html__('Enable pagination', 'youtube-showcase') , esc_attr($this->class_label)); ?></label>
 			</p>
 			<p class="emd-paginate-show" <?php echo esc_attr($paginate_style); ?>>
 			<label for="<?php echo esc_attr($this->get_field_id('pagination_size')); ?>"><?php echo esc_html__('Pagination size', 'youtube-showcase'); ?></label>
@@ -237,7 +237,7 @@ class Emd_Widget extends WP_Widget {
 			</select>
 			</p>
 			<p class="emd-paginate-show" <?php echo esc_attr($paginate_style); ?>>
-			<label for="<?php echo esc_attr($this->get_field_id('count_per_page')); ?>"><?php printf(esc_html__('Number of %s to show per pagination', 'youtube-showcase') , $this->class_label); ?></label>
+			<label for="<?php echo esc_attr($this->get_field_id('count_per_page')); ?>"><?php printf(esc_html__('Number of %s to show per pagination', 'youtube-showcase') , esc_attr($this->class_label)); ?></label>
 			<input type="text" id="<?php echo esc_attr($this->get_field_id('count_per_page')); ?>" name="<?php echo esc_attr($this->get_field_name('count_per_page')); ?>" value="<?php echo esc_attr($instance['count_per_page']); ?>" size="2" maxlength="2" /> <br>
 			</p>
 			<?php

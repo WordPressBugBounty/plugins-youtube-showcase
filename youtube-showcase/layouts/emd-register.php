@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div id="emd-register-container" style="display:none;">
-<form class="emd-register-form emdloginreg-container" id="emd_register_form" method="post" action="<?php echo get_permalink($post->ID); ?>">
+<form class="emd-register-form emdloginreg-container" id="emd_register_form" method="post" action="<?php echo esc_url(get_permalink($post->ID)); ?>">
 <fieldset>
 <legend><?php esc_html_e( 'Register', 'youtube-showcase' ); ?></legend>
 <div class="emd-form-row emd-row" style="display:flex;">
@@ -78,7 +78,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <div>
 <input type="hidden" name="emd_redirect" value="<?php echo esc_url(get_permalink($post->ID)); ?>"/>
-<input type="hidden" name="emd_register_nonce" value="<?php echo wp_create_nonce( 'emd-register-nonce' ); ?>"/>
+<input type="hidden" name="emd_register_nonce" value="<?php echo esc_attr(wp_create_nonce( 'emd-register-nonce' )); ?>"/>
 <input type="hidden" name="emd_action" value="youtube_showcase_user_register"/>
 
 <input type="submit" id="emd-register-submit" class="emd_submit button" name="emd_register_submit" value="<?php esc_html_e( 'Register', 'youtube-showcase' ); ?>"/>

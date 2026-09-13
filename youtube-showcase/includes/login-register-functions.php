@@ -42,7 +42,7 @@ function emd_show_login_register_forms($app,$fcontent,$show){
 	$dir_url = constant(strtoupper($app) . "_PLUGIN_URL");
 	$version = constant(strtoupper($app) . "_VERSION");
 	//check to show login and registration forms
-	wp_enqueue_style('form-frontend-css', $dir_url . '/includes/emd-form-builder/css/emd-form-frontend.min.css','',$version);
+	wp_enqueue_style('form-frontend-css', $dir_url . '/includes/emd-form-builder-lite/css/emd-form-frontend.min.css','',$version);
 	wp_enqueue_style('emd-login-register', $dir_url . 'assets/css/emd-login-register.min.css','',$version);
 	wp_enqueue_script('wpas-jvalidate', $dir_url . 'assets/ext/jvalidate/wpas.validate.min.js', array('jquery'),$version,true);
 	wp_enqueue_script('emd-login-register', $dir_url . 'assets/js/emd-login-register.js',Array('jquery'),$version);
@@ -56,7 +56,6 @@ function emd_show_login_register_forms($app,$fcontent,$show){
 	$log_reg_vars['verify_email'] = __('Email address already taken.','youtube-showcase');
 	wp_localize_script("emd-login-register", 'log_reg_vars', $log_reg_vars);
 	if($show != 'none'){
-		ob_start();
 		echo "<div class='emd-container'>";
 		if (!empty($error)) {
 			echo "<div class='emd-alert-container'>";
@@ -76,9 +75,7 @@ function emd_show_login_register_forms($app,$fcontent,$show){
 			emd_get_template_part(str_replace("_","-",$app), 'emd-register');
 		}
 		echo "</div>";
-		$layout = ob_get_clean();
 		$session_class->session->set('login_reg_errors', null);
-		echo $layout;
 	}
 	else {
 		echo "<div class='noaccess-container'><div class='emd-ncc-msg'>";
@@ -87,7 +84,7 @@ function emd_show_login_register_forms($app,$fcontent,$show){
 			echo esc_html($misc_settings['no_access_msg']);
 		}
 		else {
-			_e('You do not have sufficient permissions to access this page.', 'youtube-showcase');
+			esc_html_e('You do not have sufficient permissions to access this page.', 'youtube-showcase');
 		}
 		echo '</div></div>';
 	}
@@ -104,7 +101,7 @@ function emd_show_login_register_options($app){
 	return false;
 }
 add_action('wp_ajax_nopriv_emd_verify_email', 'emd_login_register_verify_email');
-add_action('wp_ajax_emd_verify_email', 'emd_ilogin_register_verify_email');
+add_action('wp_ajax_emd_verify_email', 'emd_login_register_verify_email');
 
 function emd_login_register_verify_email(){
         check_ajax_referer('emd_form', 'nonce');

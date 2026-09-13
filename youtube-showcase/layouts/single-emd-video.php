@@ -2,9 +2,9 @@
 $real_post = $post;
 $ent_attrs = get_option('youtube_showcase_attr_list');
 ?>
-<div id="single-emd-video-<?php echo get_the_ID(); ?>" class="emd-container emd-video-wrap single-wrap">
+<div id="single-emd-video-<?php echo esc_attr(get_the_ID()); ?>" class="emd-container emd-video-wrap single-wrap">
 <?php $is_editable = 0; ?>
-<div class="video-title"><h3><?php echo get_the_title(); ?></h3></div>
+<div class="video-title"><h3><?php echo esc_html(get_the_title()); ?></h3></div>
 <div class="emd-embed-responsive">
 	<iframe src="https://www.youtube-nocookie.com/embed/<?php echo esc_html(emd_mb_meta('emd_video_key')); ?>
 ?autoplay=<?php echo esc_html(emd_mb_meta('emd_video_autoplay')); ?>
