@@ -3,13 +3,13 @@ Contributors: emarket-design,safiye
 Tags: youtube, video gallery, playlist, video grid, youtube gallery
 Requires at least: 5.8
 Tested up to: 7.1
-Stable tag: 4.1.0
+Stable tag: 4.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Plugin URI: https://emdplugins.com/youtube-showcase
 Author URI: https://emarketdesign.com
 
-Responsive YouTube gallery, playlist, and video grid builder. Curate YouTube videos into beautiful grids, blocks, or playlists, no coding required.
+Create responsive YouTube video galleries, playlists, and video grids in WordPress using a visual block editor or simple shortcodes.
 
 == Description ==
 
@@ -110,6 +110,8 @@ Yes. Videos are displayed newest first by default. You can control the order by 
 9. CSV Import/Export – Bulk manage your library with the eMD CSV Extension for high-volume sites.
 
 == Changelog ==
+= 4.1.1 =
+* FIXED XSS vulnerability on approved comments
 = 4.1.0 =
 * FIXED Security and code quality by improving output escaping and database query handling, session cleanup and switched to WP core's code editor.
 = 4.0.6 =

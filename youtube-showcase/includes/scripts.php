@@ -37,20 +37,23 @@ function youtube_showcase_load_admin_enq($hook) {
 		wp_enqueue_script('code-editor');
 		wp_enqueue_style('code-editor');
 		// Get settings for both editors
-                $css_settings = wp_get_code_editor_settings( array( 'type' => 'text/css' ) );
-                $js_settings  = wp_get_code_editor_settings( array( 'type' => 'text/javascript' ) );
+		$css_settings = wp_get_code_editor_settings(array(
+			'type' => 'text/css'
+		));
+		$js_settings = wp_get_code_editor_settings(array(
+			'type' => 'text/javascript'
+		));
 		$js_settings['codemirror']['lint'] = false;
 		// Initialize both editors
-                $init_script = 'jQuery(function() {';
-                if ( ! empty( $css_settings ) ) {
-                $init_script .= 'wp.codeEditor.initialize( "youtube_showcase_tools_custom_css", ' . wp_json_encode( $css_settings ) . ' );';
-                }
-                if ( ! empty( $js_settings ) ) {
-                $init_script .= 'wp.codeEditor.initialize( "youtube_showcase_tools_custom_js", ' . wp_json_encode( $js_settings ) . ' );';
-                }
-                $init_script .= '});';
-
-                wp_add_inline_script( 'code-editor', $init_script );
+		$init_script = 'jQuery(function() {';
+		if (!empty($css_settings)) {
+			$init_script.= 'wp.codeEditor.initialize( "youtube_showcase_tools_custom_css", ' . wp_json_encode($css_settings) . ' );';
+		}
+		if (!empty($js_settings)) {
+			$init_script.= 'wp.codeEditor.initialize( "youtube_showcase_tools_custom_js", ' . wp_json_encode($js_settings) . ' );';
+		}
+		$init_script.= '});';
+		wp_add_inline_script('code-editor', $init_script);
 		return;
 	} else if (isset($_GET['page']) && in_array($_GET['page'], Array(
 		'youtube_showcase_notify'
@@ -205,7 +208,7 @@ function youtube_showcase_enq_custom_css_js() {
 		if (is_ssl()) {
 			$url = home_url('/', 'https');
 		}
-		wp_register_style('youtube-showcase-custom', false, array(), YOUTUBE_SHOWCASE_VERSION);
+		wp_register_style('youtube-showcase-custom', false, array() , YOUTUBE_SHOWCASE_VERSION);
 		wp_enqueue_style('youtube-showcase-custom');
 		wp_add_inline_style('youtube-showcase-custom', $tools['custom_css']);
 	}
@@ -214,7 +217,7 @@ function youtube_showcase_enq_custom_css_js() {
 		if (is_ssl()) {
 			$url = home_url('/', 'https');
 		}
-		wp_register_script('youtube-showcase-custom', false, array(), YOUTUBE_SHOWCASE_VERSION, true);
+		wp_register_script('youtube-showcase-custom', false, array() , YOUTUBE_SHOWCASE_VERSION, true);
 		wp_enqueue_script('youtube-showcase-custom');
 		wp_add_inline_script('youtube-showcase-custom', $tools['custom_js']);
 	}

@@ -628,9 +628,9 @@ if (!function_exists('emd_check_uniq_from_wpdb')) {
 		$join = array();
 		$count = 1;
 		$values = array();
-		
+
 		foreach ($data as $key => $val) {
-			if ( 'blt_title' === $key ) { 
+			if ( 'blt_title' === $key ) {
 				$where[] = 'p.post_title = %s';
 				$values[] = $val;
 			} else {
@@ -650,7 +650,7 @@ if (!function_exists('emd_check_uniq_from_wpdb')) {
 		$values[] = $post_type;
 		$sql = 'SELECT p.ID FROM ' . $wpdb->posts . ' p ' . implode( ' ', $join ) . ' WHERE ' . implode( ' AND ', $where );
 		$result_arr = $wpdb->get_results( $wpdb->prepare( $sql, $values ), ARRAY_A );
-		
+
 		if ( empty( $result_arr ) ) {
 			return true;
 		} elseif ( ! empty( $post_id ) && $result_arr[0]['ID'] == $post_id ) {

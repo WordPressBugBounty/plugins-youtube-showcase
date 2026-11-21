@@ -9,7 +9,7 @@ $ent_attrs = get_option('youtube_showcase_attr_list');
   <div class="panel-body emd-vid">
             <div class="thumbnail" style="padding:0;border: 0;border-bottom-left-radius: 0;border-bottom-right-radius: 0;">
                 <img style="width:100%;height:auto;" src="https://img.youtube.com/vi/<?php echo esc_html(emd_mb_meta('emd_video_key')); ?>
-/<?php echo ((emd_get_attr_val('youtube_showcase', $post->ID, 'emd_video', 'emd_video_thumbnail_resolution', 'key')) ? "" . esc_html(emd_get_attr_val('youtube_showcase', $post->ID, 'emd_video', 'emd_video_thumbnail_resolution', 'key')) . "" : "mq"); ?>default.jpg" alt="<?php echo esc_attr(get_the_title()); ?>" />
+/<?php echo ((emd_get_attr_val('youtube_showcase', $post->ID, 'emd_video', 'emd_video_thumbnail_resolution', 'key')) ? "" . esc_attr(emd_get_attr_val('youtube_showcase', $post->ID, 'emd_video', 'emd_video_thumbnail_resolution', 'key')) . "" : "mq"); ?>default.jpg" alt="<?php echo esc_attr(get_the_title()); ?>" />
             </div>
   </div>
   <div class="panel-footer" style="background-color: rgba(0, 0, 0, 0);"><?php echo esc_html(get_the_title()); ?></div>

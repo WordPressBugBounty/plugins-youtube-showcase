@@ -327,6 +327,21 @@ line-height: normal;
 ?>
 <p class="about-description">This page lists the release notes from every production version of YouTube Showcase Community.</p>
 
+<h3 style="font-size: 18px;font-weight:700;color: white;background: #708090;padding:5px 10px;width:155px;border: 2px solid #fff;border-radius:4px;text-align:center">4.1.1 changes</h3>
+<div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1632" style="margin:0">
+<h3 style="font-size:18px;" class="fix"><div  style="font-size:110%;color:#c71585"><span class="dashicons dashicons-admin-tools"></span> FIX</div>
+XSS vulnerability on approved comments</h3>
+<div ></a></div></div></div><hr style="margin:30px 0">
+<h3 style="font-size: 18px;font-weight:700;color: white;background: #708090;padding:5px 10px;width:155px;border: 2px solid #fff;border-radius:4px;text-align:center">4.1.0 changes</h3>
+<div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1631" style="margin:0">
+<h3 style="font-size:18px;" class="fix"><div  style="font-size:110%;color:#c71585"><span class="dashicons dashicons-admin-tools"></span> FIX</div>
+Security and code quality by improving output escaping and database query handling, session cleanup and switched to WP core’s code editor.</h3>
+<div ></a></div></div></div><hr style="margin:30px 0">
+<h3 style="font-size: 18px;font-weight:700;color: white;background: #708090;padding:5px 10px;width:155px;border: 2px solid #fff;border-radius:4px;text-align:center">4.0.6 changes</h3>
+<div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1630" style="margin:0">
+<h3 style="font-size:18px;" class="tweak"><div  style="font-size:110%;color:#33b5e5"><span class="dashicons dashicons-admin-settings"></span> TWEAK</div>
+Tested and confirmed compatibility with WordPress 7.0.</h3>
+<div ></a></div></div></div><hr style="margin:30px 0">
 <h3 style="font-size: 18px;font-weight:700;color: white;background: #708090;padding:5px 10px;width:155px;border: 2px solid #fff;border-radius:4px;text-align:center">4.0.5 changes</h3>
 <div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1627" style="margin:0">
 <h3 style="font-size:18px;" class="fix"><div  style="font-size:110%;color:#c71585"><span class="dashicons dashicons-admin-tools"></span> FIX</div>
