@@ -342,7 +342,6 @@ function youtube_showcase_send_deactivate_reason() {
 	}
 	$args = array(
 		'body' => $postfields,
-		'sslverify' => false,
 		'timeout' => 15,
 	);
 	$resp = wp_remote_post('https://api.emarketdesign.com/deactivate_info.php', $args);

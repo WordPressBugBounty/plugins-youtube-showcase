@@ -56,20 +56,36 @@ if ( ! class_exists( 'EMD_MB_File_Field' ) )
 		 */
 		static function wp_ajax_delete_file()
 		{
-			$post_id       = isset( $_POST['post_id'] ) ? (int) $_POST['post_id'] : 0;
-			$field_id      = isset( $_POST['field_id'] ) ? sanitize_text_field($_POST['field_id']) : 0;
-			$attachment_id = isset( $_POST['attachment_id'] ) ? (int) $_POST['attachment_id'] : 0;
+			$post_id       = isset( $_POST['post_id'] ) ? absint( wp_unslash( $_POST['post_id'] ) ) : 0;
+			$field_id      = isset( $_POST['field_id'] ) ? sanitize_text_field( wp_unslash( $_POST['field_id'] ) ) : '';
+			$attachment_id = isset( $_POST['attachment_id'] ) ? absint( wp_unslash( $_POST['attachment_id'] ) ) : 0;
 			$force_delete  = isset( $_POST['force_delete'] ) ? (int) $_POST['force_delete'] : 0;
 
 			check_ajax_referer( "emd-mb-delete-file_{$field_id}" );
 
-			delete_post_meta( $post_id, $field_id, $attachment_id );
+			if ( $post_id > 0 && ! current_user_can( 'edit_post', $post_id ) ) {
+				wp_send_json_error( __( 'Error: Cannot delete file', 'youtube-showcase' ), 403 );
+			}
+
+			if ( $force_delete ) {
+				if ( ! $attachment_id || 'attachment' !== get_post_type( $attachment_id ) || ! current_user_can( 'delete_post', $attachment_id ) ) {
+					wp_send_json_error( __( 'Error: Cannot delete file', 'youtube-showcase' ), 403 );
+				}
+			} elseif ( $attachment_id && 'attachment' === get_post_type( $attachment_id ) && ! current_user_can( 'edit_post', $attachment_id ) && ! current_user_can( 'delete_post', $attachment_id ) ) {
+				wp_send_json_error( __( 'Error: Cannot delete file', 'youtube-showcase' ), 403 );
+			}
+
+			if ( $post_id > 0 && '' !== $field_id ) {
+				delete_post_meta( $post_id, $field_id, $attachment_id );
+			}
+
 			$ok = $force_delete ? wp_delete_attachment( $attachment_id ) : true;
 
-			if ( $ok )
+			if ( $ok ) {
 				wp_send_json_success();
-			else
+			} else {
 				wp_send_json_error( __( 'Error: Cannot delete file', 'youtube-showcase' ) );
+			}
 		}
 
 		/**

@@ -526,19 +526,29 @@ if (!class_exists('Youtube_Showcase_Install_Deactivate')):
 		 *
 		 */
 		public function setup_pages() {
-			if (!is_admin()) {
+			if (!is_admin() || wp_doing_ajax()) {
 				return;
 			}
-			if (!empty($_GET['setup_' . $this->option_name . '_pages'])) {
-				$shc_list = get_option($this->option_name . '_shc_list');
+			$setup_param = 'setup_' . $this->option_name . '_pages';
+			$skip_param = 'skip_setup_' . $this->option_name . '_pages';
+			if (empty($_GET[$setup_param]) && empty($_GET[$skip_param])) {
+				return;
+			}
+			if (!current_user_can('manage_options')) {
+				wp_die(esc_html__('You do not have permission to manage setup pages.', 'youtube-showcase') , 403);
+			}
+			if (!empty($_GET[$setup_param])) {
+				check_admin_referer('emd_setup_pages_' . $this->option_name);
+				$shc_list = get_option($this->option_name . '_shc_list', array());
 				emd_create_install_pages($this->option_name, $shc_list);
 				update_option($this->option_name . '_setup_pages', 2);
-				wp_redirect(admin_url('admin.php?page=' . $this->option_name . '_settings&youtube-showcase-installed=true'));
+				wp_safe_redirect(admin_url('admin.php?page=' . $this->option_name . '_settings&youtube-showcase-installed=true'));
 				exit;
 			}
-			if (!empty($_GET['skip_setup_' . $this->option_name . '_pages'])) {
+			if (!empty($_GET[$skip_param])) {
+				check_admin_referer('emd_skip_setup_pages_' . $this->option_name);
 				update_option($this->option_name . '_setup_pages', 2);
-				wp_redirect(admin_url('admin.php?page=' . $this->option_name . '_settings'));
+				wp_safe_redirect(admin_url('admin.php?page=' . $this->option_name . '_settings'));
 				exit;
 			}
 		}

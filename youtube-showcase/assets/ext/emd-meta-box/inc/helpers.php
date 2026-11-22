@@ -109,7 +109,14 @@ if ( ! class_exists( 'EMD_MB_Helper' ) )
 			// Normal multiple fields: checkbox_list, select with multiple values
 			elseif ( is_array( $meta ) )
 			{
-				$content = '<ul><li>' . implode( '</li><li>', $meta ) . '</li></ul>';
+				$clean_items = array_map( function( $item ) {
+					if ( is_array( $item ) ) {
+						return implode( ', ', array_map( 'wp_strip_all_tags', array_map( 'strval', $item ) ) );
+					}
+					return wp_strip_all_tags( (string) $item );
+				}, $meta );
+
+				$content = '<ul><li>' . implode( '</li><li>', $clean_items ) . '</li></ul>';
 			}
 
 			else

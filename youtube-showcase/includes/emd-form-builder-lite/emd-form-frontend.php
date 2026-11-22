@@ -322,81 +322,108 @@ function emd_form_builder_lite_process(){
 
 add_shortcode('emd_form','emd_form_builder_lite_show_form');
 function emd_form_builder_lite_show_form($atts){
-	if(!empty($atts['id'])){
-		$myform = get_post($atts['id']);
-		if(empty($myform)){
-			return;
-		}
-		$fcontent = json_decode($myform->post_content,true);
-		$app = $fcontent['app'];
-		$shc_list = get_option($app . '_shc_list',Array());
-		if(empty($shc_list['has_form_lite']) && function_exists('emd_form_builder_show_form')){
-			return emd_form_builder_show_form($atts);
-		}
-		$fentity = $fcontent['entity'];
-		$atts_set = '';
-		if (!empty($atts['set'])) {
-			$atts_set = $atts['set'];
-		}
-		$show_form = 1;
-		$caps = get_option($app . '_add_caps',Array());
-		if(!empty($caps['view_' . $fcontent['name']])){
+	if(empty($atts['id'])){
+		return '';
+	}
+	$form_id = absint($atts['id']);
+	if(!$form_id){
+		return '';
+	}
+	$myform = get_post($form_id);
+	if(empty($myform) || 'emd_form' !== $myform->post_type){
+		return '';
+	}
+	if('publish' !== $myform->post_status && !current_user_can('edit_post', $myform->ID)){
+		return '';
+	}
+	$fcontent = json_decode($myform->post_content, true);
+	if (!is_array($fcontent) || empty($fcontent['app']) || !is_string($fcontent['app'])){
+		return '';
+	}
+	$app = sanitize_key($fcontent['app']);
+	$form_name = isset($fcontent['name']) ? sanitize_key((string)$fcontent['name']) : '';
+	$shc_list = get_option($app . '_shc_list', array());
+
+	if(empty($shc_list['has_form_lite']) && function_exists('emd_form_builder_show_form')){
+		return emd_form_builder_show_form($atts);
+	}
+	$fentity = isset($fcontent['entity']) ? sanitize_key((string) $fcontent['entity']) : '';
+	$atts_set = !empty( $atts['set'] ) ? sanitize_text_field((string) $atts['set']) : '';
+
+	$show_form = 1;
+	$caps = get_option($app . '_add_caps', array());
+
+	if($form_name && !empty($caps['view_' . $form_name])){
+		$show_form = current_user_can('view_' . $form_name) ? 1 : 0;
+	}
+	// Check submit count.
+	if($fentity && !empty($fcontent['settings']['disable_after'])){
+		$submits = get_posts(
+			array(
+				'post_type'      => $fentity,
+				'meta_key'       => 'wpas_form_name',
+				'meta_value'     => $form_name,
+				'posts_per_page' => -1,
+				'fields'         => 'ids',
+			)
+		);
+		$count_submits = count($submits);
+		if($count_submits > (int) $fcontent['settings']['disable_after']){
 			$show_form = 0;
-			if(current_user_can('view_' . $fcontent['name'])){
-				$show_form = 1;
-			}
-		}
-		else {
-			$show_form = 1;
-		}
-		//check submit count
-		if(!empty($fcontent['settings']['disable_after'])){
-			$submits = get_posts(array('post_type' => $fcontent['entity'],'meta_key'=>'wpas_form_name','meta_value'=>$fcontent['name'],'posts_per_page'=>-1, 'fields' => 'ids'));
-			$count_submits = count($submits);
-			if($count_submits > $fcontent['settings']['disable_after']){
-				$show_form = 0;
-			}
-		}
-		//form schedule
-		if($show_form == 1 && !empty($fcontent['settings']['schedule_start'])){
-			$now = date("Y-m-d H:i:s");
-			if($now < $fcontent['settings']['schedule_start']){
-				$show_form = 0;
-			}
-		}
-		if($show_form == 1 && !empty($fcontent['settings']['schedule_end'])){
-			$now = date("Y-m-d H:i:s");
-			if($now > $fcontent['settings']['schedule_end']){
-				$show_form = 0;
-			}
-		}
-		$access_views = get_option($app . '_access_views', Array());
-		if (!current_user_can('view_' . $fcontent['name']) && !empty($access_views['forms']) && in_array($fcontent['name'], $access_views['forms'])) {
-			$show_form = 0;
-		}
-		$show_form = apply_filters('emd_check_show_form',$show_form,$app,$fcontent['name']);
-		if ($show_form == 1) {
-			if (!empty($fcontent['settings']['login_reg'])) {
-				$show_login_register = $fcontent['settings']['login_reg'];
-				if (!is_user_logged_in() && $show_login_register != 'none') {
-					do_action('emd_show_login_register_forms', $app, $fcontent, $show_login_register);
-					return;
-				}
-			}
-			$status = '';
-			$error = '';
-			if(!empty($_GET['status'])){
-				$status = sanitize_text_field($_GET['status']);
-			}	
-			if($status == 'error' && !empty($_GET['resp'])){
-				$error = array_map('sanitize_text_field',json_decode($_GET['resp']));
-			}
-			return emd_form_builder_lite_render_form($myform->ID,$app,$fcontent,$error,$status,$atts_set);	
-		} else {
-			$noaccess_msg = sanitize_text_field($fcontent['settings']['noaccess_msg']);
-			return "<div class='alert alert-info not-authorized'>" . esc_html($noaccess_msg) . "</div>";
 		}
 	}
+	// Form schedule (using WordPress current time).
+	$now = current_time('mysql');
+	if(1 === $show_form && !empty($fcontent['settings']['schedule_start'])){
+		if ($now < $fcontent['settings']['schedule_start']){
+			$show_form = 0;
+		}
+	}
+	if(1 === $show_form && !empty($fcontent['settings']['schedule_end'])){
+		if($now > $fcontent['settings']['schedule_end']){
+			$show_form = 0;
+		}
+	}
+	$access_views = get_option($app . '_access_views', array());
+	if (
+		$form_name &&
+		! current_user_can( 'view_' . $form_name ) &&
+		! empty( $access_views['forms'] ) &&
+		in_array( $form_name, (array) $access_views['forms'], true )
+	) {
+		$show_form = 0;
+	}
+	$show_form = apply_filters( 'emd_check_show_form', $show_form, $app, $form_name );
+
+	if ( 1 === (int) $show_form ) {
+		if ( ! empty( $fcontent['settings']['login_reg'] ) ) {
+			$show_login_register = $fcontent['settings']['login_reg'];
+			if ( ! is_user_logged_in() && 'none' !== $show_login_register ) {
+				do_action( 'emd_show_login_register_forms', $app, $fcontent, $show_login_register );
+				return '';
+			}
+		}
+
+		$status = '';
+		$error  = array();
+		if ( ! empty( $_GET['status'] ) ) {
+			$status = sanitize_text_field( wp_unslash( $_GET['status'] ) );
+		}
+		if ( 'error' === $status && ! empty( $_GET['resp'] ) ) {
+			$decoded_resp = json_decode( wp_unslash( $_GET['resp'] ), true );
+			if ( is_array( $decoded_resp ) ) {
+				$error = array_map( 'sanitize_text_field', $decoded_resp );
+			}
+		}
+
+		return emd_form_builder_lite_render_form( $myform->ID, $app, $fcontent, $error, $status, $atts_set );
+	}
+
+	$noaccess_msg = isset( $fcontent['settings']['noaccess_msg'] )
+		? sanitize_text_field( (string) $fcontent['settings']['noaccess_msg'] )
+		: '';
+
+	return '<div class="alert alert-info not-authorized">' . esc_html( $noaccess_msg ) . '</div>';
 }
 function emd_form_builder_lite_display_top($kfield,$cfield,$extra_class=''){
 	$top_layout = '';
@@ -1146,24 +1173,99 @@ function emd_form_builder_lite_render_form($form_id,$app,$fcontent,$error='',$su
 		$func_name('js');
 		wp_enqueue_style(str_replace('_','-',$app) . '-allview-css');
 	}
-	if(!empty($fcontent['settings']['css_enq'])){
-		$css_enqs = explode(';',$fcontent['settings']['css_enq']);
-		if(!empty($css_enqs)){
-			$count_css = 1;
-			foreach($css_enqs as $mycss){
-				wp_enqueue_style('emd-form-css-' . $count_css, $mycss);
-				$count_css++;
+	if ( ! empty( $fcontent['settings']['css_enq'] ) && is_string( $fcontent['settings']['css_enq'] ) ) {
+		$allowed_hosts = apply_filters(
+			'emd_form_allowed_css_hosts',
+			array( wp_parse_url( home_url(), PHP_URL_HOST ) ),
+			$fcontent
+		);
+		$allowed_hosts = array_filter(
+			array_map(
+				static function ( $host ) {
+					return strtolower( trim( (string) $host ) );
+				},
+				(array) $allowed_hosts
+			)
+		);
+
+		$css_enqs  = explode( ';', $fcontent['settings']['css_enq'] );
+		$count_css = 1;
+
+		foreach ( $css_enqs as $mycss ) {
+			$candidate = trim( (string) $mycss );
+			if ( '' === $candidate ) {
+				continue;
 			}
+
+			// Support site-relative paths like "/wp-content/..." while blocking "//" scheme-relative URLs.
+			if ( 0 === strpos( $candidate, '/' ) && 0 !== strpos( $candidate, '//' ) ) {
+				$candidate = home_url( $candidate );
+			}
+
+			$url = esc_url_raw( $candidate, array( 'https', 'http' ) );
+			if ( empty( $url ) || ! wp_http_validate_url( $url ) ) {
+				continue;
+			}
+
+			$host = strtolower( (string) wp_parse_url( $url, PHP_URL_HOST ) );
+			if ( '' === $host || ! in_array( $host, $allowed_hosts, true ) ) {
+				continue;
+			}
+
+			wp_enqueue_style(
+				'emd-form-css-' . $count_css,
+				$url,
+				array(),
+				$version
+			);
+			$count_css++;
 		}
 	}
-	if(!empty($fcontent['settings']['js_enq'])){
-		$js_enqs = explode(';',$fcontent['settings']['js_enq']);
-		if(!empty($js_enqs)){
-			$count_js = 1;
-			foreach($js_enqs as $myjs){
-				wp_enqueue_script('emd-form-js-' . $count_js, $myjs,array(),$version,true);
-				$count_js++;
+	if ( ! empty( $fcontent['settings']['js_enq'] ) && is_string( $fcontent['settings']['js_enq'] ) ) {
+		$allowed_hosts = apply_filters(
+			'emd_form_allowed_js_hosts',
+			array( wp_parse_url( home_url(), PHP_URL_HOST ) ),
+			$fcontent
+		);
+		$allowed_hosts = array_filter(
+			array_map(
+				static function ( $host ) {
+					return strtolower( trim( (string) $host ) );
+				},
+				(array) $allowed_hosts
+			)
+		);
+		$js_enqs  = explode( ';', $fcontent['settings']['js_enq'] );
+		$count_js = 1;
+
+		foreach ( $js_enqs as $myjs ) {
+			$candidate = trim( (string) $myjs );
+			if ( '' === $candidate ) {
+				continue;
 			}
+
+			if ( 0 === strpos( $candidate, '/' ) && 0 !== strpos( $candidate, '//' ) ) {
+				$candidate = home_url( $candidate );
+			}
+
+			$url = esc_url_raw( $candidate, array( 'https', 'http' ) );
+			if ( empty( $url ) || ! wp_http_validate_url( $url ) ) {
+				continue;
+			}
+
+			$host = strtolower( (string) wp_parse_url( $url, PHP_URL_HOST ) );
+			if ( '' === $host || ! in_array( $host, $allowed_hosts, true ) ) {
+				continue;
+			}
+
+			wp_enqueue_script(
+				'emd-form-js-' . $count_js,
+				$url,
+				array(),
+				$version,
+				true
+			);
+			$count_js++;
 		}
 	}
 	if(!empty($fcontent['settings']['display_records'])){

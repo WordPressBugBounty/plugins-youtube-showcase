@@ -196,15 +196,10 @@ function emd_process_register($data,$app){
 		is_ssl()
 	);
 	if ( is_wp_error( $signon ) ) {
-		// Something on the authenticate filter refused the sign on. Set the cookie directly
-		// so registration still ends up logged in, and leave a note for debugging.
+		// Something on the authenticate filter refused the sign on.
+		// Do NOT force sign-in by setting auth cookie directly.
 		error_log( 'emd_process_register: wp_signon failed for user ' . $user_id . ': ' . $signon->get_error_code() );
-		wp_set_auth_cookie( $user_id, true, is_ssl() );
-		wp_set_current_user( $user_id, $user->user_login );
-		do_action( 'wp_login', $user->user_login, $user );
-	} else {
-		// wp_signon() sets the auth cookie and fires wp_login itself.
-		//wp_set_current_user( $signon->ID, $signon->user_login );
+		return $signon;
 	}
 
 	$emd_status = get_user_meta( $user->ID, 'emd_status', true );

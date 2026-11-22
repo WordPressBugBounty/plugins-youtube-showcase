@@ -327,6 +327,11 @@ line-height: normal;
 ?>
 <p class="about-description">This page lists the release notes from every production version of YouTube Showcase Community.</p>
 
+<h3 style="font-size: 18px;font-weight:700;color: white;background: #708090;padding:5px 10px;width:155px;border: 2px solid #fff;border-radius:4px;text-align:center">4.1.2 changes</h3>
+<div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1633" style="margin:0">
+<h3 style="font-size:18px;" class="fix"><div  style="font-size:110%;color:#c71585"><span class="dashicons dashicons-admin-tools"></span> FIX</div>
+Added missing capability, nonce, and AJAX checks, and hardened form/meta output and TLS verification.</h3>
+<div ></a></div></div></div><hr style="margin:30px 0">
 <h3 style="font-size: 18px;font-weight:700;color: white;background: #708090;padding:5px 10px;width:155px;border: 2px solid #fff;border-radius:4px;text-align:center">4.1.1 changes</h3>
 <div class="wp-clearfix"><div class="changelog emd-section whats-new whats-new-1632" style="margin:0">
 <h3 style="font-size:18px;" class="fix"><div  style="font-size:110%;color:#c71585"><span class="dashicons dashicons-admin-tools"></span> FIX</div>

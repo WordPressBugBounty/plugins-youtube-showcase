@@ -3,7 +3,7 @@ Contributors: emarket-design,safiye
 Tags: youtube, video gallery, playlist, video grid, youtube gallery
 Requires at least: 5.8
 Tested up to: 7.1
-Stable tag: 4.1.1
+Stable tag: 4.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Plugin URI: https://emdplugins.com/youtube-showcase
@@ -110,6 +110,8 @@ Yes. Videos are displayed newest first by default. You can control the order by 
 9. CSV Import/Export – Bulk manage your library with the eMD CSV Extension for high-volume sites.
 
 == Changelog ==
+= 4.1.2 =
+* FIXED Added missing capability, nonce, and AJAX checks, and hardened form/meta output and TLS verification.
 = 4.1.1 =
 * FIXED XSS vulnerability on approved comments
 = 4.1.0 =
